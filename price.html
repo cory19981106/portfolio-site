@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>價目表｜游正鈞</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      margin: 0;
+      background: #fffefb;
+      color: #333;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: #f9f7f2;
+      padding: 1rem 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 999;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #a88d65;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      margin-left: 1rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #555;
+      font-weight: 600;
+    }
+    nav a.active {
+      color: #a88d65;
+      font-weight: 700;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 28px;
+      height: 22px;
+      justify-content: space-between;
+    }
+    .menu-toggle span {
+      height: 3px;
+      background: #a88d65;
+      border-radius: 2px;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 200px;
+        height: calc(100% - 60px);
+        background: #f9f7f2;
+        flex-direction: column;
+        padding-top: 1rem;
+        box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+        transition: right 0.3s ease;
+        z-index: 9999;
+      }
+      nav ul.open {
+        right: 0;
+      }
+      nav li {
+        margin: 1rem 0;
+        padding-left: 1rem;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+    section {
+      max-width: 960px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    h2 {
+      border-bottom: 2px solid #a88d65;
+      padding-bottom: 0.5rem;
+      margin-top: 3rem;
+      color: #a88d65;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 2rem;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 1rem;
+      text-align: left;
+    }
+    th {
+      background: #f0ece6;
+      color: #444;
+    }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #f9f7f2;
+      color: #999;
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="logo">游正鈞</div>
+  <nav>
+    <div class="menu-toggle" id="menu-toggle" aria-label="開啟選單" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="menu">
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="photo-flat.html">平面攝影</a></li>
+      <li><a href="photo-event.html">活動影片</a></li>
+      <li><a href="photo-wedding.html">婚禮影片</a></li>
+      <li><a href="photo-commercial.html">廣告影片</a></li>
+      <li><a href="photo-short.html">短影音</a></li>
+      <li><a href="design-web.html">網頁設計</a></li>
+      <li><a href="design-graphic.html">平面設計</a></li>
+      <li><a href="design-ad.html">廣告圖設計</a></li>
+      <li><a href="price.html" class="active">價目表</a></li>
+      <li><a href="contact.html">聯絡</a></li>
+    </ul>
+  </nav>
+</header>
+
+<section>
+  <h2>婚禮攝影服務</h2>
+  <table>
+    <thead>
+      <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>單機（動態/平面）</td><td>單機拍攝紀錄</td><td>18,000起</td></tr>
+      <tr><td>雙機（動態/平面）</td><td>雙機同步拍攝</td><td>28,000起</td></tr>
+      <tr><td>雙機平面+動態</td><td>動靜皆備、雙攝師</td><td>35,000起</td></tr>
+      <tr><td>SDE快播快剪</td><td>當日剪輯即時播放</td><td>另報價</td></tr>
+    </tbody>
+  </table>
+
+  <h2>活動攝影服務</h2>
+  <table>
+    <thead>
+      <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>單機（動態/平面）</td><td>單機現場紀錄</td><td>12,000起</td></tr>
+      <tr><td>雙機（動態/平面）</td><td>雙視角拍攝</td><td>20,000起</td></tr>
+      <tr><td>雙機平面+動態</td><td>全方位記錄</td><td>28,000起</td></tr>
+    </tbody>
+  </table>
+
+  <h2>短影片製作</h2>
+  <table>
+    <thead>
+      <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>無腳本拍攝剪輯</td><td>自由拍攝剪輯</td><td>8,000起</td></tr>
+      <tr><td>有腳本拍攝剪輯</td><td>含腳本編排與導演</td><td>15,000起</td></tr>
+      <tr><td>包月優惠</td><td>量多優惠（4部以上）</td><td>價格詳談</td></tr>
+    </tbody>
+  </table>
+
+  <h2>設計服務</h2>
+  <table>
+    <thead>
+      <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>網頁設計</td><td>響應式設計含切版</td><td>15,000起</td></tr>
+      <tr><td>LOGO設計</td><td>品牌標誌視覺</td><td>8,000起</td></tr>
+      <tr><td>包裝設計</td><td>商品包裝圖樣設計</td><td>5,000起</td></tr>
+      <tr><td>名片設計</td><td>個人／企業名片</td><td>2,000起</td></tr>
+      <tr><td>廣告圖設計</td><td>社群/行銷視覺圖</td><td>依需求報價</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<footer>
+  &copy; 2025 游正鈞 All Rights Reserved
+</footer>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  menuToggle.addEventListener('click', () => menu.classList.toggle('open'));
+  menuToggle.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      menu.classList.toggle('open');
+    }
+  });
+</script>
+
+</body>
+</html>
