@@ -1,17 +1,55 @@
 body {
-  margin: 0;
-  font-family: 'Noto Sans TC', sans-serif;
-  background: #f9f8f5;
-  color: #333;
-}
-header {
-  padding: 1rem 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: white;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #fff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header {
+      background: #f9f7f2;
+      padding: 1rem 2rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #a88d65;
+    }
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #555;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: #a88d65;
+    }
+    nav a.active {
+      color: #a88d65;
+      font-weight: 700;
+      border-bottom: 2px solid #a88d65;
+      padding-bottom: 0.2rem;
+    }
+    section {
+      max-width: 960px;
+      margin: 3rem auto 4rem;
+      padding: 0 1rem;
+    }
+    h2 {
+      font-weight: 700;
+      color: #a88d65;
+      margin-bottom: 1.5rem;
+      border-bottom: 2px solid #a88d65;
+      padding-bottom: 0.5rem;
+      text-align: center;
+    }
 nav a {
   margin-left: 1.5rem;
   text-decoration: none;
