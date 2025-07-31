@@ -8,22 +8,8 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
-  <div class="logo">游正鈞</div>
-  <nav>
-    <a href="index.html">首頁</a>
-    <a href="photo-flat.html">平面攝影</a>
-    <a href="photo-event.html">活動影片</a>
-    <a href="photo-wedding.html">婚禮影片</a>
-    <a href="photo-commercial.html">廣告影片</a>
-    <a href="photo-short.html">短影音</a>
-    <a href="design-web.html">網頁設計</a>
-    <a href="design-graphic.html">平面設計</a>
-    <a href="design-ad.html">廣告圖設計</a>
-    <a href="price.html">價目表</a>
-    <a href="contact.html">聯絡</a>
-  </nav>
-</header>
+<header id="site-header"></header>
+
 
 <section class="hero">
   <h1>攝影 × 設計 × 美學</h1>
@@ -53,5 +39,32 @@
 <footer>
   &copy; 2025 游正鈞 All Rights Reserved
 </footer>
+  <script>
+  fetch('components/navbar.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('site-header').innerHTML = html;
+
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      if (toggle) {
+        toggle.addEventListener('click', () => menu.classList.toggle('open'));
+        toggle.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            menu.classList.toggle('open');
+          }
+        });
+      }
+
+      const links = document.querySelectorAll('#menu a');
+      links.forEach(link => {
+        if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
+          link.classList.add('active');
+        }
+      });
+    });
+</script>
+
 </body>
 </html>
