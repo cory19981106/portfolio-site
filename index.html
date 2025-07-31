@@ -42,16 +42,32 @@
 </footer>
 
 <script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const menu = document.getElementById('menu');
-  menuToggle.addEventListener('click', () => menu.classList.toggle('open'));
-  menuToggle.addEventListener('keydown', e => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      menu.classList.toggle('open');
-    }
-  });
+  fetch('components/navbar.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('site-header').innerHTML = html;
+
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      if (toggle) {
+        toggle.addEventListener('click', () => menu.classList.toggle('open'));
+        toggle.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            menu.classList.toggle('open');
+          }
+        });
+      }
+
+      const links = document.querySelectorAll('#menu a');
+      links.forEach(link => {
+        if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
+          link.classList.add('active');
+        }
+      });
+    });
 </script>
+
   
 </body>
 </html>
