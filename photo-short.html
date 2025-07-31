@@ -6,7 +6,43 @@
   <title>游正鈞｜攝影與設計作品集</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+<style>
+   
+    
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .video-item iframe {
+      width: 100%;
+      height: 476px;
+      border: none;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      background: #f9f7f2;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    /* 手機導覽換行 */
+    @media (max-width: 600px) {
+      header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      nav a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
+
 
 <body>
 
