@@ -6,41 +6,57 @@
   <title>動態案例｜ZJ影像</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-bottom: 2rem;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
 <header id="site-header"></header>
-
 
 <section class="section">
   <h2>廣告案例</h2>
   <div>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/watch?v=-_tBT-g7kZw&list=PLtDigM296qOl-POGydv8R0kGNBX5xkQA3&index=3" title="臺中市政府警察局" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/-_tBT-g7kZw" title="臺中市政府警察局" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/watch?v=08SrdEiaEzs&list=PLtDigM296qOl-POGydv8R0kGNBX5xkQA3&index=4" title="聲波電動床" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/08SrdEiaEzs" title="聲波電動床" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/watch?v=VXLMaHs0exI&list=PLtDigM296qOl-POGydv8R0kGNBX5xkQA3&index=9" title="博田醫院" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/VXLMaHs0exI" title="博田醫院" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="video-container">
-      <iframe src="https://youtu.be/UxU5F-vmdww" title="SUZUKI JIMMY" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/UxU5F-vmdww" title="SUZUKI JIMNY" frameborder="0" allowfullscreen></iframe>
     </div>
     <div class="video-container">
-      <iframe src="https://youtu.be/yCrEY3RWbpI" title="蕎安地產形象" frameborder="0" allowfullscreen></iframe>
-    </div>
-  
-  </div>
-   <h2>婚禮紀實</h2>
-  <div
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/yCrEY3RWbpI" title="蕎安地產形象" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
-   <h2>活動紀實</h2>
+
+  <h2>婚禮紀實</h2>
   <div>
     <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video" frameborder="0" allowfullscreen></iframe>
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="婚禮影片" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <h2>活動紀實</h2>
+  <div>
+    <div class="video-container">
+      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="活動影片" frameborder="0" allowfullscreen></iframe>
     </div>
   </div>
 </section>
@@ -48,7 +64,8 @@
 <footer>
   &copy; 2025 ZJ影像 All Rights Reserved
 </footer>
-  <script>
+
+<script>
   fetch('components/navbar.html')
     .then(res => res.text())
     .then(html => {
