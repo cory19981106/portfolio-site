@@ -73,12 +73,12 @@
     <div class="form-group">
       <label>拍攝內容（可複選）</label>
       <div class="checkbox-group">
-        <label><input type="checkbox" name="content_type" value="商業影片"> 商業影片</label>
-        <label><input type="checkbox" name="content_type" value="婚禮紀錄"> 婚禮紀錄</label>
-        <label><input type="checkbox" name="content_type" value="活動紀錄"> 活動紀錄</label>
-        <label><input type="checkbox" name="content_type" value="短影音"> 短影音</label>
-        <label><input type="checkbox" name="content_type" value="形象照"> 形象照</label>
-        <label><input type="checkbox" name="content_type" value="平面設計"> 平面設計</label>
+        <label><input type="checkbox" name="content_type[]" value="商業影片"> 商業影片</label>
+        <label><input type="checkbox" name="content_type[]" value="婚禮紀錄"> 婚禮紀錄</label>
+        <label><input type="checkbox" name="content_type[]" value="活動紀錄"> 活動紀錄</label>
+        <label><input type="checkbox" name="content_type[]" value="短影音"> 短影音</label>
+        <label><input type="checkbox" name="content_type[]" value="形象照"> 形象照</label>
+        <label><input type="checkbox" name="content_type[]" value="平面設計"> 平面設計</label>
       </div>
     </div>
 
@@ -97,6 +97,14 @@
     document.getElementById('dateField').classList.toggle('hidden', option !== '確定日期');
     document.getElementById('monthField').classList.toggle('hidden', option !== '預計月份');
   }
+
+  // 載入 navbar
+  fetch('/components/navbar.html')
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById('site-header').innerHTML = html;
+    })
+    .catch(e => console.error('載入 navbar 失敗', e));
 </script>
 </body>
 </html>
