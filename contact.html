@@ -87,6 +87,25 @@
       padding-bottom: 0.5rem;
       text-align: center;
     }
+    /* 個人聯絡資料區塊 */
+    .personal-contact {
+      max-width: 600px;
+      margin: 0 auto 2rem auto;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+    .personal-contact a img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 1px rgba(0,0,0,0.15));
+      transition: opacity 0.3s;
+    }
+    .personal-contact a:hover img {
+      opacity: 0.8;
+    }
     /* 聯絡表單樣式 */
     .section {
       background: #fffaf4;
@@ -94,7 +113,7 @@
       border-radius: 12px;
       box-shadow: 0 0 10px rgba(168, 141, 101, 0.2);
       max-width: 600px;
-      margin: 3rem auto 4rem;
+      margin: 0 auto 4rem auto;
     }
     .form-group {
       margin-bottom: 1.2rem;
@@ -103,6 +122,7 @@
       display: block;
       font-weight: 700;
       margin-bottom: 0.5rem;
+      color: #333;
     }
     input,
     select,
@@ -113,6 +133,7 @@
       border: 1px solid #ccc;
       border-radius: 6px;
       box-sizing: border-box;
+      color: #333;
     }
     textarea {
       resize: vertical;
@@ -124,6 +145,7 @@
       display: block;
       margin-bottom: 0.4rem;
       cursor: pointer;
+      color: #333;
     }
     button {
       width: 100%;
@@ -138,6 +160,8 @@
     }
     button:hover {
       background-color: #FFF;
+      color: #000;
+      border: 1px solid #000;
     }
     .hidden {
       display: none;
@@ -181,78 +205,98 @@
       .menu-toggle {
         display: flex;
       }
+      .personal-contact {
+        justify-content: center;
+        gap: 20px;
+      }
     }
   </style>
 </head>
 <body>
   <header id="site-header"></header>
 
-  <section class="section">
+  <section>
     <h2>聯絡與預約</h2>
 
-    <div class="icons">
-      <a href="https://line.me/ti/p/@519fugjy" target="_blank" aria-label="LINE">
-        <i class="fab fa-line"></i>
+    <!-- 個人聯絡資料區塊 -->
+    <div class="personal-contact">
+      <a href="https://www.youtube.com/@你的頻道" target="_blank" aria-label="YouTube">
+        <img src="images/yt.svg" alt="YouTube" />
       </a>
       <a href="https://www.instagram.com/你的IG帳號" target="_blank" aria-label="Instagram">
-        <i class="fab fa-instagram"></i>
+        <img src="images/ig.svg" alt="Instagram" />
+      </a>
+      <a href="https://line.me/ti/p/@你的LINE_ID" target="_blank" aria-label="LINE">
+        <img src="images/line.svg" alt="LINE" />
       </a>
     </div>
 
-    <form action="https://script.google.com/macros/s/AKfycbw-U-3-OeP5J9cquSntyqcIYmqQ3-Y0KmsHwx7aDlzSQKJ3EwkhhF-BwSAVULGNZjAjxw/exec" method="POST">
-      <div class="form-group">
-        <label for="name">姓名</label>
-        <input type="text" name="name" id="name" required />
+    <!-- 表單內容 -->
+    <section class="section">
+      <div class="icons">
+        <a href="https://line.me/ti/p/@519fugjy" target="_blank" aria-label="LINE">
+          <i class="fab fa-line"></i>
+        </a>
+        <a href="https://www.instagram.com/你的IG帳號" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
       </div>
 
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required />
-      </div>
-
-      <div class="form-group">
-        <label for="line">LINE ID</label>
-        <input type="text" name="line" id="line" />
-      </div>
-
-      <div class="form-group">
-        <label>預約時間</label>
-        <div class="radio-group">
-          <label><input type="radio" name="booking_option" value="確定日期" onclick="toggleFields()" required /> 有確定日期</label>
-          <label><input type="radio" name="booking_option" value="預計月份" onclick="toggleFields()" /> 預計拍攝月份</label>
-          <label><input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleFields()" /> 洽談後再擬定</label>
+      <form action="https://script.google.com/macros/s/AKfycbw-U-3-OeP5J9cquSntyqcIYmqQ3-Y0KmsHwx7aDlzSQKJ3EwkhhF-BwSAVULGNZjAjxw/exec" method="POST">
+        <div class="form-group">
+          <label for="name">姓名</label>
+          <input type="text" name="name" id="name" required />
         </div>
-      </div>
 
-      <div class="form-group hidden" id="dateField">
-        <label for="shoot_date">選擇日期</label>
-        <input type="date" name="shoot_date" id="shoot_date" />
-      </div>
-
-      <div class="form-group hidden" id="monthField">
-        <label for="shoot_month">選擇月份</label>
-        <input type="month" name="shoot_month" id="shoot_month" />
-      </div>
-
-      <div class="form-group">
-        <label>拍攝內容（可複選）</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="content_type[]" value="商業影片" /> 商業影片</label>
-          <label><input type="checkbox" name="content_type[]" value="婚禮紀錄" /> 婚禮紀錄</label>
-          <label><input type="checkbox" name="content_type[]" value="活動紀錄" /> 活動紀錄</label>
-          <label><input type="checkbox" name="content_type[]" value="短影音" /> 短影音</label>
-          <label><input type="checkbox" name="content_type[]" value="形象照" /> 形象照</label>
-          <label><input type="checkbox" name="content_type[]" value="平面設計" /> 平面設計</label>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" required />
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="message">備註 / 拍攝需求</label>
-        <textarea name="message" id="message" placeholder="想說的話、拍攝需求、地點偏好等..."></textarea>
-      </div>
+        <div class="form-group">
+          <label for="line">LINE ID</label>
+          <input type="text" name="line" id="line" />
+        </div>
 
-      <button type="submit">送出預約表單</button>
-    </form>
+        <div class="form-group">
+          <label>預約時間</label>
+          <div class="radio-group">
+            <label><input type="radio" name="booking_option" value="確定日期" onclick="toggleFields()" required /> 有確定日期</label>
+            <label><input type="radio" name="booking_option" value="預計月份" onclick="toggleFields()" /> 預計拍攝月份</label>
+            <label><input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleFields()" /> 洽談後再擬定</label>
+          </div>
+        </div>
+
+        <div class="form-group hidden" id="dateField">
+          <label for="shoot_date">選擇日期</label>
+          <input type="date" name="shoot_date" id="shoot_date" />
+        </div>
+
+        <div class="form-group hidden" id="monthField">
+          <label for="shoot_month">選擇月份</label>
+          <input type="month" name="shoot_month" id="shoot_month" />
+        </div>
+
+        <div class="form-group">
+          <label>拍攝內容</label>
+          <div class="checkbox-group">
+            <label><input type="checkbox" name="content_type[]" value="商業影片" /> 商業影片</label>
+            <label><input type="checkbox" name="content_type[]" value="婚禮紀錄" /> 婚禮紀錄</label>
+            <label><input type="checkbox" name="content_type[]" value="活動紀錄" /> 活動紀錄</label>
+            <label><input type="checkbox" name="content_type[]" value="短影音" /> 短影音</label>
+            <label><input type="checkbox" name="content_type[]" value="形象照" /> 形象照</label>
+            <label><input type="checkbox" name="content_type[]" value="平面設計" /> 平面設計</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">備註 / 拍攝需求</label>
+          <textarea name="message" id="message" placeholder="想說的話、拍攝需求、地點偏好等..."></textarea>
+        </div>
+
+        <button type="submit">送出預約表單</button>
+      </form>
+    </section>
   </section>
 
   <footer>
