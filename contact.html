@@ -20,11 +20,13 @@
     .icons a { margin: 0 10px; font-size: 1.8rem; color: #444; text-decoration: none; }
     button { width: 100%; padding: 0.8rem; font-size: 1.1rem; background-color: #333; color: white; border: none; border-radius: 6px; cursor: pointer; }
     button:hover { background-color: #555; }
+    #success-msg { display: none; text-align: center; margin-top: 2rem; color: #a88d65; font-weight: bold; }
   </style>
   <script src="https://kit.fontawesome.com/1c2e3ad85a.js" crossorigin="anonymous"></script>
 </head>
 <body>
 <header id="site-header"></header>
+
 <section class="section">
   <h2>聯絡與預約</h2>
 
@@ -35,8 +37,11 @@
     <a href="https://www.youtube.com/@你的頻道" target="_blank"><i class="fab fa-youtube"></i></a>
   </div>
 
-  <form action="https://script.google.com/macros/s/AKfycbx7K0NFkW8xsjLSpxQW5ysMhRnWrXaylrF1_Z-BdGsAPI0fi1lxK3RrTfnZf2jkKEVvXA/exec" method="POST">
-    
+  <form action="https://script.google.com/macros/s/AKfycbx7K0NFkW8xsjLSpxQW5ysMhRnWrXaylrF1_Z-BdGsAPI0fi1lxK3RrTfnZf2jkKEVvXA/exec"
+        method="POST"
+        target="hidden_iframe"
+        onsubmit="return handleSubmit();">
+
     <div class="form-group">
       <label for="name">姓名</label>
       <input type="text" name="name" id="name" required />
@@ -78,14 +83,35 @@
 
     <button type="submit">送出預約表單</button>
   </form>
+
+  <iframe name="hidden_iframe" style="display:none;" onload="checkIfSubmitted()"></iframe>
+  <div id="success-msg">✅ 表單已送出，3 秒後返回首頁...</div>
 </section>
 
 <script>
+  let formSubmitted = false;
+
   function toggleFields() {
     const option = document.querySelector('input[name="booking_option"]:checked').value;
     document.getElementById('dateField').classList.toggle('hidden', option !== '確定日期');
     document.getElementById('monthField').classList.toggle('hidden', option !== '預計月份');
   }
+
+  function handleSubmit() {
+    formSubmitted = true;
+    return true;
+  }
+
+  function checkIfSubmitted() {
+    if (formSubmitted) {
+      document.getElementById('success-msg').style.display = 'block';
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 3000);
+    }
+  }
+
+  // 載入 navbar
   fetch('components/navbar.html')
     .then(res => res.text())
     .then(html => {
@@ -111,6 +137,5 @@
       });
     });
 </script>
-
 </body>
 </html>
