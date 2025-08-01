@@ -27,11 +27,29 @@
 <!-- 載入 header -->
 <header id="site-header"></header>
 <script>
-  // 載入共用 header.html
-  fetch('/header.html')
+  fetch('components/navbar.html')
     .then(res => res.text())
-    .then(data => {
-      document.getElementById('site-header').innerHTML = data;
+    .then(html => {
+      document.getElementById('site-header').innerHTML = html;
+
+      const toggle = document.getElementById('menu-toggle');
+      const menu = document.getElementById('menu');
+      if (toggle) {
+        toggle.addEventListener('click', () => menu.classList.toggle('open'));
+        toggle.addEventListener('keydown', e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            menu.classList.toggle('open');
+          }
+        });
+      }
+
+      const links = document.querySelectorAll('#menu a');
+      links.forEach(link => {
+        if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
+          link.classList.add('active');
+        }
+      });
     });
 </script>
 
