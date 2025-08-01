@@ -4,184 +4,110 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>聯絡我們Contact｜ZJ影像</title>
-
-  <!-- 字體 -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
-
-  <!-- Font Awesome 替代用法（避免 JS Kit 載入錯誤） -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- 主樣式 -->
-  <link rel="stylesheet" href="style.css">
-  
-  <!-- 頁面內自定義樣式（可保留） -->
   <style>
-    .section {
-      max-width: 600px;
-      margin: 4rem auto;
-      background: white;
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    .form-group {
-      margin-bottom: 1rem;
-    }
-    label {
-      display: block;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-    input, select, textarea {
-      width: 100%;
-      padding: 0.5rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-    textarea {
-      resize: vertical;
-      height: 100px;
-    }
-    .radio-group label, .checkbox-group label {
-      font-weight: 400;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-    .hidden {
-      display: none;
-    }
-    .icons {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .icons a {
-      margin: 0 10px;
-      font-size: 1.8rem;
-      color: #444;
-      text-decoration: none;
-    }
-    button {
-      width: 100%;
-      padding: 0.8rem;
-      font-size: 1.1rem;
-      background-color: #333;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    button:hover {
-      background-color: #555;
-    }
+    body { font-family: 'Noto Sans TC', sans-serif; padding: 1rem; background: #f8f8f8; }
+    .section { max-width: 600px; margin: auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    h2 { text-align: center; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; font-weight: 700; margin-bottom: 0.5rem; }
+    input, select, textarea { width: 100%; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 6px; }
+    textarea { resize: vertical; height: 100px; }
+    .radio-group label, .checkbox-group label { font-weight: 400; display: block; margin-bottom: 0.3rem; }
+    .hidden { display: none; }
+    .icons { text-align: center; margin-bottom: 2rem; }
+    .icons a { margin: 0 10px; font-size: 1.8rem; color: #444; text-decoration: none; }
+    button { width: 100%; padding: 0.8rem; font-size: 1.1rem; background-color: #333; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background-color: #555; }
   </style>
 </head>
-
 <body>
-  <!-- 網站導覽列將載入此處 -->
-  <header id="site-header"></header>
 
-  <section class="section">
-    <h2>聯絡與預約</h2>
+<!-- 載入 header -->
+<header id="site-header"></header>
+<script>
+  // 載入共用 header.html
+  fetch('/header.html')
+    .then(res => res.text())
+    .then(data => {
+      document.getElementById('site-header').innerHTML = data;
+    });
+</script>
 
-    <div class="icons">
-      <a href="https://line.me/ti/p/@519fugjy" target="_blank"><i class="fab fa-line"></i></a>
-      <a href="https://www.instagram.com/你的IG帳號" target="_blank"><i class="fab fa-instagram"></i></a>
-      <a href="https://www.facebook.com/你的FB頁面" target="_blank"><i class="fab fa-facebook"></i></a>
-      <a href="https://www.youtube.com/@你的頻道" target="_blank"><i class="fab fa-youtube"></i></a>
+<section class="section">
+  <h2>聯絡與預約</h2>
+
+  <div class="icons">
+    <a href="https://line.me/ti/p/@519fugjy" target="_blank">LINE</a>
+    <a href="https://www.instagram.com/你的IG帳號" target="_blank">Instagram</a>
+    <a href="https://www.facebook.com/你的FB頁面" target="_blank">Facebook</a>
+    <a href="https://www.youtube.com/@你的頻道" target="_blank">YouTube</a>
+  </div>
+
+  <form action="https://script.google.com/macros/s/AKfycbw-U-3-OeP5J9cquSntyqcIYmqQ3-Y0KmsHwx7aDlzSQKJ3EwkhhF-BwSAVULGNZjAjxw/exec" method="POST">
+
+    <div class="form-group">
+      <label for="name">姓名</label>
+      <input type="text" name="name" id="name" required />
     </div>
 
-    <form action="https://script.google.com/macros/s/AKfycbw-U-3-OeP5J9cquSntyqcIYmqQ3-Y0KmsHwx7aDlzSQKJ3EwkhhF-BwSAVULGNZjAjxw/exec" method="POST">
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required />
+    </div>
 
-      <div class="form-group">
-        <label for="name">姓名</label>
-        <input type="text" name="name" id="name" required />
+    <div class="form-group">
+      <label for="line">LINE ID</label>
+      <input type="text" name="line" id="line" />
+    </div>
+
+    <div class="form-group">
+      <label>預約時間</label>
+      <div class="radio-group">
+        <label><input type="radio" name="booking_option" value="確定日期" onclick="toggleFields()" required> 有確定日期</label>
+        <label><input type="radio" name="booking_option" value="預計月份" onclick="toggleFields()"> 預計拍攝月份</label>
+        <label><input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleFields()"> 洽談後再擬定</label>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" name="email" id="email" required />
+    <div class="form-group hidden" id="dateField">
+      <label for="shoot_date">選擇日期</label>
+      <input type="date" name="shoot_date" id="shoot_date" />
+    </div>
+
+    <div class="form-group hidden" id="monthField">
+      <label for="shoot_month">選擇月份</label>
+      <input type="month" name="shoot_month" id="shoot_month" />
+    </div>
+
+    <div class="form-group">
+      <label>拍攝內容</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="content_type" value="商業影片"> 商業影片</label>
+        <label><input type="checkbox" name="content_type" value="婚禮紀錄"> 婚禮紀錄</label>
+        <label><input type="checkbox" name="content_type" value="活動紀錄"> 活動紀錄</label>
+        <label><input type="checkbox" name="content_type" value="短影音"> 短影音</label>
+        <label><input type="checkbox" name="content_type" value="形象照"> 形象照</label>
+        <label><input type="checkbox" name="content_type" value="平面設計"> 平面設計</label>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label for="line">LINE ID</label>
-        <input type="text" name="line" id="line" />
-      </div>
+    <div class="form-group">
+      <label for="message">備註 / 拍攝需求</label>
+      <textarea name="message" id="message" placeholder="想說的話、拍攝需求、地點偏好等..."></textarea>
+    </div>
 
-      <div class="form-group">
-        <label>預約時間</label>
-        <div class="radio-group">
-          <label><input type="radio" name="booking_option" value="確定日期" onclick="toggleFields()" required> 有確定日期</label>
-          <label><input type="radio" name="booking_option" value="預計月份" onclick="toggleFields()"> 預計拍攝月份</label>
-          <label><input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleFields()"> 洽談後再擬定</label>
-        </div>
-      </div>
+    <button type="submit">送出預約表單</button>
+  </form>
+</section>
 
-      <div class="form-group hidden" id="dateField">
-        <label for="shoot_date">選擇日期</label>
-        <input type="date" name="shoot_date" id="shoot_date" />
-      </div>
-
-      <div class="form-group hidden" id="monthField">
-        <label for="shoot_month">選擇月份</label>
-        <input type="month" name="shoot_month" id="shoot_month" />
-      </div>
-
-      <div class="form-group">
-        <label>拍攝內容</label>
-        <div class="checkbox-group">
-          <label><input type="checkbox" name="content_type" value="商業影片"> 商業影片</label>
-          <label><input type="checkbox" name="content_type" value="婚禮紀錄"> 婚禮紀錄</label>
-          <label><input type="checkbox" name="content_type" value="活動紀錄"> 活動紀錄</label>
-          <label><input type="checkbox" name="content_type" value="短影音"> 短影音</label>
-          <label><input type="checkbox" name="content_type" value="形象照"> 形象照</label>
-          <label><input type="checkbox" name="content_type" value="平面設計"> 平面設計</label>
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="message">備註 / 拍攝需求</label>
-        <textarea name="message" id="message" placeholder="想說的話、拍攝需求、地點偏好等..."></textarea>
-      </div>
-
-      <button type="submit">送出預約表單</button>
-    </form>
-  </section>
-
-  <!-- 導覽列載入 script -->
-  <script>
-    fetch('navbar.html')
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById('site-header').innerHTML = data;
-
-        const toggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
-        if (toggle) {
-          toggle.addEventListener('click', () => menu.classList.toggle('open'));
-        }
-
-        const links = document.querySelectorAll('#menu a');
-        links.forEach(link => {
-          if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-            link.classList.add('active');
-          }
-        });
-      });
-  </script>
-
-  <!-- 表單顯示切換 -->
-  <script>
-    function toggleFields() {
-      const option = document.querySelector('input[name="booking_option"]:checked').value;
-      document.getElementById('dateField').classList.toggle('hidden', option !== '確定日期');
-      document.getElementById('monthField').classList.toggle('hidden', option !== '預計月份');
-    }
-  </script>
+<script>
+  function toggleFields() {
+    const option = document.querySelector('input[name="booking_option"]:checked').value;
+    document.getElementById('dateField').classList.toggle('hidden', option !== '確定日期');
+    document.getElementById('monthField').classList.toggle('hidden', option !== '預計月份');
+  }
+</script>
 
 </body>
 </html>
