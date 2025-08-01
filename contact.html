@@ -3,118 +3,90 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>聯絡我們 Contact｜ZJ影像</title>
+  <title>聯絡我們Contact｜ZJ影像</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body { font-family: 'Noto Sans TC', sans-serif; padding: 1rem; background: #f8f8f8; }
+    .section { max-width: 600px; margin: auto; background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    h2 { text-align: center; margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1rem; }
+    label { display: block; font-weight: 700; margin-bottom: 0.5rem; }
+    input, select, textarea { width: 100%; padding: 0.5rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 6px; }
+    textarea { resize: vertical; height: 100px; }
+    .radio-group label { font-weight: 400; display: inline-block; margin-right: 1rem; }
+    .hidden { display: none; }
+    .icons { text-align: center; margin-bottom: 2rem; }
+    .icons a { margin: 0 10px; font-size: 1.8rem; color: #444; text-decoration: none; }
+    button { width: 100%; padding: 0.8rem; font-size: 1.1rem; background-color: #333; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:hover { background-color: #555; }
+  </style>
+  <script src="https://kit.fontawesome.com/1c2e3ad85a.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
-<header id="site-header"></header>
-
 <section class="section">
-  <h2>聯絡我們</h2>
+  <h2>聯絡與預約</h2>
 
-  <!-- 社群連結區 -->
-  <div style="text-align: center; margin-bottom: 2em;">
-    <p>歡迎透過以下平台聯絡我們：</p>
-    <a href="https://line.me/ti/p/你的LINEID" target="_blank"><img src="line-icon.png" alt="Line" style="width:32px; margin:0 10px;"></a>
-    <a href="https://www.facebook.com/你的粉專" target="_blank"><img src="facebook-icon.png" alt="Facebook" style="width:32px; margin:0 10px;"></a>
-    <a href="https://www.instagram.com/你的IG帳號" target="_blank"><img src="instagram-icon.png" alt="Instagram" style="width:32px; margin:0 10px;"></a>
-    <a href="https://www.youtube.com/@你的頻道" target="_blank"><img src="youtube-icon.png" alt="YouTube" style="width:32px; margin:0 10px;"></a>
-    <p style="margin-top: 10px;">📲 LINE ID：你的LINEID</p>
+  <div class="icons">
+    <a href="https://line.me/ti/p/@519fugjy" target="_blank"><i class="fab fa-line"></i></a>
+    <a href="https://www.instagram.com/你的IG帳號" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/你的FB頁面" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.youtube.com/@你的頻道" target="_blank"><i class="fab fa-youtube"></i></a>
   </div>
 
-  <!-- 表單區 -->
   <form action="https://script.google.com/macros/s/AKfycbx7K0NFkW8xsjLSpxQW5ysMhRnWrXaylrF1_Z-BdGsAPI0fi1lxK3RrTfnZf2jkKEVvXA/exec" method="POST">
-    <label>姓名：
-      <input type="text" name="name" required />
-    </label><br><br>
-
-    <label>Email：
-      <input type="email" name="email" required />
-    </label><br><br>
-
-    <label>LINE ID：
-      <input type="text" name="line" required />
-    </label><br><br>
-
-    <!-- 拍攝時間選擇 -->
-    <h3>📅 拍攝時間選擇</h3>
-    <label>
-      <input type="radio" name="booking_option" value="確定日期" onclick="toggleBookingFields('date')" required>
-      我已有確定拍攝日期
-    </label><br>
-    <div id="dateField" style="display:none; margin-left: 1em;">
-      <label>請選擇日期：
-        <input type="date" name="shoot_date">
-      </label>
+    
+    <div class="form-group">
+      <label for="name">姓名</label>
+      <input type="text" name="name" id="name" required />
     </div>
 
-    <label>
-      <input type="radio" name="booking_option" value="預計月份" onclick="toggleBookingFields('month')">
-      我有預計拍攝月份
-    </label><br>
-    <div id="monthField" style="display:none; margin-left: 1em;">
-      <label>請選擇月份：
-        <select name="shoot_month">
-          <option value="">-- 請選擇 --</option>
-          <option value="1月">1 月</option>
-          <option value="2月">2 月</option>
-          <option value="3月">3 月</option>
-          <option value="4月">4 月</option>
-          <option value="5月">5 月</option>
-          <option value="6月">6 月</option>
-          <option value="7月">7 月</option>
-          <option value="8月">8 月</option>
-          <option value="9月">9 月</option>
-          <option value="10月">10 月</option>
-          <option value="11月">11 月</option>
-          <option value="12月">12 月</option>
-        </select>
-      </label>
+    <div class="form-group">
+      <label for="email">Email</label>
+      <input type="email" name="email" id="email" required />
     </div>
 
-    <label>
-      <input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleBookingFields('none')">
-      尚未確定，想先洽談後再決定
-    </label><br><br>
+    <div class="form-group">
+      <label for="line">LINE ID</label>
+      <input type="text" name="line" id="line" />
+    </div>
 
-    <label>備註內容：
-      <textarea name="message" rows="5" placeholder="請輸入其他想補充的資訊..."></textarea>
-    </label><br><br>
+    <div class="form-group">
+      <label>預約時間</label>
+      <div class="radio-group">
+        <label><input type="radio" name="booking_option" value="確定日期" onclick="toggleFields()" required> 有確定日期</label>
+        <label><input type="radio" name="booking_option" value="預計月份" onclick="toggleFields()"> 預計拍攝月份</label>
+        <label><input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleFields()"> 洽談後再擬定</label>
+      </div>
+    </div>
 
-    <button type="submit">送出預約資料</button>
+    <div class="form-group hidden" id="dateField">
+      <label for="shoot_date">選擇日期</label>
+      <input type="date" name="shoot_date" id="shoot_date" />
+    </div>
+
+    <div class="form-group hidden" id="monthField">
+      <label for="shoot_month">選擇月份</label>
+      <input type="month" name="shoot_month" id="shoot_month" />
+    </div>
+
+    <div class="form-group">
+      <label for="message">備註 / 拍攝需求</label>
+      <textarea name="message" id="message" placeholder="想說的話、拍攝需求、地點偏好等..."></textarea>
+    </div>
+
+    <button type="submit">送出預約表單</button>
   </form>
 </section>
 
-<footer>
-  &copy; 2025 游正鈞 All Rights Reserved
-</footer>
-
-<!-- Navbar 載入與時間切換 JS -->
 <script>
-  fetch('components/navbar.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('site-header').innerHTML = html;
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('menu');
-      if (toggle) {
-        toggle.addEventListener('click', () => menu.classList.toggle('open'));
-        toggle.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            menu.classList.toggle('open');
-          }
-        });
-      }
-    });
-
-  function toggleBookingFields(option) {
-    document.getElementById('dateField').style.display = option === 'date' ? 'block' : 'none';
-    document.getElementById('monthField').style.display = option === 'month' ? 'block' : 'none';
+  function toggleFields() {
+    const option = document.querySelector('input[name="booking_option"]:checked').value;
+    document.getElementById('dateField').classList.toggle('hidden', option !== '確定日期');
+    document.getElementById('monthField').classList.toggle('hidden', option !== '預計月份');
   }
 </script>
 
 </body>
-</htm
+</html>
