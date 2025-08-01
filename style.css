@@ -6,7 +6,7 @@ body {
       color: #333;
     }
     header {
-      background: #f9f7f2;
+      background: #000000;
       padding: 1rem 2rem;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       position: sticky;
@@ -19,7 +19,7 @@ body {
     .logo {
       font-weight: 700;
       font-size: 1.5rem;
-      color: #a88d65;
+      color: #ffffff;
     }
     nav a {
       margin-left: 1rem;
@@ -29,12 +29,12 @@ body {
       transition: color 0.3s;
     }
     nav a:hover {
-      color: #a88d65;
+      color: #ffffff;
     }
     nav a.active {
-      color: #a88d65;
+      color: #ffffff;
       font-weight: 700;
-      border-bottom: 2px solid #a88d65;
+      border-bottom: 2px solid #ffffff;
       padding-bottom: 0.2rem;
     }
     section {
