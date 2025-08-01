@@ -2,58 +2,88 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>聯絡我們Contact｜ZJ影像</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>聯絡我們 Contact｜ZJ影像</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 <body>
+
 <header id="site-header"></header>
 
 <section class="section">
-  <h2>聯絡我們 Contact</h2>
+  <h2>聯絡我們</h2>
 
   <!-- 社群連結區 -->
-  <div class="social">
-    <a href="https://line.me/ti/p/@你的LINEID" target="_blank" title="加入LINE好友"><i class="fab fa-line"></i></a>
-    <a href="https://www.facebook.com/你的FB帳號" target="_blank" title="Facebook"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.instagram.com/你的IG帳號" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.youtube.com/@你的YT帳號" target="_blank" title="YouTube"><i class="fab fa-youtube"></i></a>
-    <div class="line-id">LINE ID：@你的LINEID</div>
+  <div style="text-align: center; margin-bottom: 2em;">
+    <p>歡迎透過以下平台聯絡我們：</p>
+    <a href="https://line.me/ti/p/你的LINEID" target="_blank"><img src="line-icon.png" alt="Line" style="width:32px; margin:0 10px;"></a>
+    <a href="https://www.facebook.com/你的粉專" target="_blank"><img src="facebook-icon.png" alt="Facebook" style="width:32px; margin:0 10px;"></a>
+    <a href="https://www.instagram.com/你的IG帳號" target="_blank"><img src="instagram-icon.png" alt="Instagram" style="width:32px; margin:0 10px;"></a>
+    <a href="https://www.youtube.com/@你的頻道" target="_blank"><img src="youtube-icon.png" alt="YouTube" style="width:32px; margin:0 10px;"></a>
+    <p style="margin-top: 10px;">📲 LINE ID：你的LINEID</p>
   </div>
 
-  <!-- 預約表單 -->
-  <form id="contact-form">
-    <label for="name">姓名 *</label>
-    <input type="text" name="name" required />
+  <!-- 表單區 -->
+  <form action="https://script.google.com/macros/s/AKfycbx7K0NFkW8xsjLSpxQW5ysMhRnWrXaylrF1_Z-BdGsAPI0fi1lxK3RrTfnZf2jkKEVvXA/exec" method="POST">
+    <label>姓名：
+      <input type="text" name="name" required />
+    </label><br><br>
 
-    <label for="email">Email *</label>
-    <input type="email" name="email" required />
+    <label>Email：
+      <input type="email" name="email" required />
+    </label><br><br>
 
-    <label for="line">LINE ID *</label>
-    <input type="text" name="line" required />
+    <label>LINE ID：
+      <input type="text" name="line" required />
+    </label><br><br>
 
-    <label for="type">拍攝類型</label>
-    <select name="type">
-       <option value="商業影片">商業影片</option>
-      <option value="婚禮紀實">婚禮紀實</option>
-      <option value="形象照">形象照</option>
-      <option value="活動紀錄">活動紀錄</option>
-      <option value="商品拍攝">商品拍攝</option>
-<option value="短影音">短影音</option>
-      <option value="平面設計">平面設計</option>
-      <option value="其他">其他</option>
-    </select>
+    <!-- 拍攝時間選擇 -->
+    <h3>📅 拍攝時間選擇</h3>
+    <label>
+      <input type="radio" name="booking_option" value="確定日期" onclick="toggleBookingFields('date')" required>
+      我已有確定拍攝日期
+    </label><br>
+    <div id="dateField" style="display:none; margin-left: 1em;">
+      <label>請選擇日期：
+        <input type="date" name="shoot_date">
+      </label>
+    </div>
 
-    <label for="date">預約日期</label>
-    <input type="date" name="date" />
+    <label>
+      <input type="radio" name="booking_option" value="預計月份" onclick="toggleBookingFields('month')">
+      我有預計拍攝月份
+    </label><br>
+    <div id="monthField" style="display:none; margin-left: 1em;">
+      <label>請選擇月份：
+        <select name="shoot_month">
+          <option value="">-- 請選擇 --</option>
+          <option value="1月">1 月</option>
+          <option value="2月">2 月</option>
+          <option value="3月">3 月</option>
+          <option value="4月">4 月</option>
+          <option value="5月">5 月</option>
+          <option value="6月">6 月</option>
+          <option value="7月">7 月</option>
+          <option value="8月">8 月</option>
+          <option value="9月">9 月</option>
+          <option value="10月">10 月</option>
+          <option value="11月">11 月</option>
+          <option value="12月">12 月</option>
+        </select>
+      </label>
+    </div>
 
-    <label for="message">備註</label>
-    <textarea name="message" rows="4" placeholder="請輸入其他需求、預算、時間…"></textarea>
+    <label>
+      <input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleBookingFields('none')">
+      尚未確定，想先洽談後再決定
+    </label><br><br>
 
-    <button type="submit">送出表單</button>
-    <p id="status"></p>
+    <label>備註內容：
+      <textarea name="message" rows="5" placeholder="請輸入其他想補充的資訊..."></textarea>
+    </label><br><br>
+
+    <button type="submit">送出預約資料</button>
   </form>
 </section>
 
@@ -61,13 +91,12 @@
   &copy; 2025 游正鈞 All Rights Reserved
 </footer>
 
+<!-- Navbar 載入與時間切換 JS -->
 <script>
-  // 導覽列載入
   fetch('components/navbar.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('site-header').innerHTML = html;
-
       const toggle = document.getElementById('menu-toggle');
       const menu = document.getElementById('menu');
       if (toggle) {
@@ -79,91 +108,13 @@
           }
         });
       }
-
-      const links = document.querySelectorAll('#menu a');
-      links.forEach(link => {
-        if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-          link.classList.add('active');
-        }
-      });
     });
 
-  // 表單送出
-  const scriptURL = 'https://script.google.com/macros/s/AKfycbx7K0NFkW8xsjLSpxQW5ysMhRnWrXaylrF1_Z-BdGsAPI0fi1lxK3RrTfnZf2jkKEVvXA/exec';
-  const form = document.getElementById('contact-form');
-  const status = document.getElementById('status');
-
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    fetch(scriptURL, {
-      method: 'POST',
-      body: new FormData(form)
-    })
-    .then(() => {
-      status.innerText = '✅ 表單已成功送出！我們會盡快與您聯繫。';
-      form.reset();
-    })
-    .catch(error => {
-      status.innerText = '❌ 表單送出失敗，請稍後再試。';
-      console.error('錯誤:', error);
-    });
-  });
+  function toggleBookingFields(option) {
+    document.getElementById('dateField').style.display = option === 'date' ? 'block' : 'none';
+    document.getElementById('monthField').style.display = option === 'month' ? 'block' : 'none';
+  }
 </script>
 
-<style>
-  .social {
-    text-align: center;
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-  .social a {
-    margin: 0 10px;
-    color: #333;
-    transition: color 0.3s ease;
-  }
-  .social a:hover {
-    color: #007BFF;
-  }
-  .line-id {
-    font-size: 1rem;
-    margin-top: 0.5rem;
-  }
-  form {
-    max-width: 600px;
-    margin: 0 auto;
-    background: white;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  }
-  input, select, textarea {
-    width: 100%;
-    margin-top: 0.5rem;
-    padding: 0.6rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    margin-bottom: 1rem;
-  }
-  button {
-    background-color: #007BFF;
-    color: white;
-    border: none;
-    padding: 0.8rem;
-    font-size: 1rem;
-    border-radius: 6px;
-    cursor: pointer;
-    width: 100%;
-  }
-  button:hover {
-    background-color: #0056b3;
-  }
-  #status {
-    text-align: center;
-    margin-top: 1rem;
-    font-weight: bold;
-  }
-</style>
-
 </body>
-</html>
+</htm
