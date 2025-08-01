@@ -1,55 +1,55 @@
 body {
-      font-family: 'Noto Sans TC', sans-serif;
-      background: #fff;
-      margin: 0;
-      padding: 0;
-      color: #333;
-    }
-    header {
-      background: #000000;
-      padding: 1rem 2rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      position: sticky;
-      top: 0;
-      z-index: 999;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .logo {
-      font-weight: 700;
-      font-size: 1.5rem;
-      color: #ffffff;
-    }
-    nav a {
-      margin-left: 1rem;
-      text-decoration: none;
-      color: #fff;
-      font-weight: 600;
-      transition: color 0.3s;
-    }
-    nav a:hover {
-      color: #ffffff;
-    }
-    nav a.active {
-      color: #ffffff;
-      font-weight: 700;
-      border-bottom: 2px solid #ffffff;
-      padding-bottom: 0.2rem;
-    }
-    section {
-      max-width: 960px;
-      margin: 3rem auto 4rem;
-      padding: 0 1rem;
-    }
-    h2 {
-      font-weight: 700;
-      color: #a88d65;
-      margin-bottom: 1.5rem;
-      border-bottom: 2px solid #a88d65;
-      padding-bottom: 0.5rem;
-      text-align: center;
-    }
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+header {
+  background: #000000;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #ffffff;
+}
+nav a {
+  margin-left: 1rem;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+nav a:hover {
+  color: #ffffff;
+}
+nav a.active {
+  color: #ffffff;
+  font-weight: 700;
+  border-bottom: 2px solid #ffffff;
+  padding-bottom: 0.2rem;
+}
+section {
+  max-width: 960px;
+  margin: 3rem auto 4rem;
+  padding: 0 1rem;
+}
+h2 {
+  font-weight: 700;
+  color: #a88d65;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #a88d65;
+  padding-bottom: 0.5rem;
+  text-align: center;
+}
 nav a {
   margin-left: 1.5rem;
   text-decoration: none;
@@ -177,5 +177,32 @@ nav a.active {
   }
   .menu-toggle {
     display: flex;
+  }
+
+  /* 手機版內容區響應式 */
+  .grid {
+    grid-template-columns: 1fr !important; /* 單欄 */
+    gap: 1rem;
+    padding: 0 1rem;
+  }
+  .card {
+    width: 100% !important; /* 卡片寬度撐滿 */
+  }
+  .hero {
+    padding: 3rem 1rem 2rem;
+  }
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+  .hero p {
+    font-size: 1rem;
+  }
+  section {
+    padding: 2rem 1rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    padding-left: 0;
+    border-left: none;
   }
 }
