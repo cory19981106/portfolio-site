@@ -1,138 +1,81 @@
+
 body {
-  font-family: 'Noto Sans TC', sans-serif;
-  background: #fff;
   margin: 0;
-  padding: 0;
+  font-family: 'Noto Sans TC', sans-serif;
+  background: #f9f8f5;
   color: #333;
 }
 header {
-  background: #000000;
   padding: 1rem 2rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  position: sticky;
-  top: 0;
-  z-index: 999;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-between;
-
-  /* 新增 */
-  flex-wrap: wrap; /* 允許換行避免字跑版 */
+  background: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
-
-.logo {
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: #ffffff;
-
-  /* 新增 */
-  flex-shrink: 0; /* 避免縮太小 */
-  max-width: 200px; /* 最大寬度限制 */
-}
-
-.logo img {
-  max-width: 100%;   /* 限制寬度不要超過父容器 */
-  height: auto;      /* 高度自動，維持比例 */
-  max-height: 60px;  /* 最大高度，可依需求調整 */
-  display: block;    /* 避免圖片底下有空隙 */
-}
-
-nav ul {
-  display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-
-  /* 新增 */
-  flex-wrap: wrap; /* 允許換行 */
-  flex-grow: 1;    /* 讓nav撐滿剩餘空間 */
-  justify-content: flex-end; /* 導航連結靠右 */
-}
-
-nav li {
+nav a {
   margin-left: 1.5rem;
-  white-space: nowrap; /* 防止字串斷行 */
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
 }
-
-/* 保留原有設定 */
-nav a.active {
+.hero {
+  text-align: center;
+  padding: 6rem 2rem 4rem;
+  background: #fffaf4;
+}
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
   color: #a88d65;
-  font-weight: 700;
 }
-
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-  width: 28px;
-  height: 22px;
-  justify-content: space-between;
+.hero p {
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
-.menu-toggle span {
-  height: 3px;
-  background: #a88d65;
-  border-radius: 2px;
+.section {
+  padding: 4rem 2rem;
+  max-width: 1000px;
+  margin: auto;
 }
-
-@media (max-width: 768px) {
-  header {
-    padding: 1rem;
-  }
-  .logo {
-    max-width: 150px;
-    margin-bottom: 0.5rem;
-  }
-  nav ul {
-    position: fixed;
-    top: 60px;
-    right: -100%;
-    width: 200px;
-    height: calc(100% - 60px);
-    background: #35332e;
-    flex-direction: column;
-    padding-top: 1rem;
-    box-shadow: -2px 0 5px rgba(0,0,0,0.1);
-    transition: right 0.3s ease;
-
-    /* 調整 */
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-  }
-  nav ul.open {
-    right: 0;
-  }
-  nav li {
-    margin: 1rem 0;
-    padding-left: 1rem;
-  }
-  .menu-toggle {
-    display: flex;
-  }
-
-  /* 手機版內容區響應式 */
-  .grid {
-    grid-template-columns: 1fr !important; /* 單欄 */
-    gap: 1rem;
-    padding: 0 1rem;
-  }
-  .card {
-    width: 100% !important; /* 卡片寬度撐滿 */
-  }
-  .hero {
-    padding: 3rem 1rem 2rem;
-  }
-  .hero h1 {
-    font-size: 1.8rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
-  section {
-    padding: 2rem 1rem;
-  }
-  h2 {
-    font-size: 1.5rem;
-    padding-left: 0;
-    border-left: none;
-  }
+.section h2 {
+  font-size: 2rem;
+  border-left: 5px solid #a88d65;
+  padding-left: 0.5rem;
+  margin-bottom: 2rem;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+.card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.card:hover {
+  transform: scale(1.02);
+}
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.card p {
+  padding: 1rem;
+  font-weight: 500;
+  text-align: center;
+}
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #999;
+}
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
 }
