@@ -1,8 +1,29 @@
+<style>
+  nav a,
+  nav a:visited,
+  nav a:focus,
+  nav a:active {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  nav a:hover {
+    color: #a88d65;
+  }
+
+  nav a.active {
+    color: #a88d65;
+    font-weight: 700;
+  }
+</style>
+
 <div class="logo">
   <a href="index.html">
     <img src="images/logo.png" alt="ZJ影像 Logo" style="height:40px;">
   </a>
 </div>
+
 <nav>
   <div class="menu-toggle" id="menu-toggle" aria-label="開啟選單" role="button" tabindex="0">
     <span></span>
@@ -20,4 +41,3 @@
     <li><a href="contact.html">聯絡我們</a></li>
   </ul>
 </nav>
-
