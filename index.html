@@ -40,7 +40,8 @@
   &copy; 2025 游正鈞 All Rights Reserved
 </footer>
    <script>
-  fetch('components/navbar.html')
+  fetch('/portfolio-site/components/navbar.html')
+
     .then(res => res.text())
     .then(html => {
       document.getElementById('site-header').innerHTML = html;
