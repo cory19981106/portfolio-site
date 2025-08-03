@@ -69,6 +69,30 @@
       height: 3px;
       background: #a88d65;
       border-radius: 2px;
+       @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 200px;
+        height: calc(100% - 60px);
+        background: #35332e;
+        flex-direction: column;
+        padding-top: 1rem;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+      }
+      nav ul.open {
+        right: 0;
+      }
+      nav li {
+        margin: 1rem 0;
+        padding-left: 1rem;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
     }
     </style>
 <body>
