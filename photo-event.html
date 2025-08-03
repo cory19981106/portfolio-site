@@ -6,16 +6,16 @@
   <title>動態案例｜ZJ影像</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-  </head>
+
   <style>
-    /* === CSS 你提供的內容，略為簡化與整合 === */
     body {
       font-family: 'Noto Sans TC', sans-serif;
       background: #FFFFFF;
       margin: 0;
       padding: 0;
-      color: #FFF;
+      color: #000;
     }
+
     header {
       background: #000;
       padding: 1rem 2rem;
@@ -27,35 +27,39 @@
       align-items: center;
       justify-content: space-between;
     }
+
     .logo {
       font-weight: 700;
       font-size: 1.5rem;
       color: #fff;
     }
+
     nav ul {
       display: flex;
       list-style: none;
       margin: 0;
       padding: 0;
     }
+
     nav li {
       margin-left: 1.5rem;
     }
+
     nav a {
       text-decoration: none;
       color: #fff;
       font-weight: 600;
       transition: color 0.3s;
     }
-    nav a:hover {
-      color: #a88d65;
-    }
+
+    nav a:hover,
     nav a.active {
       color: #a88d65;
       font-weight: 700;
       border-bottom: 2px solid #a88d65;
       padding-bottom: 0.2rem;
     }
+
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -64,11 +68,14 @@
       height: 22px;
       justify-content: space-between;
     }
+
     .menu-toggle span {
       height: 3px;
       background: #a88d65;
       border-radius: 2px;
-       @media (max-width: 768px) {
+    }
+
+    @media (max-width: 768px) {
       nav ul {
         position: fixed;
         top: 60px;
@@ -81,23 +88,26 @@
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
         transition: right 0.3s ease;
       }
+
       nav ul.open {
         right: 0;
       }
+
       nav li {
         margin: 1rem 0;
         padding-left: 1rem;
       }
+
       .menu-toggle {
         display: flex;
       }
     }
-    }
-  
+
     .video-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
+      padding: 2rem;
     }
 
     @media (max-width: 900px) {
@@ -126,76 +136,89 @@
       width: 100%;
       height: 100%;
     }
+
+    section h2 {
+      padding: 0 2rem;
+      color: #000;
+    }
+
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
   </style>
 </head>
+
 <body>
-<header id="site-header"></header>
+  <header id="site-header"></header>
 
-<section class="section">
-  <h2>廣告案例</h2>
-  <div class="video-grid">
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/-_tBT-g7kZw" title="臺中市政府警察局" frameborder="0" allowfullscreen></iframe>
+  <section class="section">
+    <h2>廣告案例</h2>
+    <div class="video-grid">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/-_tBT-g7kZw" title="臺中市政府警察局" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/08SrdEiaEzs" title="聲波電動床" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/VXLMaHs0exI" title="博田醫院" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/UxU5F-vmdww" title="SUZUKI JIMNY" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/yCrEY3RWbpI" title="蕎安地產形象" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/08SrdEiaEzs" title="聲波電動床" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/VXLMaHs0exI" title="博田醫院" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/UxU5F-vmdww" title="SUZUKI JIMNY" frameborder="0" allowfullscreen></iframe>
-    </div>
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/yCrEY3RWbpI" title="蕎安地產形象" frameborder="0" allowfullscreen></iframe>
-    </div>
-  </div>
 
-  <h2>婚禮紀實</h2>
-  <div class="video-grid">
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="婚禮影片" frameborder="0" allowfullscreen></iframe>
+    <h2>婚禮紀實</h2>
+    <div class="video-grid">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="婚禮影片" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
-  </div>
 
-  <h2>活動紀實</h2>
-  <div class="video-grid">
-    <div class="video-container">
-      <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="活動影片" frameborder="0" allowfullscreen></iframe>
+    <h2>活動紀實</h2>
+    <div class="video-grid">
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="活動影片" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  &copy; 2025 ZJ影像 All Rights Reserved
-</footer>
+  <footer>
+    &copy; 2025 ZJ影像 All Rights Reserved
+  </footer>
 
-<script>
-  fetch('components/navbar.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('site-header').innerHTML = html;
+  <script>
+    fetch('/components/navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('site-header').innerHTML = html;
 
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('menu');
-      if (toggle) {
-        toggle.addEventListener('click', () => menu.classList.toggle('open'));
-        toggle.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            menu.classList.toggle('open');
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        if (toggle) {
+          toggle.addEventListener('click', () => menu.classList.toggle('open'));
+          toggle.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              menu.classList.toggle('open');
+            }
+          });
+        }
+
+        const links = document.querySelectorAll('#menu a');
+        links.forEach(link => {
+          if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
+            link.classList.add('active');
           }
         });
-      }
-
-      const links = document.querySelectorAll('#menu a');
-      links.forEach(link => {
-        if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-          link.classList.add('active');
-        }
       });
-    });
-</script>
-
+  </script>
 </body>
 </html>
