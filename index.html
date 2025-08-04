@@ -1,70 +1,181 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>游正鈞｜攝影與設計作品集</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZJ影像｜攝影與設計作品集</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'Noto Sans TC', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #fff;
+      color: #000;
+    }
+    header {
+      background: #000;
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    nav li {
+      margin-left: 1.5rem;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover,
+    nav a.active {
+      color: #a88d65;
+      border-bottom: 2px solid #a88d65;
+      padding-bottom: 0.2rem;
+    }
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      width: 28px;
+      height: 22px;
+      justify-content: space-between;
+    }
+    .menu-toggle span {
+      height: 3px;
+      background: #a88d65;
+      border-radius: 2px;
+    }
+    @media (max-width: 768px) {
+      nav ul {
+        position: fixed;
+        top: 60px;
+        right: -100%;
+        width: 200px;
+        height: calc(100% - 60px);
+        background: #373737;
+        flex-direction: column;
+        padding-top: 1rem;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+        z-index: 9999;
+      }
+      nav ul.open {
+        right: 0;
+      }
+      nav li {
+        margin: 1rem 0;
+        padding-left: 1rem;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    .hero {
+      background: #f0ece6;
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #a88d65;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    .section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
+    }
+    .section h2 {
+      border-bottom: 2px solid #a88d65;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      color: #a88d65;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    .card {
+      border: 1px solid #ddd;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      transition: transform 0.3s ease;
+      background: #fff;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card p {
+      margin: 0;
+      padding: 1rem;
+      font-weight: 600;
+      text-align: center;
+      color: #333;
+    }
+
+    footer {
+      background: #f9f7f2;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
 </head>
- 
+
 <body>
   <header id="site-header"></header>
-<section class="hero">
-  <h1>攝影 × 設計 × 美學</h1>
-  <p>用影像說故事，以設計連結品牌與人心</p>
-</section>
 
-<section class="section">
-  <h2>攝影作品精選</h2>
-  <div class="grid">
-    <div class="card"><a href="photo-flat.html"><img src="photo1.jpg"><p>平面攝影</p></a></div>
-    <div class="card"><a href="photo-event.html"><img src="photo3.jpg"><p>活動紀錄影片</p></a></div>
-    <div class="card"><a href="photo-event.html"><img src="photo4.jpg"><p>婚禮紀錄影片</p></a></div>
-    <div class="card"><a href="photo-event.html"><img src="photo5.jpg"><p>廣告影片</p></a></div>
-    <div class="card"><a href="photo-short.html"><img src="photo6.jpg"><p>短影音</p></a></div>
-  </div>
-</section>
+  <section class="hero">
+    <h1>攝影 × 設計</h1>
+    <p>用影像說故事，以設計連結品牌與人心</p>
+  </section>
 
-<section class="section">
-  <h2>設計作品精選</h2>
-  <div class="grid">
-    <div class="card"><a href="design-web.html"><img src="design1.jpg"><p>網頁設計</p></a></div>
-    <div class="card"><a href="design-graphic.html"><img src="design2.jpg"><p>平面設計</p></a></div>
-    <div class="card"><a href="design-graphic.html"><img src="design3.jpg"><p>廣告設計</p></a></div>
-  </div>
-</section>
+  <section class="section">
+    <h2>攝影作品精選</h2>
+    <div class="grid">
+      <div class="card"><a href="photo-flat.html"><img src="photo1.jpg" alt="平面攝影"><p>平面攝影</p></a></div>
+      <div class="card"><a href="photo-event.html"><img src="photo3.jpg" alt="活動紀錄影片"><p>活動紀錄影片</p></a></div>
+      <div class="card"><a href="photo-event.html"><img src="photo4.jpg" alt="婚禮紀錄影片"><p>婚禮紀錄影片</p></a></div>
+      <div class="card"><a href="photo-event.html"><img src="photo5.jpg" alt="廣告影片"><p>廣告影片</p></a></div>
+      <div class="card"><a href="photo-short.html"><img src="photo6.jpg" alt="短影音"><p>短影音</p></a></div>
+    </div>
+  </section>
 
-<footer>
-  &copy; 2025 游正鈞 All Rights Reserved
-</footer>
-   
-<script>
-    // 載入 navbar.html
-    fetch('components/navbar.html')
-      .then((res) => res.text())
-      .then((html) => {
-        document.getElementById('site-header').innerHTML = html;
-
-        const toggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
-        if (toggle) {
-          toggle.addEventListener('click', () => menu.classList.toggle('open'));
-          toggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              menu.classList.toggle('open');
-            }
-          });
-        }
-
-        const links = document.querySelectorAll('#menu a');
-        links.forEach((link) => {
-          if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-            link.classList.add('active');
-          }
-        });
-      });
-</script>
-</body>
-</html>
+  <section class="section">
+    <h2>設計作品精選</h2>
+    <div class="grid">
+      <div class="card"><a href="design-web.html"><img src="design1.jpg" alt="網頁設計"><p>網頁設計</p></a></div>
+      <div class="card"><a href="design-graphic.ht
