@@ -44,6 +44,8 @@ nav a.active {
   border-bottom: 2px solid #a88d65;
   padding-bottom: 0.2rem;
 }
+
+/* 漢堡選單 */
 .menu-toggle {
   display: none;
   flex-direction: column;
@@ -57,6 +59,8 @@ nav a.active {
   background: #a88d65;
   border-radius: 2px;
 }
+
+/* 手機版 */
 @media (max-width: 768px) {
   nav ul {
     position: fixed;
