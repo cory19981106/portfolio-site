@@ -6,24 +6,50 @@
   <title>ZJ影像｜攝影與設計作品集</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-  
 </head>
 
 <body>
-   <div id="navbar"></div>
+  <!-- Navbar -->
+  <div id="navbar"></div>
   <script>
     fetch("components/navbar.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("navbar").innerHTML = data;
+
+        // 動態載入 navbar 後綁定 JS
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+        const overlay = document.createElement("div");
+        overlay.id = "overlay";
+        document.body.appendChild(overlay);
+
+        menuToggle.addEventListener("click", () => {
+          menu.classList.toggle("open");
+          overlay.classList.toggle("show");
+        });
+
+        // 點選連結或點背景收合
+        overlay.addEventListener("click", () => {
+          menu.classList.remove("open");
+          overlay.classList.remove("show");
+        });
+        menu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            menu.classList.remove("open");
+            overlay.classList.remove("show");
+          });
+        });
       });
   </script>
 
+  <!-- Hero 區塊 -->
   <section class="hero">
     <h1>攝影 × 設計</h1>
     <p>用影像說故事，以設計連結品牌與人心</p>
   </section>
 
+  <!-- 攝影作品 -->
   <section class="section">
     <h2>攝影作品精選</h2>
     <div class="grid">
@@ -35,8 +61,18 @@
     </div>
   </section>
 
+  <!-- 設計作品 -->
   <section class="section">
     <h2>設計作品精選</h2>
     <div class="grid">
       <div class="card"><a href="design-web.html"><img src="design1.jpg" alt="網頁設計"><p>網頁設計</p></a></div>
-      <div class="card"><a href="design-graphic.ht
+      <div class="card"><a href="design-graphic.html"><img src="design2.jpg" alt="平面設計"><p>平面設計</p></a></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 ZJ影像. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
