@@ -1,75 +1,113 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZJ影像｜攝影與設計作品集</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>短影音Reels｜ZJ影像</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .videos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .video-item iframe {
+      width: 100%;
+      height: 476px;
+      border: none;
+      overflow: hidden;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      background: #f9f7f2;
+      color: #777;
+      font-size: 0.9rem;
+    }
+    /* 手機導覽換行 */
+    @media (max-width: 600px) {
+      header {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+      nav a {
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
-  <!-- Navbar -->
-  <div id="navbar"></div>
-  <script>
-    fetch("components/navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        const navbarContainer = document.getElementById("navbar");
-        navbarContainer.innerHTML = data;
+  <header id="site-header"></header>
 
-        const menuToggle = document.getElementById("menu-toggle");
-        const menu = document.getElementById("menu");
-
-        // 建立 overlay
-        const overlay = document.createElement("div");
-        overlay.id = "overlay";
-        document.body.appendChild(overlay);
-
-        // 漢堡選單點擊
-        menuToggle.addEventListener("click", () => {
-          menu.classList.toggle("open");
-          overlay.classList.toggle("show");
-        });
-
-        // 點擊 overlay 或 menu 連結收合
-        overlay.addEventListener("click", () => {
-          menu.classList.remove("open");
-          overlay.classList.remove("show");
-        });
-
-        menu.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-            menu.classList.remove("open");
-            overlay.classList.remove("show");
-          });
-        });
-      });
-  </script>
-
-  <!-- Hero 區塊 -->
   <section>
     <h2>短影音作品</h2>
     <div class="videos-grid">
       <div class="video-item">
-        <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1478182193314197%2F&show_text=false&width=267&t=0" scrolling="no" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1478182193314197%2F&show_text=false&width=267&t=0"
+          scrolling="no" 
+          frameborder="0" 
+          allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
       </div>
       <div class="video-item">
-        <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F760158006380662%2F&show_text=false&width=267&t=0" scrolling="no" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F760158006380662%2F&show_text=false&width=267&t=0"
+          scrolling="no"
+          frameborder="0" 
+          allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
       </div>
-       <div class="video-item">
-        <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F760158006380662%2F&show_text=false&width=267&t=0" scrolling="no" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      <!-- 以下其餘影片重複，可依需求增減 -->
+      <div class="video-item">
+        <iframe 
+          src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1478182193314197%2F&show_text=false&width=267&t=0"
+          scrolling="no" 
+          frameborder="0" 
+          allowfullscreen="true" 
+          allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+        </iframe>
       </div>
-       <div class="video-item">
-        <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F760158006380662%2F&show_text=false&width=267&t=0" scrolling="no" frameborder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      </div>
-      <!-- 其餘影片依此類推，可依照需要增加 -->
+      <!-- 更多影片項目可以繼續複製上面結構 -->
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
-    <p>© 2025 ZJ影像. All Rights Reserved.</p>
+    &copy; 2025 ZJ影像 All Rights Reserved
   </footer>
+
+  <script>
+    fetch('components/navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('site-header').innerHTML = html;
+
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+
+        if (toggle) {
+          toggle.addEventListener('click', () => menu.classList.toggle('open'));
+          toggle.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              menu.classList.toggle('open');
+            }
+          });
+        }
+
+        const links = document.querySelectorAll('#menu a');
+        links.forEach(link => {
+          if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
+            link.classList.add('active');
+          }
+        });
+      });
+  </script>
 </body>
 </html>
