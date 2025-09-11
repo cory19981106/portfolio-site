@@ -1,74 +1,90 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>平面攝影｜ZJ影像</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
 
 <body>
-<header id="site-header"></header>
+  <!-- Navbar -->
+  <div id="navbar"></div>
+  <script>
+    fetch("components/navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
 
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+        const overlay = document.createElement("div");
+        overlay.id = "overlay";
+        document.body.appendChild(overlay);
 
-<section class="section">
-  <h2>產品攝影</h2>
-  <div>
+        menuToggle.addEventListener("click", () => {
+          menu.classList.toggle("open");
+          overlay.classList.toggle("show");
+        });
+
+        overlay.addEventListener("click", () => {
+          menu.classList.remove("open");
+          overlay.classList.remove("show");
+        });
+
+        menu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            menu.classList.remove("open");
+            overlay.classList.remove("show");
+          });
+        });
+      });
+  </script>
+
+  <!-- Hero 區塊 -->
+  <section class="hero">
+    <h1>平面攝影作品集</h1>
+    <p>捕捉每一個細節與光影的美感</p>
+  </section>
+
+  <!-- 產品攝影 -->
+  <section class="section">
+    <h2>產品攝影</h2>
+
     <h3>百威金尊</h3>
     <div class="grid">
       <div class="card"><img src="sample1.jpg" alt="作品一"><p>作品說明</p></div>
       <div class="card"><img src="sample2.jpg" alt="作品二"><p>作品說明</p></div>
     </div>
-     <div>
+
     <h3>蔥抓餅</h3>
     <div class="grid">
-      <div class="card"><img src="sample1.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample2.jpg" alt="作品二"><p>作品說明</p></div>
+      <div class="card"><img src="sample3.jpg" alt="作品一"><p>作品說明</p></div>
+      <div class="card"><img src="sample4.jpg" alt="作品二"><p>作品說明</p></div>
     </div>
-        <h2>人物攝影</h2>
-  <div>
+  </section>
+
+  <!-- 人物攝影 -->
+  <section class="section">
+    <h2>人物攝影</h2>
+
     <h3>個人寫真</h3>
     <div class="grid">
-      <div class="card"><img src="sample1.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample2.jpg" alt="作品二"><p>作品說明</p></div>
+      <div class="card"><img src="sample5.jpg" alt="作品一"><p>作品說明</p></div>
+      <div class="card"><img src="sample6.jpg" alt="作品二"><p>作品說明</p></div>
     </div>
-     <div>
+
     <h3>形象照</h3>
     <div class="grid">
-      <div class="card"><img src="sample1.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample2.jpg" alt="作品二"><p>作品說明</p></div>
+      <div class="card"><img src="sample7.jpg" alt="作品一"><p>作品說明</p></div>
+      <div class="card"><img src="sample8.jpg" alt="作品二"><p>作品說明</p></div>
     </div>
-</section>
+  </section>
 
-<footer>
-  &copy; 2025 ZJ影像 All Rights Reserved
-</footer>
-  <script>
-  fetch('components/navbar.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('site-header').innerHTML = html;
-
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('menu');
-      if (toggle) {
-        toggle.addEventListener('click', () => menu.classList.toggle('open'));
-        toggle.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            menu.classList.toggle('open');
-          }
-        });
-      }
-
-      const links = document.querySelectorAll('#menu a');
-      links.forEach(link => {
-        if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-          link.classList.add('active');
-        }
-      });
-    });
-</script>
-
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 ZJ影像. All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
