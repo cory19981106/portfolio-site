@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    
     .video-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -55,12 +54,30 @@
       padding: 1rem;
       margin-top: 2rem;
     }
+
+    /* Overlay 顯示效果 */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      z-index: 999;
+    }
+
+    #overlay.show {
+      display: block;
+    }
   </style>
 </head>
 
 <body>
+  <!-- Navbar -->
   <header id="site-header"></header>
 
+  <!-- 動態案例區塊 -->
   <section class="section">
     <h2>廣告案例</h2>
     <div class="video-grid">
@@ -96,33 +113,42 @@
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     &copy; 2025 ZJ影像 All Rights Reserved
   </footer>
 
+  <!-- Navbar + 漢堡選單 + Overlay JS -->
   <script>
     fetch('/components/navbar.html')
       .then(res => res.text())
       .then(html => {
         document.getElementById('site-header').innerHTML = html;
 
-        const toggle = document.getElementById('menu-toggle');
+        const menuToggle = document.getElementById('menu-toggle');
         const menu = document.getElementById('menu');
-        if (toggle) {
-          toggle.addEventListener('click', () => menu.classList.toggle('open'));
-          toggle.addEventListener('keydown', e => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              menu.classList.toggle('open');
-            }
-          });
-        }
+        const overlay = document.createElement('div');
+        overlay.id = 'overlay';
+        document.body.appendChild(overlay);
 
-        const links = document.querySelectorAll('#menu a');
-        links.forEach(link => {
-          if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-            link.classList.add('active');
-          }
+        // 漢堡選單點擊
+        menuToggle.addEventListener('click', () => {
+          menu.classList.toggle('open');
+          overlay.classList.toggle('show');
+        });
+
+        // 點選 overlay 收合
+        overlay.addEventListener('click', () => {
+          menu.classList.remove('open');
+          overlay.classList.remove('show');
+        });
+
+        // 點選 menu 連結收合
+        menu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.remove('open');
+            overlay.classList.remove('show');
+          });
         });
       });
   </script>
