@@ -11,7 +11,6 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
-    /* ===== 版心與整體留白 ===== */
     .page-container {
       max-width: 1100px;
       margin: 0 auto;
@@ -29,7 +28,6 @@
       letter-spacing: .5px;
     }
 
-    /* 表單區 */
     .contact-form {
       background: #000;
       padding: 2.5rem 2rem;
@@ -72,7 +70,6 @@
 
     .form-group { margin-bottom: 1.2rem; }
 
-    /* icon 區塊（放在表單最上面） */
     .personal-contact {
       display: flex;
       justify-content: center;
@@ -123,6 +120,7 @@
     }
   </style>
 </head>
+
 <body>
   <div id="navbar"></div>
   <script>
@@ -131,7 +129,6 @@
       .then(data => {
         document.getElementById("navbar").innerHTML = data;
 
-        // 動態載入 navbar 後綁定 JS
         const menuToggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
@@ -142,11 +139,11 @@
           overlay.classList.toggle("show");
         });
 
-        // 點選連結或點背景收合
         overlay.addEventListener("click", () => {
           menu.classList.remove("open");
           overlay.classList.remove("show");
         });
+
         menu.querySelectorAll("a").forEach(link => {
           link.addEventListener("click", () => {
             menu.classList.remove("open");
@@ -156,7 +153,6 @@
       });
   </script>
 
-
   <main class="page-container">
     <h2>聯絡與預約</h2>
 
@@ -164,7 +160,6 @@
       action="https://script.google.com/macros/s/AKfycbw-U-3-OeP5J9cquSntyqcIYmqQ3-Y0KmsHwx7aDlzSQKJ3EwkhhF-BwSAVULGNZjAjxw/exec"
       method="POST">
 
-      <!-- icon 一排放在表單上方 -->
       <div class="personal-contact">
         <a href="https://linktr.ee/zjestd2020" target="_blank" aria-label="YouTube">
           <img src="images/youtube.png" alt="YouTube" />
@@ -195,9 +190,9 @@
       <div class="form-group">
         <label>預約時間</label>
         <div class="radio-group">
-          <label><input type="radio" name="booking_option" value="確定日期" onclick="toggleFields()" required /> 有確定日期</label>
-          <label><input type="radio" name="booking_option" value="預計月份" onclick="toggleFields()" /> 預計拍攝月份</label>
-          <label><input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleFields()" /> 洽談後再擬定</label>
+          <label><input type="radio" name="booking_option" value="確定日期" required /> 有確定日期</label>
+          <label><input type="radio" name="booking_option" value="預計月份" /> 預計拍攝月份</label>
+          <label><input type="radio" name="booking_option" value="洽談後擬定" /> 洽談後再擬定</label>
         </div>
       </div>
 
@@ -235,4 +230,45 @@
   <footer>&copy; 2025 ZJ影像 All Rights Reserved</footer>
 
   <script>
-    // navbar
+    // ✅ 表單預約欄位切換（選日期／月份）
+    function toggleFields() {
+      const checked = document.querySelector('input[name="booking_option"]:checked');
+      const selected = checked ? checked.value : null;
+
+      const dateField  = document.getElementById('dateField');
+      const monthField = document.getElementById('monthField');
+      const dateInput  = document.getElementById('shoot_date');
+      const monthInput = document.getElementById('shoot_month');
+
+      if (selected === '確定日期') {
+        dateField.classList.remove('hidden');
+        monthField.classList.add('hidden');
+        dateInput.required = true;
+        monthInput.required = false;
+        monthInput.value = '';
+      } else if (selected === '預計月份') {
+        monthField.classList.remove('hidden');
+        dateField.classList.add('hidden');
+        monthInput.required = true;
+        dateInput.required = false;
+        dateInput.value = '';
+      } else {
+        dateField.classList.add('hidden');
+        monthField.classList.add('hidden');
+        dateInput.required = false;
+        monthInput.required = false;
+        dateInput.value = '';
+        monthInput.value = '';
+      }
+    }
+
+    // ✅ 自動掛上事件監聽器
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('input[name="booking_option"]').forEach(radio => {
+        radio.addEventListener('change', toggleFields);
+      });
+      toggleFields();
+    });
+  </script>
+</body>
+</html>
