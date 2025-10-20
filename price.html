@@ -2,176 +2,182 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>價目表｜ZJ影像</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css">
+
   <style>
-    
-      
-   
-    h2 {
-      border-bottom: 2px solid #a88d65;
-      padding-bottom: 0.5rem;
-      margin-top: 3rem;
-      color: #a88d65;
+    /* ====== 版心：左右留白、置中 ====== */
+    .page-container{
+      max-width: 1100px;                 /* 桌機最大寬度 */
+      margin: 0 auto;                    /* 置中 */
+      padding: 24px clamp(24px, 6vw, 80px); /* 左右自適應留白 */
+      box-sizing: border-box;
     }
-    table {
+
+    /* ====== 頁面基本排版 ====== */
+    body{ font-family: "Noto Sans TC", system-ui, -apple-system, Segoe UI, Roboto, Arial, "PingFang TC", "Microsoft JhengHei", sans-serif; }
+    h2{
+      border-bottom: 2px solid #a88d65;
+      padding-bottom: .5rem;
+      margin: 2.5rem 0 1rem;
+      color: #a88d65;
+      letter-spacing: .5px;
+    }
+    section{ margin-top: .5rem; }
+
+    /* ====== 表格樣式 ====== */
+    table{
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 2rem;
+      margin: 1rem 0 2rem;
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,.05);
     }
-    th, td {
-      border: 1px solid #ddd;
-      padding: 1rem;
-      text-align: left;
-     color:#000000;
-    }
-    th {
+    thead th{
       background: #f0ece6;
       color: #444;
+      font-weight: 700;
     }
-    footer {
+    th, td{
+      border: 1px solid #e8e6e2;
+      padding: 1rem;
+      text-align: left;
+      color: #000;
+    }
+    tbody tr:nth-child(odd){ background: #fbfaf8; }
+    tbody tr:hover{ background: #f6f2ec; }
+
+    /* ====== footer ====== */
+    footer{
       text-align: center;
-      padding: 2rem;
-      background: #f9f7f2;
+      padding: 2rem 0 3rem;
       color: #999;
+      background: #f9f7f2;
+      margin-top: 2rem;
+      font-size: .95rem;
+    }
+
+    /* 手機微調 */
+    @media (max-width: 640px){
+      th, td{ padding: .85rem; }
+      h2{ margin-top: 2rem; }
     }
   </style>
 </head>
 <body>
- <div id="navbar"></div>
-  <script>
-    fetch("components/navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar").innerHTML = data;
+  <!-- Navbar 注入點 -->
+  <div id="navbar"></div>
 
-        // 動態載入 navbar 後綁定 JS
-        const menuToggle = document.getElementById("menu-toggle");
+  <main class="page-container">
+    <section>
+      <h2>攝影服務</h2>
+      <table>
+        <thead>
+          <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>商業影片</td><td>廣告形象片</td><td>30,000 起</td></tr>
+          <tr><td>產品照片</td><td>情境及去背</td><td>報價詳談</td></tr>
+          <tr><td>個人寫真</td><td>妝髮另算</td><td>8,000 起</td></tr>
+          <tr><td>形象照</td><td>依人數報價</td><td>6,000 起</td></tr>
+        </tbody>
+      </table>
+
+      <h2>婚禮攝影服務</h2>
+      <table>
+        <thead>
+          <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>單機動態／平面</td><td>單機拍攝</td><td>18,800</td></tr>
+          <tr><td>雙機動態／平面</td><td>雙機拍攝</td><td>29,800</td></tr>
+          <tr><td>雙機平面＋動態</td><td>動靜雙攝</td><td>43,800</td></tr>
+          <tr><td>SDE 快播快剪</td><td>當日播放</td><td>6,000 起</td></tr>
+        </tbody>
+      </table>
+
+      <h2>活動攝影服務</h2>
+      <table>
+        <thead>
+          <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>單機動態／平面</td><td>單機紀錄</td><td>12,000</td></tr>
+          <tr><td>雙機動態／平面</td><td>雙視角拍攝</td><td>24,000</td></tr>
+          <tr><td>雙機平面動態</td><td>全方位記錄</td><td>36,000</td></tr>
+        </tbody>
+      </table>
+
+      <h2>短影片製作</h2>
+      <table>
+        <thead>
+          <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>純剪輯</td><td>只有剪輯</td><td>1,000 起</td></tr>
+          <tr><td>無腳本</td><td>自由拍攝剪輯</td><td>3,000 起</td></tr>
+          <tr><td>有腳本</td><td>腳本拍攝剪輯</td><td>5,000 起</td></tr>
+          <tr><td>包月優惠</td><td>量多優惠</td><td>詳談</td></tr>
+        </tbody>
+      </table>
+
+      <h2>設計服務</h2>
+      <table>
+        <thead>
+          <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>網頁設計</td><td>響應式設計</td><td>15,000 起</td></tr>
+          <tr><td>LOGO 設計</td><td>品牌標誌視覺</td><td>8,000</td></tr>
+          <tr><td>包裝設計</td><td>商品包裝設計</td><td>5,000</td></tr>
+          <tr><td>名片設計</td><td>個人／企業名片</td><td>2,000</td></tr>
+          <tr><td>廣告設計</td><td>社群行銷圖</td><td>1,000</td></tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer>&copy; 2025 ZJ影像 All Rights Reserved</footer>
+
+  <script>
+    // 只載一次 navbar，含開闔與遮罩
+    fetch("components/navbar.html")
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById("navbar").innerHTML = html;
+
+        const toggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("menu");
+
+        // 建立半透明遮罩
         const overlay = document.createElement("div");
         overlay.id = "overlay";
+        overlay.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.2s;z-index:40;";
         document.body.appendChild(overlay);
 
-        menuToggle.addEventListener("click", () => {
-          menu.classList.toggle("open");
-          overlay.classList.toggle("show");
-        });
-
-        // 點選連結或點背景收合
-        overlay.addEventListener("click", () => {
+        function closeMenu(){
           menu.classList.remove("open");
-          overlay.classList.remove("show");
-        });
-        menu.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-            menu.classList.remove("open");
-            overlay.classList.remove("show");
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+        }
+        function openMenu(){
+          menu.classList.add("open");
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
+        }
+
+        if (toggle && menu) {
+          toggle.addEventListener("click", () => {
+            menu.classList.contains("open") ? closeMenu() : openMenu();
           });
-        });
-      });
-  </script>
-
-
-
-<section>
-   <h2>攝影服務</h2>
-  <table>
-    <thead>
-      <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>商業影片</td><td>廣告形象片</td><td>30,000起</td></tr>
-      <tr><td>產品照片</td><td>情境及去背</td><td>報價詳談</td></tr>
-      <tr><td>個人寫真</td><td>妝髮另算</td><td>8,000起</td></tr>
-      <tr><td>形象照</td><td>依人數報價</td><td>6,000起</td></tr>
-    </tbody>
-  </table>
-  <h2>婚禮攝影服務</h2>
-  <table>
-    <thead>
-      <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>單機動態/平面</td><td>單機拍攝</td><td>18,800</td></tr>
-      <tr><td>雙機動態/平面</td><td>雙機拍攝</td><td>29,800</td></tr>
-      <tr><td>雙機平面+動態</td><td>動靜雙攝</td><td>43,800</td></tr>
-      <tr><td>SDE快播快剪</td><td>當日播放</td><td>6,000起</td></tr>
-    </tbody>
-  </table>
-
-  <h2>活動攝影服務</h2>
-  <table>
-    <thead>
-      <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>單機動態/平面</td><td>單機紀錄</td><td>12,000</td></tr>
-      <tr><td>雙機動態/平面</td><td>雙視角拍攝</td><td>24,000</td></tr>
-      <tr><td>雙機平面動態</td><td>全方位記錄</td><td>36,000</td></tr>
-    </tbody>
-  </table>
-
-  <h2>短影片製作</h2>
-  <table>
-    <thead>
-      <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>純剪輯</td><td>只有剪輯</td><td>1,000起</td></tr>
-      <tr><td>無腳本</td><td>自由拍攝剪輯</td><td>3,000起</td></tr>
-      <tr><td>有腳本</td><td>腳本拍攝剪輯</td><td>5,000起</td></tr>
-      <tr><td>包月優惠</td><td>量多優惠</td><td>詳談</td></tr>
-    </tbody>
-  </table>
-
-  <h2>設計服務</h2>
-  <table>
-    <thead>
-      <tr><th>服務項目</th><th>說明</th><th>價格</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>網頁設計</td><td>響應式設計</td><td>15,000起</td></tr>
-      <tr><td>LOGO設計</td><td>品牌標誌視覺</td><td>8,000</td></tr>
-      <tr><td>包裝設計</td><td>商品包裝設計</td><td>5,000</td></tr>
-      <tr><td>名片設計</td><td>個人／企業名片</td><td>2,000</td></tr>
-      <tr><td>廣告設計</td><td>社群行銷圖</td><td>1,000</td></tr>
-    </tbody>
-  </table>
-</section>
-
-<footer>
-  &copy; 2025 ZJ影像 All Rights Reserved
-</footer>
-
-<script>
-  fetch('components/navbar.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('site-header').innerHTML = html;
-
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('menu');
-      if (toggle) {
-        toggle.addEventListener('click', () => menu.classList.toggle('open'));
-        toggle.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            menu.classList.toggle('open');
-          }
-        });
-      }
-
-      const links = document.querySelectorAll('#menu a');
-      links.forEach(link => {
-        if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-          link.classList.add('active');
+          overlay.addEventListener("click", closeMenu);
+          menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
         }
       });
-    });
-</script>
-
-
+  </script>
 </body>
 </html>
