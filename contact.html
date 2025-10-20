@@ -27,10 +27,45 @@
 </head>
 
 <body>
+  <!-- ✅ Navbar -->
+  <div id="navbar"></div>
+  <script>
+    fetch("components/navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+        const overlay = document.createElement("div");
+        overlay.id = "overlay";
+        document.body.appendChild(overlay);
+
+        menuToggle.addEventListener("click", () => {
+          menu.classList.toggle("open");
+          overlay.classList.toggle("show");
+        });
+
+        overlay.addEventListener("click", () => {
+          menu.classList.remove("open");
+          overlay.classList.remove("show");
+        });
+
+        menu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            menu.classList.remove("open");
+            overlay.classList.remove("show");
+          });
+        });
+      });
+  </script>
+
   <main class="page-container">
     <h2>聯絡與預約</h2>
 
-    <form class="contact-form" action="https://script.google.com/macros/s/AKfycbw-U-3-OeP5J9cquSntyqcIYmqQ3-Y0KmsHwx7aDlzSQKJ3EwkhhF-BwSAVULGNZjAjxw/exec" method="POST">
+    <form class="contact-form"
+      action="https://script.google.com/macros/s/AKfycbw-U-3-OeP5J9cquSntyqcIYmqQ3-Y0KmsHwx7aDlzSQKJ3EwkhhF-BwSAVULGNZjAjxw/exec"
+      method="POST">
 
       <div class="form-group">
         <label>姓名</label>
@@ -56,7 +91,6 @@
         </div>
       </div>
 
-      <!-- 下拉式日期選單 -->
       <div class="form-group hidden" id="dateField">
         <label>選擇日期</label>
         <div class="date-select-group">
@@ -118,7 +152,7 @@
       toggleFields();
     });
 
-    // === 生成日期下拉選單 ===
+    // === 日期選單 ===
     const yearSelect = document.getElementById("yearSelect");
     const monthSelect = document.getElementById("monthSelect");
     const daySelect = document.getElementById("daySelect");
@@ -165,7 +199,6 @@
     monthSelect.addEventListener("change", updateDays);
     daySelect.addEventListener("change", updateHiddenDate);
 
-    // 初始化預設值
     yearSelect.value = thisYear;
     monthSelect.value = (today.getMonth() + 1).toString().padStart(2, '0');
     updateDays();
