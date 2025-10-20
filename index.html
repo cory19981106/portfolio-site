@@ -6,6 +6,7 @@
   <title>ZJ影像｜影像 × 設計．品牌形象製作</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+
   <style>
     body {
       margin: 0;
@@ -15,7 +16,7 @@
       overflow-x: hidden;
     }
 
-    /* --- Hero 區塊（亮底圖 + 深文字 + 緩慢縮放） --- */
+    /* --- Hero 區塊（亮底圖 + 深文字 + 縮放動畫） --- */
     .hero {
       position: relative;
       height: 100vh;
@@ -77,6 +78,26 @@
       font-size: 1rem;
       color: #444;
       margin-top: 0.5rem;
+    }
+
+    /* --- Hero 內的實體圖片展示 --- */
+    .hero-image {
+      margin-top: 2rem;
+      animation: fadeInImage 1.8s ease both;
+    }
+    .hero-image img {
+      max-width: 90%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+      transition: transform 0.6s ease;
+    }
+    .hero-image img:hover {
+      transform: scale(1.03);
+    }
+    @keyframes fadeInImage {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* --- Section --- */
@@ -181,7 +202,7 @@
       .then(data => {
         document.getElementById("navbar").innerHTML = data;
 
-        // 保留你原本的 navbar 控制邏輯
+        // 保留原本的 navbar 控制邏輯
         const menuToggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
@@ -213,6 +234,11 @@
       <h1>ZJ影像</h1>
       <p>Visual Identity & Storytelling Studio</p>
       <p class="sub">讓影像，成為品牌的語言</p>
+
+      <!-- 新增 hero-bg.jpg 圖片展示 -->
+      <div class="hero-image">
+        <img src="images/hero-bg.jpg" alt="ZJ影像品牌形象">
+      </div>
     </div>
   </section>
 
