@@ -15,7 +15,7 @@
       overflow-x: hidden;
     }
 
-    /* --- Hero 區塊（視差 + 淡入） --- */
+    /* --- Hero 區塊（亮底圖 + 深文字 + 緩慢縮放） --- */
     .hero {
       position: relative;
       height: 100vh;
@@ -25,33 +25,58 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      color: #fff;
+      color: #222;
       overflow: hidden;
+      animation: zoomHero 20s ease-in-out infinite alternate;
     }
+
+    @keyframes zoomHero {
+      0% { background-size: 100%; }
+      100% { background-size: 110%; }
+    }
+
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.4);
+      background: rgba(255,255,255,0.55);
+      backdrop-filter: blur(3px);
       z-index: 1;
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
       animation: fadeUp 1.6s ease both;
+      padding: 0 1rem;
     }
+
     @keyframes fadeUp {
       0% { opacity: 0; transform: translateY(40px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
     .hero h1 {
-      font-size: clamp(2rem, 4vw, 3rem);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
       letter-spacing: 2px;
-      margin-bottom: 0.8rem;
+      margin-bottom: 0.6rem;
+      color: #111;
+      text-shadow: 0 2px 6px rgba(255,255,255,0.6);
     }
+
     .hero p {
-      font-size: 1.2rem;
-      color: #f0f0f0;
+      font-size: 1.1rem;
+      color: #333;
+      font-weight: 500;
+      margin: 0.3rem 0;
+      text-shadow: 0 1px 4px rgba(255,255,255,0.6);
+    }
+
+    .hero .sub {
+      font-size: 1rem;
+      color: #444;
+      margin-top: 0.5rem;
     }
 
     /* --- Section --- */
@@ -61,12 +86,14 @@
       padding: 0 clamp(24px, 6vw, 80px);
       text-align: center;
     }
+
     .section h2 {
       color: #a88d65;
       margin-bottom: 1rem;
       font-weight: 700;
       font-size: 1.8rem;
     }
+
     .section p {
       line-height: 1.8;
       color: #555;
@@ -81,6 +108,7 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       animation: fadeIn 1.2s ease both;
     }
+
     @keyframes fadeIn {
       0% { opacity: 0; transform: scale(0.98); }
       100% { opacity: 1; transform: scale(1); }
@@ -93,6 +121,7 @@
       gap: 1.5rem;
       margin-top: 2.5rem;
     }
+
     .service-card {
       background: #fff;
       border-radius: 12px;
@@ -102,15 +131,18 @@
       color: #333;
       transition: all 0.3s ease;
     }
+
     .service-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 5px 15px rgba(0,0,0,0.15);
     }
+
     .service-card img {
       width: 100%;
       height: 180px;
       object-fit: cover;
     }
+
     .service-card p {
       padding: 1rem;
       font-weight: 600;
@@ -125,14 +157,16 @@
       color: #999;
     }
 
-    /* --- 手機調整 --- */
     @media (max-width: 768px) {
       .hero {
-        background-attachment: scroll;
         height: 80vh;
+        background-attachment: scroll;
+      }
+      .hero h1 {
+        font-size: 2rem;
       }
       .hero p {
-        font-size: 1rem;
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -147,7 +181,7 @@
       .then(data => {
         document.getElementById("navbar").innerHTML = data;
 
-        // 🔹 保留你原本的 navbar 控制邏輯
+        // 保留你原本的 navbar 控制邏輯
         const menuToggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
@@ -173,11 +207,12 @@
       });
   </script>
 
-  <!-- Hero 區塊 -->
+  <!-- 🌄 Hero 區塊 -->
   <section class="hero">
     <div class="hero-content">
       <h1>ZJ影像</h1>
-      <p>讓影像，成為品牌的語言</p>
+      <p>Visual Identity & Storytelling Studio</p>
+      <p class="sub">讓影像，成為品牌的語言</p>
     </div>
   </section>
 
@@ -200,8 +235,8 @@
         <img src="images/service-photo.jpg" alt="攝影作品">
         <p>平面攝影</p>
       </a>
-       <a href="photo-event.html" class="service-card">
-        <img src="images/service-photo.jpg" alt="攝影作品">
+      <a href="photo-event.html" class="service-card">
+        <img src="images/service-event.jpg" alt="活動紀錄">
         <p>動態攝影</p>
       </a>
       <a href="design-web.html" class="service-card">
