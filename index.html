@@ -28,28 +28,23 @@
       color: #fff;
       overflow: hidden;
     }
-
-    /* 黑色半透明層，讓亮背景下文字更清楚 */
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 0, 0, 0.35);
+      background: rgba(0,0,0,0.35);
       z-index: 1;
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
       animation: fadeUp 1.6s ease both;
       padding: 0 1rem;
     }
-
     @keyframes fadeUp {
       0% { opacity: 0; transform: translateY(40px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-
     .hero h1 {
       font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 700;
@@ -58,7 +53,6 @@
       color: #fff;
       text-shadow: 0 2px 8px rgba(0,0,0,0.4);
     }
-
     .hero p {
       font-size: 1.2rem;
       color: #f5f5f5;
@@ -66,7 +60,6 @@
       margin: 0.3rem 0;
       text-shadow: 0 1px 4px rgba(0,0,0,0.5);
     }
-
     .hero .sub {
       font-size: 1rem;
       color: #ddd;
@@ -80,14 +73,12 @@
       padding: 0 clamp(24px, 6vw, 80px);
       text-align: center;
     }
-
     .section h2 {
       color: #a88d65;
       margin-bottom: 1rem;
       font-weight: 700;
       font-size: 1.8rem;
     }
-
     .section p {
       line-height: 1.8;
       color: #555;
@@ -102,45 +93,37 @@
       box-shadow: 0 4px 20px rgba(0,0,0,0.05);
       animation: fadeIn 1.2s ease both;
     }
-
     @keyframes fadeIn {
       0% { opacity: 0; transform: scale(0.98); }
       100% { opacity: 1; transform: scale(1); }
     }
 
-    /* --- 服務導覽 --- */
-    .services {
+    /* --- 服務導覽：純文字按鈕版 --- */
+    .services.text-only {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
       margin-top: 2.5rem;
     }
-
-    .service-card {
+    .service-link {
+      display: block;
       background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
-      overflow: hidden;
-      text-decoration: none;
-      color: #333;
-      transition: all 0.3s ease;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
-    }
-
-    .service-card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .service-card p {
-      padding: 1rem;
-      font-weight: 600;
       color: #a88d65;
+      border: 2px solid #a88d65;
+      padding: 1.1rem 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.08rem;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .service-link:hover {
+      background: #a88d65;
+      color: #fff;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.18);
     }
 
     footer {
@@ -152,15 +135,9 @@
     }
 
     @media (max-width: 768px) {
-      .hero {
-        height: 80vh;
-      }
-      .hero h1 {
-        font-size: 2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
+      .hero { height: 80vh; }
+      .hero h1 { font-size: 2rem; }
+      .hero p { font-size: 1rem; }
     }
   </style>
 </head>
@@ -212,37 +189,22 @@
   <section class="section about">
     <h2>品牌形象</h2>
     <p>
-      ZJ影像專注於品牌故事的影像化。  
-      我們相信，影像不只是畫面，而是一種信任、一段共創的過程。  
-      從企業形象影片、建案視覺、到短影音策略，  
+      ZJ影像專注於品牌故事的影像化。<br>
+      我們相信，影像不只是畫面，而是一種信任、一段共創的過程。<br>
+      從企業形象影片、建案視覺、到短影音策略，<br>
       以美感與節奏構築品牌的專屬語言。
     </p>
   </section>
 
-  <!-- 服務導覽 -->
+  <!-- 服務導覽（純文字按鈕） -->
   <section class="section">
     <h2>服務項目</h2>
-    <div class="services">
-      <a href="photo-flat.html" class="service-card">
-        <img src="images/service-photo.jpg" alt="攝影作品">
-        <p>平面攝影</p>
-      </a>
-      <a href="photo-event.html" class="service-card">
-        <img src="images/service-event.jpg" alt="活動紀錄">
-        <p>動態攝影</p>
-      </a>
-      <a href="design-web.html" class="service-card">
-        <img src="images/service-web.jpg" alt="網頁設計">
-        <p>網頁設計</p>
-      </a>
-      <a href="photo-short.html" class="service-card">
-        <img src="images/service-video.jpg" alt="短影音製作">
-        <p>短影音製作</p>
-      </a>
-      <a href="design-graphic.html" class="service-card">
-        <img src="images/service-graphic.jpg" alt="平面設計">
-        <p>平面設計</p>
-      </a>
+    <div class="services text-only">
+      <a href="photo-flat.html" class="service-link">平面攝影</a>
+      <a href="photo-event.html" class="service-link">動態攝影</a>
+      <a href="design-web.html" class="service-link">網頁設計</a>
+      <a href="photo-short.html" class="service-link">短影音製作</a>
+      <a href="design-graphic.html" class="service-link">平面設計</a>
     </div>
   </section>
 
