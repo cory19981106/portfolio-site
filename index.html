@@ -5,12 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZJ影像｜影像 × 設計．品牌形象製作</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
       font-family: 'Noto Sans TC', sans-serif;
-      background: #111;
-      color: #eaeaea;
+      background: #fff;
+      color: #333;
       overflow-x: hidden;
     }
 
@@ -31,14 +32,14 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.7) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%);
       z-index: 1;
     }
 
     .hero-content {
       position: relative;
       z-index: 2;
-      animation: fadeUp 1.5s ease both;
+      animation: fadeUp 1.6s ease both;
       padding: 0 1rem;
     }
 
@@ -52,10 +53,10 @@
       font-weight: 700;
       letter-spacing: 2px;
       margin-bottom: 0.6rem;
-      background: linear-gradient(90deg, #f5f2e6, #c9b585, #a88d65);
+      background: linear-gradient(90deg, #fff, #d6c18b, #a88d65);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+      text-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
 
     .hero p {
@@ -73,16 +74,16 @@
       letter-spacing: 0.5px;
     }
 
-    /* --- 品牌介紹 --- */
+    /* --- 品牌介紹區 --- */
     .about {
       background: linear-gradient(145deg, #fdfbf8, #f7f3ee);
       color: #333;
-      padding: 5rem 1rem;
+      padding: 5rem 1.5rem;
       text-align: center;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
-      border-radius: 16px;
+      box-shadow: 0 8px 26px rgba(0,0,0,0.08);
+      border-radius: 14px;
       max-width: 960px;
-      margin: -4rem auto 5rem auto;
+      margin: -4rem auto 6rem auto;
       position: relative;
       z-index: 2;
     }
@@ -114,9 +115,9 @@
       margin: 0 auto;
     }
 
-    /* --- 服務導覽 --- */
+    /* --- 服務項目區 --- */
     .services {
-      background: linear-gradient(180deg, #1b1b1b 0%, #101010 100%);
+      background: linear-gradient(180deg, #1b1b1b 0%, #0f0f0f 100%);
       padding: 6rem 1rem;
       text-align: center;
     }
@@ -171,6 +172,7 @@
       box-shadow: 0 8px 20px rgba(168,141,101,0.4);
     }
 
+    /* --- Footer --- */
     footer {
       background: #0e0e0e;
       text-align: center;
@@ -201,6 +203,7 @@
 </head>
 
 <body>
+  <!-- ✅ Navbar：維持原本樣式 -->
   <div id="navbar"></div>
   <script>
     fetch("components/navbar.html")
@@ -229,7 +232,7 @@
       });
   </script>
 
-  <!-- 🌄 Hero -->
+  <!-- 🌄 Hero 區塊 -->
   <section class="hero">
     <div class="hero-content">
       <h1>ZJ影像</h1>
