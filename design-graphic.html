@@ -6,32 +6,89 @@
   <title>平面設計｜ZJ影像</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <style>
+    .section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 clamp(24px, 6vw, 80px);
+    }
+    h2 {
+      color: #a88d65;
+      border-bottom: 2px solid #a88d65;
+      padding-bottom: .5rem;
+      margin-bottom: 2rem;
+    }
+    h3 {
+      color: #444;
+      margin: 2rem 0 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card p {
+      margin: 0;
+      padding: 1rem;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      background: #f9f7f2;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
 </head>
    
 <body>
- <div id="navbar"></div>
+  <div id="navbar"></div>
   <script>
     fetch("components/navbar.html")
       .then(response => response.text())
       .then(data => {
         document.getElementById("navbar").innerHTML = data;
-
-        // 動態載入 navbar 後綁定 JS
         const menuToggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
         overlay.id = "overlay";
+        document.body.appendChild(overlay);
 
         menuToggle.addEventListener("click", () => {
           menu.classList.toggle("open");
           overlay.classList.toggle("show");
         });
 
-        // 點選連結或點背景收合
         overlay.addEventListener("click", () => {
           menu.classList.remove("open");
           overlay.classList.remove("show");
         });
+
         menu.querySelectorAll("a").forEach(link => {
           link.addEventListener("click", () => {
             menu.classList.remove("open");
@@ -41,69 +98,73 @@
       });
   </script>
 
+  <section class="section">
+    <h2>平面設計案例</h2>
 
+    <div>
+      <h3>產品設計</h3>
+      <div class="grid">
+        <div class="card"><img src="images/product1.jpg" alt="產品設計一"><p>產品視覺設計一</p></div>
+        <div class="card"><img src="images/product2.jpg" alt="產品設計二"><p>產品視覺設計二</p></div>
+        <div class="card"><img src="images/product3.jpg" alt="產品設計三"><p>產品視覺設計三</p></div>
+      </div>
+    </div>
 
-<section class="section">
-  <h2>平面設計案例</h2>
-  <div>
-    <h3>產品設計</h3>
-    <div class="grid">
-      <div class="card"><img src="sample1.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample2.jpg" alt="作品二"><p>作品說明</p></div>
+    <div>
+      <h3>LOGO設計</h3>
+      <div class="grid">
+        <div class="card"><img src="images/web_logo1.jpg" alt="LOGO設計一"><p>企業識別設計一</p></div>
+        <div class="card"><img src="images/web_logo2.jpg" alt="LOGO設計二"><p>品牌識別設計二</p></div>
+        <div class="card"><img src="images/web_logo3.jpg" alt="LOGO設計三"><p>品牌識別設計三</p></div>
+      </div>
     </div>
-  </div>
-  <div>
-    <h3>LOGO設計</h3>
-    <div class="grid">
-      <div class="card"><img src="sample1.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample2.jpg" alt="作品二"><p>作品說明</p></div>
-    </div>
-  </div>
-  <div>
-    <h3>名片設計</h3>
-    <div class="grid">
-      <div class="card"><img src="sample1.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample2.jpg" alt="作品二"><p>作品說明</p></div>
-    </div>
-  </div>
-  <div>
-    <h3>廣告設計</h3>
-    <div class="grid">
-      <div class="card"><img src="sample1.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample2.jpg" alt="作品二"><p>作品說明</p></div>
-    </div>
-  </div>
-</section>
 
-<footer>
-  &copy; 2025 ZJ影像 All Rights Reserved
-</footer>
+    <div>
+      <h3>名片設計</h3>
+      <div class="grid">
+        <div class="card"><img src="images/web_card1.jpg" alt="名片設計一"><p>名片設計一</p></div>
+        <div class="card"><img src="images/web_card2.jpg" alt="名片設計二"><p>名片設計二</p></div>
+        <div class="card"><img src="images/web_card3.jpg" alt="名片設計二"><p>名片設計二</p></div>
+      </div>
+    </div>
+
+    <div>
+      <h3>廣告設計</h3>
+      <div class="grid">
+        <div class="card"><img src="images/web_ad1.jpg" alt="廣告設計一"><p>社群廣告圖一</p></div>
+        <div class="card"><img src="images/web_ad2.jpg" alt="廣告設計二"><p>社群廣告圖二</p></div>
+        <div class="card"><img src="images/web_ad3.jpg" alt="廣告設計三"><p>社群廣告圖三</p></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 ZJ影像 All Rights Reserved
+  </footer>
+
   <script>
-  fetch('components/navbar.html')
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById('site-header').innerHTML = html;
-
-      const toggle = document.getElementById('menu-toggle');
-      const menu = document.getElementById('menu');
-      if (toggle) {
-        toggle.addEventListener('click', () => menu.classList.toggle('open'));
-        toggle.addEventListener('keydown', e => {
-          if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
-            menu.classList.toggle('open');
+    fetch('components/navbar.html')
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById('site-header')?.insertAdjacentHTML('beforeend', html);
+        const toggle = document.getElementById('menu-toggle');
+        const menu = document.getElementById('menu');
+        if (toggle) {
+          toggle.addEventListener('click', () => menu.classList.toggle('open'));
+          toggle.addEventListener('keydown', e => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              menu.classList.toggle('open');
+            }
+          });
+        }
+        const links = document.querySelectorAll('#menu a');
+        links.forEach(link => {
+          if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
+            link.classList.add('active');
           }
         });
-      }
-
-      const links = document.querySelectorAll('#menu a');
-      links.forEach(link => {
-        if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-          link.classList.add('active');
-        }
       });
-    });
-</script>
-
+  </script>
 </body>
 </html>
