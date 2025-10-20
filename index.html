@@ -5,13 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ZJ影像｜影像 × 設計．品牌形象製作</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
       font-family: 'Noto Sans TC', sans-serif;
-      background: #fff;
-      color: #333;
+      background: #111;
+      color: #eaeaea;
       overflow-x: hidden;
     }
 
@@ -26,139 +25,171 @@
       align-items: center;
       text-align: center;
       color: #fff;
-      overflow: hidden;
     }
+
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,0.35);
+      background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.7) 100%);
       z-index: 1;
     }
+
     .hero-content {
       position: relative;
       z-index: 2;
-      animation: fadeUp 1.6s ease both;
+      animation: fadeUp 1.5s ease both;
       padding: 0 1rem;
     }
+
     @keyframes fadeUp {
       0% { opacity: 0; transform: translateY(40px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
     .hero h1 {
-      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-size: clamp(2.8rem, 5vw, 4rem);
       font-weight: 700;
       letter-spacing: 2px;
       margin-bottom: 0.6rem;
-      color: #fff;
-      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      background: linear-gradient(90deg, #f5f2e6, #c9b585, #a88d65);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 4px 10px rgba(0,0,0,0.5);
     }
+
     .hero p {
       font-size: 1.2rem;
-      color: #f5f5f5;
+      color: #f3f3f3;
       font-weight: 500;
       margin: 0.3rem 0;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
     }
+
     .hero .sub {
       font-size: 1rem;
       color: #ddd;
-      margin-top: 0.5rem;
-    }
-
-    /* --- Section --- */
-    .section {
-      max-width: 1000px;
-      margin: 5rem auto;
-      padding: 0 clamp(24px, 6vw, 80px);
-      text-align: center;
-    }
-    .section h2 {
-      color: #a88d65;
-      margin-bottom: 1rem;
-      font-weight: 700;
-      font-size: 1.8rem;
-    }
-    .section p {
-      line-height: 1.8;
-      color: #555;
-      font-size: 1.05rem;
+      margin-top: 0.6rem;
+      letter-spacing: 0.5px;
     }
 
     /* --- 品牌介紹 --- */
     .about {
-      background: #faf8f5;
-      padding: 4rem 1rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-      animation: fadeIn 1.2s ease both;
-    }
-    @keyframes fadeIn {
-      0% { opacity: 0; transform: scale(0.98); }
-      100% { opacity: 1; transform: scale(1); }
+      background: linear-gradient(145deg, #fdfbf8, #f7f3ee);
+      color: #333;
+      padding: 5rem 1rem;
+      text-align: center;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+      border-radius: 16px;
+      max-width: 960px;
+      margin: -4rem auto 5rem auto;
+      position: relative;
+      z-index: 2;
     }
 
-    /* --- 新版服務導覽按鈕 --- */
-    .services.text-only {
+    .about h2 {
+      font-size: 1.9rem;
+      color: #a88d65;
+      margin-bottom: 1.2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .about h2::after {
+      content: "";
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #bfa574, #a88d65);
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .about p {
+      font-size: 1.05rem;
+      line-height: 1.9;
+      color: #444;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    /* --- 服務導覽 --- */
+    .services {
+      background: linear-gradient(180deg, #1b1b1b 0%, #101010 100%);
+      padding: 6rem 1rem;
+      text-align: center;
+    }
+
+    .services h2 {
+      font-size: 1.8rem;
+      color: #d8c49b;
+      margin-bottom: 2.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .services h2::after {
+      content: "";
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, #c9b585, #a88d65);
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    .services-list {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1.2rem;
+      gap: 1.4rem;
       margin-top: 3rem;
     }
 
     .service-link {
       position: relative;
       display: inline-block;
-      padding: 1rem 2.5rem;
-      border: 2px solid #a88d65;
+      padding: 1.1rem 2.6rem;
       border-radius: 50px;
-      color: #a88d65;
+      background: #141414;
+      color: #d6c9a5;
       font-weight: 600;
-      letter-spacing: 0.8px;
+      letter-spacing: 0.6px;
       text-decoration: none;
       font-size: 1.1rem;
-      background: transparent;
-      overflow: hidden;
+      border: 1.5px solid #b79c70;
       transition: all 0.4s ease;
-      z-index: 1;
-    }
-
-    .service-link::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #a88d65, #c9b18d);
-      opacity: 0;
-      transform: scaleX(0);
-      transform-origin: right;
-      transition: all 0.45s ease;
-      z-index: -1;
-    }
-
-    .service-link:hover::before {
-      opacity: 1;
-      transform: scaleX(1);
-      transform-origin: left;
+      box-shadow: inset 0 0 12px rgba(183,156,112,0.15);
     }
 
     .service-link:hover {
-      color: #fff;
-      box-shadow: 0 6px 18px rgba(168, 141, 101, 0.35);
-      transform: translateY(-4px);
+      background: linear-gradient(135deg, #b79c70, #d1c09b, #a88d65);
+      color: #111;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(168,141,101,0.4);
     }
 
     footer {
-      background: #f9f7f2;
+      background: #0e0e0e;
       text-align: center;
-      padding: 2rem;
+      padding: 3rem 1rem;
       font-size: 0.9rem;
-      color: #999;
+      color: #aaa;
+      letter-spacing: 0.4px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #bda87c;
     }
 
     @media (max-width: 768px) {
       .hero { height: 80vh; }
-      .hero h1 { font-size: 2rem; }
+      .hero h1 { font-size: 2.2rem; }
       .hero p { font-size: 1rem; }
       .service-link {
         width: 80%;
@@ -170,7 +201,6 @@
 </head>
 
 <body>
-  <!-- ✅ Navbar -->
   <div id="navbar"></div>
   <script>
     fetch("components/navbar.html")
@@ -181,6 +211,7 @@
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
         overlay.id = "overlay";
+        document.body.appendChild(overlay);
         menuToggle.addEventListener("click", () => {
           menu.classList.toggle("open");
           overlay.classList.toggle("show");
@@ -198,7 +229,7 @@
       });
   </script>
 
-  <!-- 🌄 Hero 區塊 -->
+  <!-- 🌄 Hero -->
   <section class="hero">
     <div class="hero-content">
       <h1>ZJ影像</h1>
@@ -207,8 +238,8 @@
     </div>
   </section>
 
-  <!-- 品牌介紹 -->
-  <section class="section about">
+  <!-- ✨ 品牌形象 -->
+  <section class="about">
     <h2>品牌形象</h2>
     <p>
       ZJ影像專注於品牌故事的影像化。<br>
@@ -218,10 +249,10 @@
     </p>
   </section>
 
-  <!-- 服務導覽 -->
-  <section class="section">
+  <!-- 💼 服務項目 -->
+  <section class="services">
     <h2>服務項目</h2>
-    <div class="services text-only">
+    <div class="services-list">
       <a href="photo-flat.html" class="service-link">平面攝影</a>
       <a href="photo-event.html" class="service-link">動態攝影</a>
       <a href="photo-short.html" class="service-link">短影音製作</a>
