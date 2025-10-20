@@ -3,13 +3,143 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZJ影像｜攝影與設計作品集</title>
+  <title>ZJ影像｜影像 × 設計．品牌形象製作</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #fff;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    /* --- Hero 區塊（視差 + 淡入） --- */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: url("images/hero-bg.jpg") center/cover no-repeat fixed;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1.6s ease both;
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: 2px;
+      margin-bottom: 0.8rem;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #f0f0f0;
+    }
+
+    /* --- Section --- */
+    .section {
+      max-width: 1000px;
+      margin: 5rem auto;
+      padding: 0 clamp(24px, 6vw, 80px);
+      text-align: center;
+    }
+    .section h2 {
+      color: #a88d65;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      font-size: 1.8rem;
+    }
+    .section p {
+      line-height: 1.8;
+      color: #555;
+      font-size: 1.05rem;
+    }
+
+    /* --- 品牌介紹 --- */
+    .about {
+      background: #faf8f5;
+      padding: 4rem 1rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      animation: fadeIn 1.2s ease both;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.98); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    /* --- 服務導覽 --- */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      overflow: hidden;
+      text-decoration: none;
+      color: #333;
+      transition: all 0.3s ease;
+    }
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+    .service-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .service-card p {
+      padding: 1rem;
+      font-weight: 600;
+      color: #a88d65;
+    }
+
+    footer {
+      background: #f9f7f2;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #999;
+    }
+
+    /* --- 手機調整 --- */
+    @media (max-width: 768px) {
+      .hero {
+        background-attachment: scroll;
+        height: 80vh;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <!-- Navbar -->
+  <!-- ✅ Navbar 區塊 -->
   <div id="navbar"></div>
   <script>
     fetch("components/navbar.html")
@@ -17,22 +147,23 @@
       .then(data => {
         document.getElementById("navbar").innerHTML = data;
 
-        // 動態載入 navbar 後綁定 JS
+        // 🔹 保留你原本的 navbar 控制邏輯
         const menuToggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
         overlay.id = "overlay";
+        document.body.appendChild(overlay);
 
         menuToggle.addEventListener("click", () => {
           menu.classList.toggle("open");
           overlay.classList.toggle("show");
         });
 
-        // 點選連結或點背景收合
         overlay.addEventListener("click", () => {
           menu.classList.remove("open");
           overlay.classList.remove("show");
         });
+
         menu.querySelectorAll("a").forEach(link => {
           link.addEventListener("click", () => {
             menu.classList.remove("open");
@@ -44,32 +175,50 @@
 
   <!-- Hero 區塊 -->
   <section class="hero">
-    <h1>攝影 × 設計</h1>
-    <p>用影像說故事，以設計連結品牌與人心</p>
-  </section>
-
-  <!-- 攝影作品 -->
-  <section class="section">
-    <h2>攝影作品精選</h2>
-    <div class="grid">
-      <div class="card"><a href="photo-flat.html"><img src="photo1.jpg" alt="平面攝影"><p>平面攝影</p></a></div>
-      <div class="card"><a href="photo-event.html"><img src="photo3.jpg" alt="活動紀錄影片"><p>活動紀錄影片</p></a></div>
-      <div class="card"><a href="photo-event.html"><img src="photo4.jpg" alt="婚禮紀錄影片"><p>婚禮紀錄影片</p></a></div>
-      <div class="card"><a href="photo-event.html"><img src="photo5.jpg" alt="廣告影片"><p>廣告影片</p></a></div>
-      <div class="card"><a href="photo-short.html"><img src="photo6.jpg" alt="短影音"><p>短影音</p></a></div>
+    <div class="hero-content">
+      <h1>ZJ影像</h1>
+      <p>讓影像，成為品牌的語言</p>
     </div>
   </section>
 
-  <!-- 設計作品 -->
+  <!-- 品牌介紹 -->
+  <section class="section about">
+    <h2>品牌形象</h2>
+    <p>
+      ZJ影像專注於品牌故事的影像化。  
+      我們相信，影像不只是畫面，而是一種信任、一段共創的過程。  
+      從企業形象影片、建案視覺、到短影音策略，  
+      以美感與節奏構築品牌的專屬語言。
+    </p>
+  </section>
+
+  <!-- 服務導覽 -->
   <section class="section">
-    <h2>設計作品精選</h2>
-    <div class="grid">
-      <div class="card"><a href="design-web.html"><img src="design1.jpg" alt="網頁設計"><p>網頁設計</p></a></div>
-      <div class="card"><a href="design-graphic.html"><img src="design2.jpg" alt="平面設計"><p>平面設計</p></a></div>
+    <h2>服務項目</h2>
+    <div class="services">
+      <a href="photo-flat.html" class="service-card">
+        <img src="images/service-photo.jpg" alt="攝影作品">
+        <p>平面攝影</p>
+      </a>
+       <a href="photo-event.html" class="service-card">
+        <img src="images/service-photo.jpg" alt="攝影作品">
+        <p>平面攝影</p>
+      </a>
+      <a href="design-web.html" class="service-card">
+        <img src="images/service-web.jpg" alt="網頁設計">
+        <p>網頁設計</p>
+      </a>
+      <a href="photo-short.html" class="service-card">
+        <img src="images/service-video.jpg" alt="短影音製作">
+        <p>短影音製作</p>
+      </a>
+      <a href="design-graphic.html" class="service-card">
+        <img src="images/service-graphic.jpg" alt="平面設計">
+        <p>平面設計</p>
+      </a>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 ZJ影像. All Rights Reserved.</p>
   </footer>
