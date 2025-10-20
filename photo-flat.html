@@ -6,6 +6,68 @@
   <title>平面攝影｜ZJ影像</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .section {
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 clamp(24px, 6vw, 80px);
+    }
+
+    h2 {
+      color: #a88d65;
+      border-bottom: 2px solid #a88d65;
+      padding-bottom: .5rem;
+      margin-bottom: 2rem;
+    }
+
+    h3 {
+      color: #444;
+      margin: 2rem 0 1rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform .3s ease, box-shadow .3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+    }
+
+    .card img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+      border-bottom: 1px solid #eee;
+    }
+
+    .card p {
+      margin: 0;
+      padding: 1rem;
+      color: #555;
+      font-size: 0.95rem;
+    }
+
+    footer {
+      background: #f9f7f2;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+      color: #999;
+    }
+  </style>
 </head>
 
 <body>
@@ -53,14 +115,17 @@
 
     <h3>百威金尊</h3>
     <div class="grid">
-      <div class="card"><img src="sample1.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample2.jpg" alt="作品二"><p>作品說明</p></div>
+      <div class="card"><img src="images/web_bud1.png" alt="百威金尊攝影一"></div>
+      <div class="card"><img src="images/web_bud2.png" alt="百威金尊攝影二"></div>
+      <div class="card"><img src="images/web_bud3.png" alt="百威金尊攝影三"></div>
     </div>
 
-    <h3>蔥抓餅</h3>
+    
+    <h3>隱眼</h3>
     <div class="grid">
-      <div class="card"><img src="sample3.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample4.jpg" alt="作品二"><p>作品說明</p></div>
+      <div class="card"><img src="images/web_eyes1.png" alt="攝影一"></div>
+      <div class="card"><img src="images/web_eyes2.png" alt="攝影二"></div>
+      <div class="card"><img src="images/web_eyes3.png" alt="攝影三"></div>
     </div>
   </section>
 
@@ -68,16 +133,12 @@
   <section class="section">
     <h2>人物攝影</h2>
 
-    <h3>個人寫真</h3>
-    <div class="grid">
-      <div class="card"><img src="sample5.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample6.jpg" alt="作品二"><p>作品說明</p></div>
-    </div>
+    
 
     <h3>形象照</h3>
     <div class="grid">
-      <div class="card"><img src="sample7.jpg" alt="作品一"><p>作品說明</p></div>
-      <div class="card"><img src="sample8.jpg" alt="作品二"><p>作品說明</p></div>
+      <div class="card"><img src="images/web_profile1.png" alt="形象照一"></div>
+      <div class="card"><img src="images/web_profile2.png" alt="形象照二"></div>
     </div>
   </section>
 
