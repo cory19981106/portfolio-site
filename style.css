@@ -7,6 +7,7 @@ html, body {
   padding: 0;
   background: #fff;
   color: #000;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* === Navbar === */
@@ -68,6 +69,7 @@ nav a.active {
   height: 3px;
   background: #a88d65;
   border-radius: 2px;
+  transition: all 0.3s ease;
 }
 
 /* === 手機版抽屜選單 === */
@@ -75,20 +77,22 @@ nav a.active {
   nav ul {
     position: fixed;
     top: 0;
-    right: -100%;          /* 完全在螢幕外，避免露黑邊 */
-    width: 80%;            /* 自適應寬度 */
+    right: 0;
+    width: 85vw;             /* 改用 vw 避免右邊黑邊 */
     max-width: 320px;
     height: 100vh;
     background: #1b1b1b;
     flex-direction: column;
     padding: 80px 0 1rem 1.5rem;
     box-shadow: -2px 0 10px rgba(0, 0, 0, 0.25);
-    transition: right 0.35s ease-in-out;
+    transform: translateX(100%); /* ✅ 改為 transform 控制位移，不卡畫面 */
+    transition: transform 0.35s ease-in-out;
     z-index: 1001;
+    overscroll-behavior: contain;
   }
 
   nav ul.open {
-    right: 0;
+    transform: translateX(0); /* ✅ 開啟時滑入 */
   }
 
   nav li {
@@ -108,7 +112,7 @@ nav a.active {
 #overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.45);
+  background: rgba(0, 0, 0, 0.45);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.35s ease;
@@ -123,6 +127,7 @@ nav a.active {
 /* === 開啟選單時鎖住背景滾動 === */
 body.menu-open {
   overflow: hidden;
+  touch-action: none;
 }
 
 /* === Hero 區塊 === */
