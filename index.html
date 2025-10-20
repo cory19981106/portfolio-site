@@ -6,7 +6,6 @@
   <title>ZJ影像｜影像 × 設計．品牌形象製作</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-
   <style>
     body {
       margin: 0;
@@ -16,11 +15,11 @@
       overflow-x: hidden;
     }
 
-    /* --- Hero 區塊（亮底圖 + 深文字 + 縮放動畫） --- */
+    /* --- Hero 區塊 --- */
     .hero {
       position: relative;
       height: 100vh;
-      background: url("images/hero-bg.jpg") center/cover no-repeat fixed;
+      background: url("images/hero-bg.jpg") center/cover no-repeat;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -28,12 +27,6 @@
       text-align: center;
       color: #222;
       overflow: hidden;
-      animation: zoomHero 20s ease-in-out infinite alternate;
-    }
-
-    @keyframes zoomHero {
-      0% { background-size: 100%; }
-      100% { background-size: 110%; }
     }
 
     .hero::after {
@@ -41,7 +34,7 @@
       position: absolute;
       inset: 0;
       background: rgba(255,255,255,0.55);
-      backdrop-filter: blur(3px);
+      backdrop-filter: blur(2px);
       z-index: 1;
     }
 
@@ -58,7 +51,7 @@
     }
 
     .hero h1 {
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
       font-weight: 700;
       letter-spacing: 2px;
       margin-bottom: 0.6rem;
@@ -67,7 +60,7 @@
     }
 
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       color: #333;
       font-weight: 500;
       margin: 0.3rem 0;
@@ -78,26 +71,6 @@
       font-size: 1rem;
       color: #444;
       margin-top: 0.5rem;
-    }
-
-    /* --- Hero 內的實體圖片展示 --- */
-    .hero-image {
-      margin-top: 2rem;
-      animation: fadeInImage 1.8s ease both;
-    }
-    .hero-image img {
-      max-width: 90%;
-      height: auto;
-      border-radius: 12px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-      transition: transform 0.6s ease;
-    }
-    .hero-image img:hover {
-      transform: scale(1.03);
-    }
-    @keyframes fadeInImage {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
     }
 
     /* --- Section --- */
@@ -202,7 +175,6 @@
       .then(data => {
         document.getElementById("navbar").innerHTML = data;
 
-        // 保留原本的 navbar 控制邏輯
         const menuToggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
@@ -234,11 +206,6 @@
       <h1>ZJ影像</h1>
       <p>Visual Identity & Storytelling Studio</p>
       <p class="sub">讓影像，成為品牌的語言</p>
-
-      <!-- 新增 hero-bg.jpg 圖片展示 -->
-      <div class="hero-image">
-        <img src="images/hero-bg.jpg" alt="ZJ影像品牌形象">
-      </div>
     </div>
   </section>
 
