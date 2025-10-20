@@ -3,17 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>聯絡我們Contact｜ZJ影像</title>
+  <title>聯絡我們 Contact｜ZJ影像</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-    integrity="sha512-TkccvQZjN7vIrPup4ZNP3GvfzoCwTmyQQOnOJjnxgqLhV1QHfyTOEa3Pn08pyoyHLgw2zhbIbI4Q6EYqU6QXNA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-TkccvQZjN7vIrPup4ZNP3GvfzoCwTmyQQOnOJjnxgqLhV1QHfyTOEa3Pn08pyoyHLgw2zhbIbI4Q6EYqU6QXNA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer" />
+
   <style>
-   
+    /* ===== 版心與整體留白 ===== */
+    .page-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px clamp(24px, 6vw, 80px);
+      box-sizing: border-box;
+    }
+
     h2 {
       font-weight: 700;
       color: #a88d65;
@@ -21,37 +28,34 @@
       border-bottom: 2px solid #a88d65;
       padding-bottom: 0.5rem;
       text-align: center;
+      letter-spacing: .5px;
     }
+
     /* 個人聯絡資料區塊 */
     .personal-contact {
-      max-width: 600px;
-      margin: 0 auto 2rem auto;
-      text-align: center;
       display: flex;
       justify-content: center;
       gap: 30px;
+      margin: 0 auto 2rem auto;
+      flex-wrap: wrap;
     }
     .personal-contact a img {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       object-fit: contain;
-      filter: drop-shadow(0 0 1px rgba(0,0,0,0.15));
-      transition: opacity 0.3s;
+      filter: drop-shadow(0 0 2px rgba(0,0,0,0.15));
+      transition: opacity .3s;
     }
-    .personal-contact a:hover img {
-      opacity: 0.8;
-    }
-    /* 聯絡表單樣式 */
-    .section {
+    .personal-contact a:hover img { opacity: 0.8; }
+
+    /* 表單區 */
+    .contact-form {
       background: #000;
-      padding: 3rem 2rem;
+      padding: 2.5rem 2rem;
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(168, 141, 101, 0.2);
+      box-shadow: 0 0 10px rgba(168, 141, 101, 0.25);
       max-width: 600px;
       margin: 0 auto 4rem auto;
-    }
-    .form-group {
-      margin-bottom: 1.2rem;
     }
     label {
       display: block;
@@ -59,9 +63,7 @@
       margin-bottom: 0.5rem;
       color: #fff;
     }
-    input,
-    select,
-    textarea {
+    input, select, textarea {
       width: 100%;
       padding: 0.6rem;
       font-size: 1rem;
@@ -69,11 +71,9 @@
       border-radius: 6px;
       box-sizing: border-box;
       color: #fff;
+      background: #111;
     }
-    textarea {
-      resize: vertical;
-      height: 100px;
-    }
+    textarea { resize: vertical; height: 100px; }
     .radio-group label,
     .checkbox-group label {
       font-weight: 400;
@@ -82,218 +82,157 @@
       cursor: pointer;
       color: #fff;
     }
+    .form-group { margin-bottom: 1.2rem; }
+
     button {
       width: 100%;
       padding: 0.8rem;
       font-size: 1.1rem;
       background-color: #937852;
-      color: white;
+      color: #fff;
       border: none;
       border-radius: 6px;
       cursor: pointer;
-      transition: background-color 0.3s;
+      transition: all 0.3s ease;
     }
     button:hover {
-      background-color: #FFF;
+      background-color: #fff;
       color: #000;
       border: 1px solid #000;
     }
-    .hidden {
-      display: none;
-    }
-    .icons {
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-    .icons a {
-      margin: 0 10px;
-      font-size: 2.4rem;
-      color: #a88d65;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-    .icons a:hover {
-      color: #8a7650;
-    }
 
-    /* RWD */
-    @media (max-width: 768px) {
-      nav ul {
-        position: fixed;
-        top: 60px;
-        right: -100%;
-        width: 200px;
-        height: calc(100% - 60px);
-        background: #35332e;
-        flex-direction: column;
-        padding-top: 1rem;
-        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
-      }
-      nav ul.open {
-        right: 0;
-      }
-      nav li {
-        margin: 1rem 0;
-        padding-left: 1rem;
-      }
-      .menu-toggle {
-        display: flex;
-      }
-      .personal-contact {
-        justify-content: center;
-        gap: 20px;
-      }
+    .hidden { display: none; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 0 3rem;
+      color: #999;
+      background: #f9f7f2;
+      font-size: .95rem;
     }
   </style>
 </head>
 <body>
   <div id="navbar"></div>
-  <script>
-    fetch("components/navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar").innerHTML = data;
 
-        // 動態載入 navbar 後綁定 JS
-        const menuToggle = document.getElementById("menu-toggle");
-        const menu = document.getElementById("menu");
-        const overlay = document.createElement("div");
-        overlay.id = "overlay";
-        document.body.appendChild(overlay);
-
-        menuToggle.addEventListener("click", () => {
-          menu.classList.toggle("open");
-          overlay.classList.toggle("show");
-        });
-
-        // 點選連結或點背景收合
-        overlay.addEventListener("click", () => {
-          menu.classList.remove("open");
-          overlay.classList.remove("show");
-        });
-        menu.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-            menu.classList.remove("open");
-            overlay.classList.remove("show");
-          });
-        });
-      });
-  </script>
-
-
-  <section>
+  <main class="page-container">
     <h2>聯絡與預約</h2>
 
-    <!-- 個人聯絡資料區塊 -->
-  
-    <!-- 表單內容 -->
-    <section class="section">
-      <div class="personal-contact">
-      <a href="https://linktr.ee/zjestd2020?fbclid=PAQ0xDSwL5Vn9leHRuA2FlbQIxMQABpw1NSOKPuEzqSSbhcJi2hcaKHGlv44xhQ39F4ye2untfMpPhQFi6UUF0INdH_aem_IBmWTxVOpY94_maxRTNTHg" target="_blank" aria-label="YouTube">
+    <div class="personal-contact">
+      <a href="https://linktr.ee/zjestd2020?fbclid=PAQ0xDSwL5Vn9leHRuA2FlbQIxMQABpw1NSOKPuEzqSSbhcJi2hcaKHGlv44xhQ39F4ye2untfMpPhQFi6UUF0INdH_aem_IBmWTxVOpY94_maxRTNTHg"
+         target="_blank" aria-label="YouTube">
         <img src="images/youtube.png" alt="YouTube" />
       </a>
-      <a href="https://www.instagram.com/jun_film_studio?igsh=c3Qyb2lpMWs4cjcw" target="_blank" aria-label="Instagram">
+      <a href="https://www.instagram.com/jun_film_studio?igsh=c3Qyb2lpMWs4cjcw"
+         target="_blank" aria-label="Instagram">
         <img src="images/instgram.png" alt="Instagram" />
       </a>
-      <a href="https://lin.ee/K6Q4Ke5" target="_blank" aria-label="LINE">
+      <a href="https://lin.ee/K6Q4Ke5"
+         target="_blank" aria-label="LINE">
         <img src="images/line.png" alt="LINE" />
       </a>
     </div>
 
-      <form action="https://script.google.com/macros/s/AKfycbw-U-3-OeP5J9cquSntyqcIYmqQ3-Y0KmsHwx7aDlzSQKJ3EwkhhF-BwSAVULGNZjAjxw/exec" method="POST">
-        <div class="form-group">
-          <label for="name">姓名</label>
-          <input type="text" name="name" id="name" required />
+    <form class="contact-form"
+      action="https://script.google.com/macros/s/AKfycbw-U-3-OeP5J9cquSntyqcIYmqQ3-Y0KmsHwx7aDlzSQKJ3EwkhhF-BwSAVULGNZjAjxw/exec"
+      method="POST">
+      <div class="form-group">
+        <label for="name">姓名</label>
+        <input type="text" name="name" id="name" required />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" required />
+      </div>
+
+      <div class="form-group">
+        <label for="line">LINE ID</label>
+        <input type="text" name="line" id="line" />
+      </div>
+
+      <div class="form-group">
+        <label>預約時間</label>
+        <div class="radio-group">
+          <label><input type="radio" name="booking_option" value="確定日期" onclick="toggleFields()" required /> 有確定日期</label>
+          <label><input type="radio" name="booking_option" value="預計月份" onclick="toggleFields()" /> 預計拍攝月份</label>
+          <label><input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleFields()" /> 洽談後再擬定</label>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input type="email" name="email" id="email" required />
+      <div class="form-group hidden" id="dateField">
+        <label for="shoot_date">選擇日期</label>
+        <input type="date" name="shoot_date" id="shoot_date" />
+      </div>
+
+      <div class="form-group hidden" id="monthField">
+        <label for="shoot_month">選擇月份</label>
+        <input type="month" name="shoot_month" id="shoot_month" />
+      </div>
+
+      <div class="form-group">
+        <label>拍攝內容</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="content_type[]" value="商業影片" /> 商業影片</label>
+          <label><input type="checkbox" name="content_type[]" value="婚禮紀錄" /> 婚禮紀錄</label>
+          <label><input type="checkbox" name="content_type[]" value="活動紀錄" /> 活動紀錄</label>
+          <label><input type="checkbox" name="content_type[]" value="短影音" /> 短影音</label>
+          <label><input type="checkbox" name="content_type[]" value="形象照" /> 形象照</label>
+          <label><input type="checkbox" name="content_type[]" value="平面設計" /> 平面設計</label>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label for="line">LINE ID</label>
-          <input type="text" name="line" id="line" />
-        </div>
+      <div class="form-group">
+        <label for="message">備註／拍攝需求</label>
+        <textarea name="message" id="message" placeholder="想說的話、拍攝需求、地點偏好等..."></textarea>
+      </div>
 
-        <div class="form-group">
-          <label>預約時間</label>
-          <div class="radio-group">
-            <label><input type="radio" name="booking_option" value="確定日期" onclick="toggleFields()" required /> 有確定日期</label>
-            <label><input type="radio" name="booking_option" value="預計月份" onclick="toggleFields()" /> 預計拍攝月份</label>
-            <label><input type="radio" name="booking_option" value="洽談後擬定" onclick="toggleFields()" /> 洽談後再擬定</label>
-          </div>
-        </div>
+      <button type="submit">送出預約表單</button>
+    </form>
+  </main>
 
-        <div class="form-group hidden" id="dateField">
-          <label for="shoot_date">選擇日期</label>
-          <input type="date" name="shoot_date" id="shoot_date" />
-        </div>
-
-        <div class="form-group hidden" id="monthField">
-          <label for="shoot_month">選擇月份</label>
-          <input type="month" name="shoot_month" id="shoot_month" />
-        </div>
-
-        <div class="form-group">
-          <label>拍攝內容</label>
-          <div class="checkbox-group">
-            <label><input type="checkbox" name="content_type[]" value="商業影片" /> 商業影片</label>
-            <label><input type="checkbox" name="content_type[]" value="婚禮紀錄" /> 婚禮紀錄</label>
-            <label><input type="checkbox" name="content_type[]" value="活動紀錄" /> 活動紀錄</label>
-            <label><input type="checkbox" name="content_type[]" value="短影音" /> 短影音</label>
-            <label><input type="checkbox" name="content_type[]" value="形象照" /> 形象照</label>
-            <label><input type="checkbox" name="content_type[]" value="平面設計" /> 平面設計</label>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="message">備註 / 拍攝需求</label>
-          <textarea name="message" id="message" placeholder="想說的話、拍攝需求、地點偏好等..."></textarea>
-        </div>
-
-        <button type="submit">送出預約表單</button>
-      </form>
-    </section>
-  </section>
-
-  <footer>
-    &copy; 2025 ZJ影像 All Rights Reserved
-  </footer>
+  <footer>&copy; 2025 ZJ影像 All Rights Reserved</footer>
 
   <script>
-    // 載入 navbar.html
-    fetch('components/navbar.html')
-      .then((res) => res.text())
-      .then((html) => {
-        document.getElementById('site-header').innerHTML = html;
+    // navbar 載入與開闔
+    fetch("components/navbar.html")
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById("navbar").innerHTML = html;
 
-        const toggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
-        if (toggle) {
-          toggle.addEventListener('click', () => menu.classList.toggle('open'));
-          toggle.addEventListener('keydown', (e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              menu.classList.toggle('open');
-            }
-          });
+        const toggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+
+        const overlay = document.createElement("div");
+        overlay.id = "overlay";
+        overlay.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.2s;z-index:40;";
+        document.body.appendChild(overlay);
+
+        function closeMenu(){
+          menu.classList.remove("open");
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+        }
+        function openMenu(){
+          menu.classList.add("open");
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
         }
 
-        const links = document.querySelectorAll('#menu a');
-        links.forEach((link) => {
-          if (link.getAttribute('href') === window.location.pathname.split('/').pop()) {
-            link.classList.add('active');
-          }
-        });
+        if (toggle && menu) {
+          toggle.addEventListener("click", () => {
+            menu.classList.contains("open") ? closeMenu() : openMenu();
+          });
+          overlay.addEventListener("click", closeMenu);
+          menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+        }
       });
 
-    // 表單預約時間欄位顯示切換
+    // 表單預約欄位切換
     function toggleFields() {
       const option = document.querySelector('input[name="booking_option"]:checked').value;
-      document.getElementById('dateField').classList.toggle('hidden', option !== '確定日期');
-      document.getElementById('monthField').classList.toggle('hidden', option !== '預計月份');
+      document.getElementById("dateField").classList.toggle("hidden", option !== "確定日期");
+      document.getElementById("monthField").classList.toggle("hidden", option !== "預計月份");
     }
   </script>
 </body>
