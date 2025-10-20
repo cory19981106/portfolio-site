@@ -1,90 +1,25 @@
 <header>
   <div class="logo">
-    <a href="index.html" aria-label="回首頁">
+    <a href="index.html">
       <img src="images/logo.png" alt="ZJ影像 Logo" style="height:40px;">
     </a>
   </div>
 
-  <nav aria-label="主選單">
-    <button class="menu-toggle" id="menu-toggle" aria-label="開啟選單" aria-controls="menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-
-    <ul id="menu" role="menu">
-      <li role="none"><a role="menuitem" href="index.html">首頁</a></li>
-      <li role="none"><a role="menuitem" href="photo-flat.html">平面攝影</a></li>
-      <li role="none"><a role="menuitem" href="photo-event.html">動態攝影</a></li>
-      <li role="none"><a role="menuitem" href="photo-short.html">短影音</a></li>
-      <li role="none"><a role="menuitem" href="design-web.html">網頁設計</a></li>
-      <li role="none"><a role="menuitem" href="design-graphic.html">平面設計</a></li>
-      <li role="none"><a role="menuitem" href="price.html">價目表</a></li>
-      <li role="none"><a role="menuitem" href="contact.html">聯絡我們</a></li>
+  <nav>
+    <div class="menu-toggle" id="menu-toggle" aria-label="開啟選單" role="button" tabindex="0">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <ul id="menu">
+      <li><a href="index.html">首頁</a></li>
+      <li><a href="photo-flat.html">平面攝影</a></li>
+      <li><a href="photo-event.html">動態攝影</a></li>
+      <li><a href="photo-short.html">短影音</a></li>
+      <li><a href="design-web.html">網頁設計</a></li>
+      <li><a href="design-graphic.html">平面設計</a></li>
+      <li><a href="price.html">價目表</a></li>
+      <li><a href="contact.html">聯絡我們</a></li>
     </ul>
   </nav>
 </header>
-
-<script>
-  (function () {
-    const toggle = document.getElementById('menu-toggle');
-    const menu   = document.getElementById('menu');
-
-    // 動態建立遮罩
-    const overlay = document.createElement('div');
-    overlay.id = 'overlay';
-    document.body.appendChild(overlay);
-
-    // 可聚焦的目標（第一個、最後一個）
-    const focusableSelector = 'a[href], button:not([disabled])';
-    function getFocusable() {
-      return menu.querySelectorAll(focusableSelector);
-    }
-
-    function openMenu() {
-      menu.classList.add('open');
-      overlay.classList.add('show');
-      document.body.classList.add('menu-open');
-      toggle.setAttribute('aria-expanded', 'true');
-      // 將焦點移到第一個選單項
-      const f = getFocusable()[0];
-      f && f.focus();
-    }
-
-    function closeMenu() {
-      menu.classList.remove('open');
-      overlay.classList.remove('show');
-      document.body.classList.remove('menu-open');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.focus();
-    }
-
-    // 點擊漢堡
-    toggle.addEventListener('click', () => {
-      menu.classList.contains('open') ? closeMenu() : openMenu();
-    });
-
-    // 點遮罩關閉
-    overlay.addEventListener('click', closeMenu);
-
-    // 點選單連結關閉
-    menu.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
-
-    // Esc 關閉；Tab 焦點環
-    document.addEventListener('keydown', (e) => {
-      if (!menu.classList.contains('open')) return;
-
-      if (e.key === 'Escape') {
-        e.preventDefault();
-        closeMenu();
-      } else if (e.key === 'Tab') {
-        const f = getFocusable();
-        if (f.length === 0) return;
-        const first = f[0], last = f[f.length - 1];
-        if (e.shiftKey && document.activeElement === first) {
-          e.preventDefault(); last.focus();
-        } else if (!e.shiftKey && document.activeElement === last) {
-          e.preventDefault(); first.focus();
-        }
-      }
-    });
-  })();
-</script>
