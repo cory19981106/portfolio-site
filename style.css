@@ -16,7 +16,7 @@ header {
   padding: 1rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 999; /* 抽屜與遮罩會在這之上，按鈕仍可點擊 */
+  z-index: 999; /* 抽屜與遮罩會在這之上，按鈕仍可點擊（遮罩預設 pointer-events:none） */
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,18 +28,19 @@ header {
   color: #fff;
 }
 
-nav ul {
+/* 僅限導覽選單 UL，避免影響頁面其他 ul */
+nav ul#menu {
   list-style: none;
   display: flex;      /* 桌機為水平選單 */
   margin: 0;
   padding: 0;
 }
 
-nav li {
+nav ul#menu li {
   margin-left: 1.5rem;
 }
 
-nav a {
+nav ul#menu a {
   text-decoration: none;
   color: #fff;
   font-weight: 600;
@@ -48,14 +49,14 @@ nav a {
   outline: none;
 }
 
-nav a:hover,
-nav a.active {
+nav ul#menu a:hover,
+nav ul#menu a.active {
   color: #a88d65;
   /* 改用 inset 陰影模擬底線，不會造成版面位移 */
   box-shadow: inset 0 -2px 0 0 #a88d65;
 }
 
-nav a:focus-visible {
+nav ul#menu a:focus-visible {
   outline: 2px dashed #a88d65;
   outline-offset: 3px;
 }
@@ -71,8 +72,7 @@ nav a:focus-visible {
   background: transparent;
   border: 0;
   padding: 0;
-  /* 提升觸控可點區(不影響視覺) */
-  position: relative;
+  position: relative; /* 擴大點擊熱區 */
 }
 
 .menu-toggle::after {
@@ -82,34 +82,34 @@ nav a:focus-visible {
   inset: -11px -8px; /* 28x22 -> +16/+22 大約達 44x44 */
 }
 
+.menu-toggle:focus-visible {
+  outline: 2px dashed #a88d65;
+  outline-offset: 6px;
+  border-radius: 6px;
+}
+
 .menu-toggle span {
-  width: 100%;                   /* 你原本沒設，補上 */
+  width: 100%;
   height: 3px;
   background: #a88d65;
   border-radius: 2px;
   transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
-/* 開啟選單時，讓漢堡變 X（利用 body.menu-open 狀態，不需要多餘 JS class） */
-body.menu-open .menu-toggle span:nth-child(1) {
-  transform: translateY(9.5px) rotate(45deg);
-}
-body.menu-open .menu-toggle span:nth-child(2) {
-  opacity: 0;
-}
-body.menu-open .menu-toggle span:nth-child(3) {
-  transform: translateY(-9.5px) rotate(-45deg);
-}
+/* 開啟選單時，讓漢堡變 X（利用 body.menu-open 狀態） */
+body.menu-open .menu-toggle span:nth-child(1) { transform: translateY(9.5px) rotate(45deg); }
+body.menu-open .menu-toggle span:nth-child(2) { opacity: 0; }
+body.menu-open .menu-toggle span:nth-child(3) { transform: translateY(-9.5px) rotate(-45deg); }
 
 /* === 手機版抽屜選單 === */
 @media (max-width: 768px) {
-  nav ul {
+  nav ul#menu {
     position: fixed;
     top: 0;
     right: 0;
     width: 85vw;             /* 用 vw 避免右邊黑邊 */
     max-width: 320px;
-    height: 100vh;
+    height: 100svh;          /* 修正 iOS 工具列造成的可視高度誤差 */
     background: #1b1b1b;
     flex-direction: column;
     padding: calc(env(safe-area-inset-top, 0) + 72px) 0 1rem 1.5rem; /* 瀏海安全區 */
@@ -122,23 +122,17 @@ body.menu-open .menu-toggle span:nth-child(3) {
     will-change: transform;  /* 硬體加速，避免卡頓 */
   }
 
-  nav ul.open {
-    transform: translateX(0);
-  }
+  nav ul#menu.open { transform: translateX(0); }
 
-  nav li {
-    margin: 1rem 0;
-  }
+  nav ul#menu li { margin: 1rem 0; }
 
-  nav a {
+  nav ul#menu a {
     font-size: 1.05rem;
     padding: .5rem 1rem .5rem 0; /* 手機更好點 */
     display: inline-block;
   }
 
-  .menu-toggle {
-    display: flex;
-  }
+  .menu-toggle { display: flex; }
 }
 
 /* === 半透明背景遮罩 === */
@@ -151,7 +145,6 @@ body.menu-open .menu-toggle span:nth-child(3) {
   transition: opacity 0.35s ease;
   z-index: 1000;
 }
-
 #overlay.show {
   opacity: 1;
   pointer-events: auto;
@@ -169,13 +162,11 @@ body.menu-open {
   padding: 5rem 1.5rem;
   text-align: center;
 }
-
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: #a88d65;
 }
-
 .hero p {
   font-size: 1.2rem;
   color: #333;
@@ -187,7 +178,6 @@ body.menu-open {
   margin: 3rem auto;
   padding: 0 1.5rem;
 }
-
 .section h2 {
   border-bottom: 2px solid #a88d65;
   padding-bottom: 0.5rem;
@@ -203,6 +193,9 @@ footer {
   font-size: 0.9rem;
   color: #999;
 }
+
+/* === 錨點避免被 sticky header 蓋住（依實際 header 高度調整） === */
+#about, #experience, #services { scroll-margin-top: 72px; }
 
 /* === 動效降噪（使用者偏好減少動效） === */
 @media (prefers-reduced-motion: reduce) {
