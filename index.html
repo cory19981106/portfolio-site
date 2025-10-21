@@ -47,49 +47,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- Preload 首屏背景（提升 LCP） -->
+  <!-- Preload 首屏背景 -->
   <link rel="preload" as="image" href="/images/hero-bg.jpg" imagesrcset="/images/hero-bg.jpg" imagesizes="100vw">
 
-  <!-- CSS -->
   <link rel="stylesheet" href="/style.css" />
-
-  <!-- 結構化資料：LocalBusiness -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"LocalBusiness",
-    "name":"ZJ影像",
-    "url":"https://zjadfilm.com/",
-    "image":"https://zjadfilm.com/images/og-cover.jpg",
-    "description":"品牌形象影片、活動導播、短影音製作、產品攝影與網站/平面設計整合，全台服務。",
-    "telephone":"0988-845-427",
-    "email":"zjestd2020@gmail.com",
-    "address":{"@type":"PostalAddress","addressCountry":"TW","addressRegion":"彰化縣"},
-    "areaServed":["台灣","台北市","新北市","桃園市","台中市","台南市","高雄市","彰化縣","南投縣"],
-    "sameAs":[
-      "https://www.facebook.com/你的粉專",
-      "https://www.instagram.com/你的帳號",
-      "https://www.youtube.com/@你的頻道"
-    ],
-    "priceRange":"$$",
-    "foundingDate":"2020"
-  }
-  </script>
-
-  <!-- 結構化資料：WebSite -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "url":"https://zjadfilm.com/",
-    "name":"ZJ影像",
-    "potentialAction":{
-      "@type":"SearchAction",
-      "target":"https://zjadfilm.com/search?q={query}",
-      "query-input":"required name=query"
-    }
-  }
-  </script>
 
   <style>
     html { scroll-behavior: smooth; }
@@ -101,10 +62,10 @@
       overflow-x: hidden;
     }
 
-    /* --- Hero --- */
+    /* Hero */
     .hero {
       position: relative;
-      height: 100svh; /* 修正 iOS 100vh 問題 */
+      height: 100svh;
       background: url("images/hero-bg.jpg") center/cover no-repeat;
       display: flex; flex-direction: column; justify-content: center; align-items: center;
       text-align: center; color: #fff; overflow: hidden;
@@ -125,31 +86,25 @@
     .hero p { font-size: 1.2rem; color: #e8e4d9; text-shadow: 0 1px 6px rgba(0,0,0,0.6); }
     .hero .sub { font-size: 1rem; color: #d6caa3; margin-top: 0.6rem; letter-spacing: 0.5px; }
 
-    /* --- 品牌形象（高級黑金玻璃質感） --- */
-    .about, .experience, .services, footer { position: relative; z-index: 1; } /* 確保不被未知層級蓋住 */
+    /* 品牌形象 */
+    .about, .experience, .services, footer { position: relative; z-index: 1; }
     .about {
       background: rgba(20,20,20,0.85); backdrop-filter: blur(20px);
       border: 1px solid rgba(255,255,255,0.08);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.6), inset 0 0 100px rgba(255,255,255,0.03);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.6);
       color: #f2f0e8; padding: 5rem 1.5rem; text-align: center;
-      border-radius: 20px; max-width: 960px; margin: -4rem auto 6rem auto; z-index: 3;
-    }
-    .about::before {
-      content: ""; position: absolute; inset: 0;
-      background: radial-gradient(circle at 70% 80%, rgba(255,255,255,0.05), transparent 70%);
-      pointer-events: none; border-radius: 20px;
+      border-radius: 20px; max-width: 960px; margin: -4rem auto 6rem auto;
     }
     .about h2 {
       color: #d8c49b; font-size: 2rem; margin-bottom: 1.4rem; position: relative; display: inline-block;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.6);
     }
     .about h2::after {
       content: ""; width: 60px; height: 2px; background: linear-gradient(90deg, #d6c18b, #a88d65);
-      position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); border-radius: 2px;
+      position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%);
     }
     .about p { font-size: 1.08rem; line-height: 1.9; color: #e7e3d4; max-width: 720px; margin: 1rem auto 0; }
 
-    /* --- 經歷區塊 --- */
+    /* 經歷 */
     .experience { background: linear-gradient(180deg, #1a1a1a 0%, #222 100%); padding: 5rem 1.5rem; text-align: center; border-top: 1px solid rgba(255,255,255,0.06); }
     .experience h2 { color: #d8c49b; font-size: 1.9rem; margin-bottom: 2rem; position: relative; display: inline-block; }
     .experience h2::after { content: ""; width: 60px; height: 3px; background: linear-gradient(90deg, #bfa574, #a88d65); position: absolute; bottom: -8px; left: 50%; transform: translateX(-50%); }
@@ -160,103 +115,67 @@
     .timeline-item span { font-size: 0.95rem; color: #d3bc87; font-weight: 600; }
     .timeline-item p { font-size: 1rem; color: #ccc; line-height: 1.7; margin-top: 0.8rem; }
 
-    /* --- 服務項目 --- */
+    /* 服務項目 */
     .services { background: linear-gradient(180deg, #101010 0%, #0b0b0b 100%); padding: 6rem 1rem; text-align: center; }
     .services h2 { font-size: 1.8rem; color: #d8c49b; margin-bottom: 2.5rem; position: relative; display: inline-block; }
     .services h2::after { content: ""; width: 60px; height: 2px; background: linear-gradient(90deg, #c9b585, #a88d65); position: absolute; bottom: -10px; left: 50%; transform: translateX(-50%); }
-    .services-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.4rem; margin-top: 3rem; padding-left: 0; list-style: none; }
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      list-style: none;
+      max-width: 960px;
+      margin: 3rem auto 0;
+      padding: 0;
+    }
     .service-link {
-      padding: 1.1rem 2.6rem; border-radius: 50px; background: #141414; color: #d6c9a5; font-weight: 600;
-      letter-spacing: 0.6px; text-decoration: none; font-size: 1.1rem; border: 1.5px solid #b79c70; transition: all 0.4s ease;
-      box-shadow: inset 0 0 12px rgba(183,156,112,0.15); display: inline-block;
+      display: block;
+      padding: 1.2rem 1rem;
+      border-radius: 16px;
+      background: #141414;
+      border: 1.5px solid #b79c70;
+      color: #d6c9a5;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: inset 0 0 10px rgba(183,156,112,0.15);
     }
     .service-link:hover {
-      background: linear-gradient(135deg, #b79c70, #d1c09b, #a88d65);
-      color: #111; transform: translateY(-3px); box-shadow: 0 8px 20px rgba(168,141,101,0.4);
+      background: linear-gradient(135deg, #b79c70, #d1c08f);
+      color: #111;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(168,141,101,0.4);
     }
-
-    /* Footer */
-    footer { background: #0b0b0b; text-align: center; padding: 3rem 1rem; font-size: 0.9rem; color: #aaa; letter-spacing: 0.4px; border-top: 1px solid rgba(255,255,255,0.08); }
-    footer p { margin: 0; color: #bda87c; }
-
-    /* 行動選單遮罩與鎖捲動 */
-    #overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,.5);
-      opacity: 0; pointer-events: none; transition: opacity .25s ease; z-index: 998;
-    }
-    #overlay.show { opacity: 1; pointer-events: auto; }
-    .body-lock { overflow: hidden; }
-
-    /* 錨點滾動偏移（navbar 是 fixed，高度約 64~72px） */
-    #about, #experience, #services { scroll-margin-top: 72px; }
-
-    /* RWD：服務列表在小螢幕改為單欄 */
     @media (max-width: 640px) {
-      .services-list { display: grid; grid-template-columns: 1fr; gap: 0.9rem; padding: 0 1rem; }
-      .service-link { display: block; width: 100%; text-align: center; padding: .95rem 1.2rem; }
+      .services-list {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+        padding: 0 1rem;
+      }
+      .service-link {
+        font-size: 1rem;
+        padding: 1rem;
+      }
     }
+
+    footer { background: #0b0b0b; text-align: center; padding: 3rem 1rem; font-size: 0.9rem; color: #aaa; border-top: 1px solid rgba(255,255,255,0.08); }
+    footer p { margin: 0; color: #bda87c; }
   </style>
 </head>
 
 <body>
-  <!-- 固定導覽列容器，動態載入 -->
   <div id="navbar" role="navigation" aria-label="主導覽"></div>
 
   <script>
     fetch("/components/navbar.html")
       .then(r => r.text())
-      .then(html => {
-        document.getElementById("navbar").innerHTML = html;
-
-        const menuToggle = document.getElementById("menu-toggle");
-        const menu = document.getElementById("menu");
-        const overlay = document.createElement("div");
-        overlay.id = "overlay";
-        document.body.appendChild(overlay);
-
-        const openMenu = () => {
-          menu?.classList.add("open");
-          overlay.classList.add("show");
-          document.body.classList.add("body-lock");
-        };
-        const closeMenu = () => {
-          menu?.classList.remove("open");
-          overlay.classList.remove("show");
-          document.body.classList.remove("body-lock");
-        };
-
-        if (menuToggle && menu) {
-          menuToggle.addEventListener("click", () => {
-            menu.classList.contains("open") ? closeMenu() : openMenu();
-          });
-        }
-        overlay.addEventListener("click", closeMenu);
-        menu?.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
-
-        // 修正錨點定位（iOS 有時 hash 改變後不會正確滾動）
-        function adjustHashScroll() {
-          if (location.hash) {
-            const el = document.querySelector(location.hash);
-            if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
-          }
-        }
-        window.addEventListener("hashchange", adjustHashScroll, false);
-      })
+      .then(html => { document.getElementById("navbar").innerHTML = html; })
       .catch(err => console.warn("Navbar 載入失敗：", err));
   </script>
 
-  <!-- noscript 導覽（利於收錄與無 JS 環境） -->
-  <noscript>
-    <nav style="position:sticky;top:0;background:#0b0b0b;padding:.75rem 1rem;text-align:center;border-bottom:1px solid rgba(255,255,255,.08);z-index:999">
-      <a href="#about">品牌形象</a> ·
-      <a href="#experience">經歷</a> ·
-      <a href="#services">服務項目</a> ·
-      <a href="/contact.html">聯絡</a>
-    </nav>
-  </noscript>
-
-  <!-- 🌄 Hero -->
-  <section class="hero" id="hero" aria-label="首屏形象區">
+  <!-- Hero -->
+  <section class="hero" id="hero">
     <div class="hero-content">
       <h1>ZJ影像</h1>
       <p>Visual Identity &amp; Storytelling Studio</p>
@@ -267,13 +186,8 @@
     </div>
   </section>
 
-  <!-- noscript hero 圖（無 JS 與爬蟲可讀） -->
-  <noscript>
-    <img src="/images/hero-bg.jpg" alt="ZJ影像品牌形象影片與活動導播視覺" width="1920" height="1080" style="display:block;width:100%;height:auto;">
-  </noscript>
-
-  <!-- ✨ 品牌形象 -->
-  <section class="about" id="about" aria-label="品牌形象介紹">
+  <!-- 品牌形象 -->
+  <section class="about" id="about">
     <h2>品牌形象</h2>
     <p>
       ZJ影像專注於品牌故事的影像化。<br>
@@ -283,45 +197,46 @@
     </p>
   </section>
 
-  <!-- 💼 經歷 -->
-  <section class="experience" id="experience" aria-label="經歷與里程碑">
+  <!-- 經歷 -->
+  <section class="experience" id="experience">
     <h2>經歷 Experience</h2>
-    <div class="timeline" role="list">
-      <div class="timeline-item" role="listitem">
+    <div class="timeline">
+      <div class="timeline-item">
         <h3>ZJ影像成立</h3>
         <span>2020 - 至今</span>
-        <p>自2020年成立以來，持續投入影像創作、品牌視覺與活動紀錄。以專業影像製作、舞台導播與現場整合為核心，服務各類公私部門專案。</p>
+        <p>自2020年成立以來，持續投入影像創作、品牌視覺與活動紀錄。</p>
       </div>
-      <div class="timeline-item" role="listitem">
+      <div class="timeline-item">
         <h3>南投縣政府標案與活動導播</h3>
         <span>2021 - 至今</span>
-        <p>承接南投縣多項政府標案與文化活動，包括燈光音響統籌、舞台導播與影像紀錄，整合跨部門合作流程。</p>
+        <p>承接南投縣多項政府標案與文化活動，包括導播與紀錄。</p>
       </div>
-      <div class="timeline-item" role="listitem">
+      <div class="timeline-item">
         <h3>企業與品牌影像製作</h3>
         <span>2022 - 至今</span>
-        <p>協助中小企業、建設與地方品牌打造形象影片與網路宣傳素材，整合拍攝、剪輯與數位行銷設計。</p>
+        <p>協助企業與地方品牌打造形象影片與宣傳素材。</p>
       </div>
-      <div class="timeline-item" role="listitem">
+      <div class="timeline-item">
         <h3>文化與地方紀錄影像</h3>
         <span>2023 - 至今</span>
-        <p>拍攝彰化與南投地區的文化專題與民俗活動，以影像紀錄地方人文與傳統工藝精神。</p>
+        <p>紀錄彰化與南投地區文化與民俗活動，傳遞地方精神。</p>
       </div>
     </div>
   </section>
 
-  <!-- 📸 服務項目 -->
-  <section class="services" id="services" aria-label="服務項目">
+  <!-- 服務項目 -->
+  <section class="services" id="services">
     <h2>服務項目</h2>
-    <nav aria-label="主要服務">
-      <ul class="services-list" role="list">
-        <li><a href="/photo-flat.html" class="service-link">平面攝影（商品・人像・空間）</a></li>
-        <li><a href="/photo-event.html" class="service-link">動態攝影／活動紀錄與導播</a></li>
-        <li><a href="/photo-short.html" class="service-link">短影音製作（社群／廣告）</a></li>
-        <li><a href="/design-web.html" class="service-link">網頁設計（作品集／品牌官網）</a></li>
-        <li><a href="/design-graphic.html" class="service-link">平面設計（LOGO／名片／包裝）</a></li>
-      </ul>
-    </nav>
+    <ul class="services-list" role="menu">
+      <li role="none"><a role="menuitem" href="photo-flat.html" class="service-link">平面攝影</a></li>
+      <li role="none"><a role="menuitem" href="photo-event.html" class="service-link">動態攝影</a></li>
+      <li role="none"><a role="menuitem" href="photo-short.html" class="service-link">短影音</a></li>
+      <li role="none"><a role="menuitem" href="design-web.html" class="service-link">網頁設計</a></li>
+      <li role="none"><a role="menuitem" href="design-graphic.html" class="service-link">平面設計</a></li>
+      <li role="none"><a role="menuitem" href="marketing.html" class="service-link">廣告行銷</a></li>
+      <li role="none"><a role="menuitem" href="price.html" class="service-link">價目表</a></li>
+      <li role="none"><a role="menuitem" href="contact.html" class="service-link">聯絡我們</a></li>
+    </ul>
   </section>
 
   <footer>
