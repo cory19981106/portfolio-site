@@ -1,5 +1,4 @@
-剛剛不是css分開來 原本我就分開了 原本的是這樣幫我修正/* === 全域樣式 === */
-html, body {
+  html, body {
   width: 100%;
   overflow-x: hidden; /* 防止右側黑邊 */
   font-family: 'Noto Sans TC', sans-serif;
