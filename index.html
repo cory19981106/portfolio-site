@@ -7,6 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    html { scroll-behavior: smooth; } /* 平滑滾動 */
+
     body {
       margin: 0;
       font-family: 'Noto Sans TC', sans-serif;
@@ -173,12 +175,9 @@
         justify-content: flex-end;
         padding-bottom: 5rem;
       }
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
+      .hero h1 { font-size: 2.2rem; }
+      .hero p { font-size: 1rem; }
+
       .timeline {
         border-left: none;
         padding-left: 0;
@@ -195,21 +194,10 @@
         max-width: 95%;
         text-align: center;
       }
-      .timeline-item::before {
-        display: none;
-      }
-      .timeline-item h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.2rem;
-      }
-      .timeline-item span {
-        display: block;
-        margin-bottom: 0.4rem;
-      }
-      .timeline-item p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-      }
+      .timeline-item::before { display: none; }
+      .timeline-item h3 { font-size: 1.1rem; margin-bottom: 0.2rem; }
+      .timeline-item span { display: block; margin-bottom: 0.4rem; }
+      .timeline-item p { font-size: 0.95rem; line-height: 1.7; }
     }
 
     /* --- 服務項目 --- */
@@ -272,9 +260,12 @@
       letter-spacing: 0.4px;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
-    footer p {
-      margin: 0;
-      color: #bda87c;
+    footer p { margin: 0; color: #bda87c; }
+
+    /* --- 防止導覽列遮擋標題（重點修正） --- */
+    section { scroll-margin-top: 100px; }
+    @media (max-width: 768px) {
+      section { scroll-margin-top: 120px; }
     }
   </style>
 </head>
@@ -294,22 +285,25 @@
         menuToggle.addEventListener("click", () => {
           menu.classList.toggle("open");
           overlay.classList.toggle("show");
+          document.body.classList.toggle("menu-open", menu.classList.contains("open"));
         });
         overlay.addEventListener("click", () => {
           menu.classList.remove("open");
           overlay.classList.remove("show");
+          document.body.classList.remove("menu-open");
         });
         menu.querySelectorAll("a").forEach(link => {
           link.addEventListener("click", () => {
             menu.classList.remove("open");
             overlay.classList.remove("show");
+            document.body.classList.remove("menu-open");
           });
         });
       });
   </script>
 
   <!-- 🌄 Hero -->
-  <section class="hero">
+  <section class="hero" id="hero">
     <div class="hero-content">
       <h1>ZJ影像</h1>
       <p>Visual Identity & Storytelling Studio</p>
@@ -318,7 +312,7 @@
   </section>
 
   <!-- ✨ 品牌形象 -->
-  <section class="about">
+  <section class="about" id="about">
     <h2>品牌形象</h2>
     <p>
       ZJ影像專注於品牌故事的影像化。<br>
@@ -329,7 +323,7 @@
   </section>
 
   <!-- 💼 經歷 -->
-  <section class="experience">
+  <section class="experience" id="experience">
     <h2>經歷 Experience</h2>
     <div class="timeline">
       <div class="timeline-item">
@@ -356,7 +350,7 @@
   </section>
 
   <!-- 📸 服務項目 -->
-  <section class="services">
+  <section class="services" id="services">
     <h2>服務項目</h2>
     <div class="services-list">
       <a href="photo-flat.html" class="service-link">平面攝影</a>
