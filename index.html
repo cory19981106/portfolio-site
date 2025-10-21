@@ -2,10 +2,83 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZJ影像｜影像 × 設計．品牌形象製作</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>ZJ影像｜品牌形象影片・活動導播・短影音｜彰化南投影像設計</title>
+  <meta name="description" content="ZJ影像：品牌形象影片、活動導播、短影音製作、產品攝影與網站/平面設計整合。全台到場服務，讓影像成為品牌語言。" />
+  <link rel="canonical" href="https://zjadfilm.com/" />
+  <meta http-equiv="content-language" content="zh-Hant" />
+  <link rel="alternate" hreflang="zh-Hant-TW" href="https://zjadfilm.com/" />
+
+  <!-- Open Graph / LINE / FB -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="ZJ影像" />
+  <meta property="og:title" content="ZJ影像｜品牌形象影片・活動導播・短影音" />
+  <meta property="og:description" content="以影像與設計打造品牌語言：形象片、活動導播、短影音、產品攝影與網站/平面設計整合。全台服務。" />
+  <meta property="og:url" content="https://zjadfilm.com/" />
+  <meta property="og:image" content="https://zjadfilm.com/images/og-cover.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ZJ影像｜品牌形象影片・活動導播・短影音" />
+  <meta name="twitter:description" content="形象片、活動導播、短影音與設計整合。全台到場。" />
+  <meta name="twitter:image" content="https://zjadfilm.com/images/og-cover.jpg" />
+
+  <!-- Fonts / Preconnect -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+
+  <!-- Preload 首屏背景（提升 LCP） -->
+  <link rel="preload" as="image" href="/images/hero-bg.jpg" imagesrcset="/images/hero-bg.jpg" imagesizes="100vw">
+
+  <!-- Icons -->
+  <link rel="icon" type="image/png" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/style.css" />
+
+  <!-- 結構化資料：LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LocalBusiness",
+    "name":"ZJ影像",
+    "url":"https://zjadfilm.com/",
+    "image":"https://zjadfilm.com/images/og-cover.jpg",
+    "description":"品牌形象影片、活動導播、短影音製作、產品攝影與網站/平面設計整合，全台服務。",
+    "telephone":"0988-845-427",
+    "email":"zjestd2020@gmail.com",
+    "address":{"@type":"PostalAddress","addressCountry":"TW","addressRegion":"彰化縣"},
+    "areaServed":["台灣","台北市","新北市","桃園市","台中市","台南市","高雄市","彰化縣","南投縣"],
+    "sameAs":[
+      "https://www.facebook.com/你的粉專",
+      "https://www.instagram.com/你的帳號",
+      "https://www.youtube.com/@你的頻道"
+    ],
+    "priceRange":"$$",
+    "foundingDate":"2020"
+  }
+  </script>
+
+  <!-- 結構化資料：WebSite（可擴充站內搜尋頁時使用） -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"WebSite",
+    "url":"https://zjadfilm.com/",
+    "name":"ZJ影像",
+    "potentialAction":{
+      "@type":"SearchAction",
+      "target":"https://zjadfilm.com/search?q={query}",
+      "query-input":"required name=query"
+    }
+  }
+  </script>
+
   <style>
     html { scroll-behavior: smooth; }
 
@@ -233,6 +306,8 @@
       justify-content: center;
       gap: 1.4rem;
       margin-top: 3rem;
+      padding-left: 0;
+      list-style: none;
     }
 
     .service-link {
@@ -247,6 +322,7 @@
       border: 1.5px solid #b79c70;
       transition: all 0.4s ease;
       box-shadow: inset 0 0 12px rgba(183,156,112,0.15);
+      display: inline-block;
     }
 
     .service-link:hover {
@@ -282,37 +358,58 @@
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
         overlay.id = "overlay";
-        menuToggle.addEventListener("click", () => {
-          menu.classList.toggle("open");
-          overlay.classList.toggle("show");
-          document.body.classList.toggle("menu-open", menu.classList.contains("open"));
-        });
-        overlay.addEventListener("click", () => {
-          menu.classList.remove("open");
-          overlay.classList.remove("show");
-          document.body.classList.remove("menu-open");
-        });
-        menu.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
+        if (menuToggle && menu) {
+          document.body.appendChild(overlay);
+          menuToggle.addEventListener("click", () => {
+            menu.classList.toggle("open");
+            overlay.classList.toggle("show");
+            document.body.classList.toggle("menu-open", menu.classList.contains("open"));
+          });
+          overlay.addEventListener("click", () => {
             menu.classList.remove("open");
             overlay.classList.remove("show");
             document.body.classList.remove("menu-open");
           });
-        });
+          menu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+              menu.classList.remove("open");
+              overlay.classList.remove("show");
+              document.body.classList.remove("menu-open");
+            });
+          });
+        }
       });
   </script>
 
+  <!-- noscript 導覽（利於收錄與無 JS 環境） -->
+  <noscript>
+    <nav style="text-align:center;padding:1rem">
+      <a href="#about">品牌形象</a> ·
+      <a href="#experience">經歷</a> ·
+      <a href="#services">服務項目</a> ·
+      <a href="/contact.html">聯絡</a>
+    </nav>
+  </noscript>
+
   <!-- 🌄 Hero -->
-  <section class="hero" id="hero">
+  <section class="hero" id="hero" aria-label="首屏形象區">
     <div class="hero-content">
       <h1>ZJ影像</h1>
-      <p>Visual Identity & Storytelling Studio</p>
+      <p>Visual Identity &amp; Storytelling Studio</p>
       <p class="sub">讓影像，成為品牌的語言</p>
+      <p style="max-width:720px;margin:1rem auto 0;opacity:.9">
+        服務含品牌形象片、活動導播與直播、短影音、產品攝影，以及網站與平面設計整合；全台到場。
+      </p>
     </div>
   </section>
 
+  <!-- noscript hero 圖（無 JS 與爬蟲可讀） -->
+  <noscript>
+    <img src="/images/hero-bg.jpg" alt="ZJ影像品牌形象影片與活動導播視覺" width="1920" height="1080" style="display:block;width:100%;height:auto;">
+  </noscript>
+
   <!-- ✨ 品牌形象 -->
-  <section class="about" id="about">
+  <section class="about" id="about" aria-label="品牌形象介紹">
     <h2>品牌形象</h2>
     <p>
       ZJ影像專注於品牌故事的影像化。<br>
@@ -323,25 +420,25 @@
   </section>
 
   <!-- 💼 經歷 -->
-  <section class="experience" id="experience">
+  <section class="experience" id="experience" aria-label="經歷與里程碑">
     <h2>經歷 Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item">
+    <div class="timeline" role="list">
+      <div class="timeline-item" role="listitem">
         <h3>ZJ影像成立</h3>
         <span>2020 - 至今</span>
         <p>自2020年成立以來，持續投入影像創作、品牌視覺與活動紀錄。以專業影像製作、舞台導播與現場整合為核心，服務各類公私部門專案。</p>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item" role="listitem">
         <h3>南投縣政府標案與活動導播</h3>
         <span>2021 - 至今</span>
         <p>承接南投縣多項政府標案與文化活動，包括燈光音響統籌、舞台導播與影像紀錄，整合跨部門合作流程。</p>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item" role="listitem">
         <h3>企業與品牌影像製作</h3>
         <span>2022 - 至今</span>
         <p>協助中小企業、建設與地方品牌打造形象影片與網路宣傳素材，整合拍攝、剪輯與數位行銷設計。</p>
       </div>
-      <div class="timeline-item">
+      <div class="timeline-item" role="listitem">
         <h3>文化與地方紀錄影像</h3>
         <span>2023 - 至今</span>
         <p>拍攝彰化與南投地區的文化專題與民俗活動，以影像紀錄地方人文與傳統工藝精神。</p>
@@ -350,15 +447,17 @@
   </section>
 
   <!-- 📸 服務項目 -->
-  <section class="services" id="services">
+  <section class="services" id="services" aria-label="服務項目">
     <h2>服務項目</h2>
-    <div class="services-list">
-      <a href="photo-flat.html" class="service-link">平面攝影</a>
-      <a href="photo-event.html" class="service-link">動態攝影</a>
-      <a href="photo-short.html" class="service-link">短影音製作</a>
-      <a href="design-web.html" class="service-link">網頁設計</a>
-      <a href="design-graphic.html" class="service-link">平面設計</a>
-    </div>
+    <nav aria-label="主要服務">
+      <ul class="services-list" role="list">
+        <li><a href="photo-flat.html" class="service-link">平面攝影（商品・人像・空間）</a></li>
+        <li><a href="photo-event.html" class="service-link">動態攝影／活動紀錄與導播</a></li>
+        <li><a href="photo-short.html" class="service-link">短影音製作（社群／廣告）</a></li>
+        <li><a href="design-web.html" class="service-link">網頁設計（作品集／品牌官網）</a></li>
+        <li><a href="design-graphic.html" class="service-link">平面設計（LOGO／名片／包裝）</a></li>
+      </ul>
+    </nav>
   </section>
 
   <footer>
