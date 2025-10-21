@@ -1,374 +1,166 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ZJ影像｜影像 × 設計．品牌形象製作</title>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Noto Sans TC', sans-serif;
-      background: #fff;
-      color: #333;
-      overflow-x: hidden;
-    }
+/* === 全域樣式 === */
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fff;
+  color: #000;
+}
 
-    /* --- Hero --- */
-    .hero {
-      position: relative;
-      height: 100vh;
-      background: url("images/hero-bg.jpg") center/cover no-repeat;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      color: #fff;
-      overflow: hidden;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.65));
-      z-index: 1;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      animation: fadeUp 1.6s ease both;
-      padding: 0 1rem;
-    }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(40px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .hero h1 {
-      font-size: clamp(2.8rem, 5vw, 4rem);
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 0.6rem;
-      background: linear-gradient(90deg, #fff, #d6c18b, #a88d65);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 4px 10px rgba(0,0,0,0.6);
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: #f3f3f3;
-      text-shadow: 0 1px 6px rgba(0,0,0,0.6);
-    }
-    .hero .sub {
-      font-size: 1rem;
-      color: #ddd;
-      margin-top: 0.6rem;
-      letter-spacing: 0.5px;
-    }
+/* === Navbar === */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(0, 0, 0, 0.2); /* 初始透明感 */
+  backdrop-filter: blur(10px);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
 
-    /* --- 品牌形象 --- */
-    .about {
-      background: linear-gradient(145deg, #fdfbf8, #f7f3ee);
-      padding: 5rem 1.5rem;
-      text-align: center;
-      box-shadow: 0 8px 26px rgba(0,0,0,0.08);
-      border-radius: 14px;
-      max-width: 960px;
-      margin: -4rem auto 6rem auto;
-      position: relative;
-      z-index: 2;
-    }
-    .about h2 {
-      color: #a88d65;
-      font-size: 1.9rem;
-      margin-bottom: 1.2rem;
-      position: relative;
-      display: inline-block;
-    }
-    .about h2::after {
-      content: "";
-      width: 50px;
-      height: 3px;
-      background: linear-gradient(90deg, #bfa574, #a88d65);
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .about p {
-      font-size: 1.05rem;
-      line-height: 1.9;
-      color: #444;
-      max-width: 720px;
-      margin: 0 auto;
-    }
+/* 捲動後轉為實黑＋陰影 */
+header.scrolled {
+  background: rgba(0, 0, 0, 0.9);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
 
-    /* --- 經歷區塊 --- */
-    .experience {
-      background: linear-gradient(180deg, #f7f5f2 0%, #e8e2d9 100%);
-      padding: 5rem 1.5rem;
-      text-align: center;
-    }
-    .experience h2 {
-      color: #a88d65;
-      font-size: 1.9rem;
-      margin-bottom: 2rem;
-      position: relative;
-      display: inline-block;
-    }
-    .experience h2::after {
-      content: "";
-      width: 60px;
-      height: 3px;
-      background: linear-gradient(90deg, #bfa574, #a88d65);
-      position: absolute;
-      bottom: -8px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .timeline {
-      max-width: 900px;
-      margin: 3rem auto 0;
-      border-left: 2px solid #cbb78b;
-      padding-left: 2rem;
-      text-align: left;
-    }
-    .timeline-item {
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .timeline-item::before {
-      content: "";
-      position: absolute;
-      left: -10px;
-      top: 8px;
-      width: 14px;
-      height: 14px;
-      background: #a88d65;
-      border-radius: 50%;
-      box-shadow: 0 0 0 4px #f7f5f2;
-    }
-    .timeline-item h3 {
-      font-size: 1.2rem;
-      color: #333;
-      margin-bottom: 0.3rem;
-    }
-    .timeline-item span {
-      font-size: 0.95rem;
-      color: #a88d65;
-      font-weight: 600;
-    }
-    .timeline-item p {
-      font-size: 1rem;
-      color: #555;
-      line-height: 1.6;
-      margin-top: 0.5rem;
-    }
+.logo img {
+  height: 40px;
+}
 
-    /* === 手機響應 === */
-    @media (max-width: 768px) {
-      .hero {
-        height: 80vh;
-        justify-content: flex-end;
-        padding-bottom: 5rem;
-      }
-      .hero h1 {
-        font-size: 2.2rem;
-      }
-      .hero p {
-        font-size: 1rem;
-      }
-      .timeline {
-        border-left: none;
-        padding-left: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 1.5rem;
-      }
-      .timeline-item {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        padding: 1.2rem 1.5rem;
-        max-width: 95%;
-        text-align: center;
-      }
-      .timeline-item::before {
-        display: none;
-      }
-      .timeline-item h3 {
-        font-size: 1.1rem;
-        margin-bottom: 0.2rem;
-      }
-      .timeline-item span {
-        display: block;
-        margin-bottom: 0.4rem;
-      }
-      .timeline-item p {
-        font-size: 0.95rem;
-        line-height: 1.7;
-      }
-    }
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
 
-    /* --- 服務項目 --- */
-    .services {
-      background: linear-gradient(180deg, #1b1b1b 0%, #0f0f0f 100%);
-      padding: 6rem 1rem;
-      text-align: center;
-    }
-    .services h2 {
-      font-size: 1.8rem;
-      color: #d8c49b;
-      margin-bottom: 2.5rem;
-      position: relative;
-      display: inline-block;
-    }
-    .services h2::after {
-      content: "";
-      width: 60px;
-      height: 2px;
-      background: linear-gradient(90deg, #c9b585, #a88d65);
-      position: absolute;
-      bottom: -10px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-    .services-list {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.4rem;
-      margin-top: 3rem;
-    }
-    .service-link {
-      padding: 1.1rem 2.6rem;
-      border-radius: 50px;
-      background: #141414;
-      color: #d6c9a5;
-      font-weight: 600;
-      letter-spacing: 0.6px;
-      text-decoration: none;
-      font-size: 1.1rem;
-      border: 1.5px solid #b79c70;
-      transition: all 0.4s ease;
-      box-shadow: inset 0 0 12px rgba(183,156,112,0.15);
-    }
-    .service-link:hover {
-      background: linear-gradient(135deg, #b79c70, #d1c09b, #a88d65);
-      color: #111;
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(168,141,101,0.4);
-    }
+nav li {
+  margin-left: 1.5rem;
+}
 
-    /* --- Footer --- */
-    footer {
-      background: #0e0e0e;
-      text-align: center;
-      padding: 3rem 1rem;
-      font-size: 0.9rem;
-      color: #aaa;
-      letter-spacing: 0.4px;
-      border-top: 1px solid rgba(255,255,255,0.1);
-    }
-    footer p {
-      margin: 0;
-      color: #bda87c;
-    }
-  </style>
-</head>
+nav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.3s, border-bottom 0.3s;
+}
 
-<body>
-  <!-- ✅ Navbar -->
-  <div id="navbar"></div>
-  <script>
-    fetch("components/navbar.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("navbar").innerHTML = html;
-        const menuToggle = document.getElementById("menu-toggle");
-        const menu = document.getElementById("menu");
-        const overlay = document.createElement("div");
-        overlay.id = "overlay";
-        menuToggle.addEventListener("click", () => {
-          menu.classList.toggle("open");
-          overlay.classList.toggle("show");
-        });
-        overlay.addEventListener("click", () => {
-          menu.classList.remove("open");
-          overlay.classList.remove("show");
-        });
-        menu.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-            menu.classList.remove("open");
-            overlay.classList.remove("show");
-          });
-        });
-      });
-  </script>
+nav a:hover,
+nav a.active {
+  color: #a88d65;
+  border-bottom: 2px solid #a88d65;
+  padding-bottom: 0.2rem;
+}
 
-  <!-- 🌄 Hero -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1>ZJ影像</h1>
-      <p>Visual Identity & Storytelling Studio</p>
-      <p class="sub">讓影像，成為品牌的語言</p>
-    </div>
-  </section>
+/* === 漢堡選單 === */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  width: 28px;
+  height: 22px;
+  justify-content: space-between;
+  background: transparent;
+  border: 0;
+}
+.menu-toggle span {
+  height: 3px;
+  background: #a88d65;
+  border-radius: 2px;
+}
 
-  <!-- ✨ 品牌形象 -->
-  <section class="about">
-    <h2>品牌形象</h2>
-    <p>
-      ZJ影像專注於品牌故事的影像化。<br>
-      我們相信，影像不只是畫面，而是一種信任、一段共創的過程。<br>
-      從企業形象影片、建案視覺、到活動導播與現場整合，<br>
-      以美感與專業節奏構築每一場有意義的呈現。
-    </p>
-  </section>
+/* === 手機版抽屜選單 === */
+@media (max-width: 768px) {
+  nav ul {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 320px;
+    height: 100vh;
+    background: rgba(20,20,20,0.98);
+    flex-direction: column;
+    padding: 80px 0 1rem 1.5rem;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.25);
+    transition: right 0.35s ease-in-out;
+    z-index: 1001;
+  }
 
-  <!-- 💼 經歷 -->
-  <section class="experience">
-    <h2>經歷 Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <h3>  ZJ影像成立</h3>
-        <span>2020 - 至今</span>
-        <p>自2020年成立以來，持續投入影像創作、品牌視覺與活動紀錄。以專業影像製作、舞台導播與現場整合為核心，服務各類公私部門專案。</p>
-      </div>
-      <div class="timeline-item">
-        <h3>  南投縣政府標案與活動導播</h3>
-        <span>2021 - 至今</span>
-        <p>承接南投縣多項政府標案與文化活動，包括燈光音響統籌、舞台導播與影像紀錄，整合跨部門合作流程。</p>
-      </div>
-      <div class="timeline-item">
-        <h3>  企業與品牌影像製作</h3>
-        <span>2022 - 至今</span>
-        <p>協助中小企業、建設與地方品牌打造形象影片與網路宣傳素材，整合拍攝、剪輯與數位行銷設計。</p>
-      </div>
-      <div class="timeline-item">
-        <h3>  文化與地方紀錄影像</h3>
-        <span>2023 - 至今</span>
-        <p>拍攝彰化與南投地區的文化專題與民俗活動，以影像紀錄地方人文與傳統工藝精神。</p>
-      </div>
-    </div>
-  </section>
+  nav ul.open {
+    right: 0;
+  }
 
-  <!-- 📸 服務項目 -->
-  <section class="services">
-    <h2>服務項目</h2>
-    <div class="services-list">
-      <a href="photo-flat.html" class="service-link">平面攝影</a>
-      <a href="photo-event.html" class="service-link">動態攝影</a>
-      <a href="photo-short.html" class="service-link">短影音製作</a>
-      <a href="design-web.html" class="service-link">網頁設計</a>
-      <a href="design-graphic.html" class="service-link">平面設計</a>
-    </div>
-  </section>
+  nav li {
+    margin: 1rem 0;
+  }
 
-  <footer>
-    <p>© 2025 ZJ影像. All Rights Reserved.</p>
-  </footer>
-</body>
-</html>
+  nav a {
+    font-size: 1.05rem;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+}
+
+/* === 半透明背景遮罩 === */
+#overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 1000;
+}
+
+#overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* === 開啟選單時鎖住背景滾動 === */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* === Hero === */
+.hero {
+  background: #f0ece6;
+  padding: 5rem 1.5rem;
+  text-align: center;
+}
+
+/* === Section === */
+section {
+  scroll-margin-top: 100px; /* 防止 navbar 遮標題 */
+}
+
+.section {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 1.5rem;
+}
+
+.section h2 {
+  border-bottom: 2px solid #a88d65;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+  color: #a88d65;
+}
+
+/* === Footer === */
+footer {
+  background: #f9f7f2;
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.9rem;
+  color: #999;
+}
