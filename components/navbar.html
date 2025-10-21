@@ -1,3 +1,4 @@
+<!-- ======= Navbar：完整可收合（手機/桌機）======= -->
 <header>
   <div class="logo">
     <a href="index.html" aria-label="回首頁">
@@ -12,9 +13,7 @@
       aria-label="開啟選單"
       aria-controls="menu"
       aria-expanded="false">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </button>
 
     <ul id="menu" role="menu">
@@ -34,58 +33,150 @@
 <!-- 半透明背景遮罩 -->
 <div id="overlay" aria-hidden="true"></div>
 
-<!-- === 漢堡選單控制 === -->
+<style>
+/* ===== 版頭固定樣式 ===== */
+header{
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  display:flex; align-items:center; justify-content:space-between;
+  padding:.75rem 1rem;
+  background: rgba(11,11,11,.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+header .logo img{ display:block; height:40px; }
+
+/* 共用 */
+nav ul#menu{ list-style:none; margin:0; padding:0; }
+
+/* 桌機：橫排 */
+@media (min-width:769px){
+  .menu-toggle{ display:none; }
+  nav ul#menu{ display:flex; gap:1rem; }
+  nav ul#menu > li > a{
+    display:inline-block; padding:.5rem .9rem; font-weight:600;
+    color:#e9e3d2; text-decoration:none;
+    border:1px solid rgba(215,195,150,.25);
+    border-radius:999px;
+  }
+  nav ul#menu > li > a:hover{ background:#d1c09b; color:#111; }
+}
+
+/* 手機：側欄抽屜 */
+@media (max-width:768px){
+  .menu-toggle{
+    display:inline-flex; flex-direction:column; justify-content:center; gap:5px;
+    width:42px; height:42px; border:0; background:none; cursor:pointer;
+  }
+  .menu-toggle span{
+    display:block; width:26px; height:2px; background:#f0e9d6;
+    transition: transform .25s, opacity .2s;
+  }
+  /* 漢堡變 X */
+  .menu-toggle[aria-expanded="true"] span:nth-child(1){ transform: translateY(7px) rotate(45deg); }
+  .menu-toggle[aria-expanded="true"] span:nth-child(2){ opacity:0; }
+  .menu-toggle[aria-expanded="true"] span:nth-child(3){ transform: translateY(-7px) rotate(-45deg); }
+
+  nav ul#menu{
+    position:fixed; top:0; right:0; width:78vw; max-width:360px; height:100svh;
+    background:#121212; border-left:1px solid rgba(255,255,255,.12);
+    transform: translateX(100%); transition: transform .25s ease-out;
+    padding:1rem; overflow-y:auto; z-index:1001;
+  }
+  nav ul#menu.open{ transform: translateX(0); }
+  nav ul#menu > li{ margin:.25rem 0; }
+  nav ul#menu > li > a{
+    display:block; padding:.95rem 1rem; border-radius:12px; font-weight:600;
+    color:#d6c9a5; text-decoration:none; border:1px solid rgba(215,195,150,.25);
+  }
+  nav ul#menu > li > a:hover{ background:#d1c09b; color:#111; }
+}
+
+/* 遮罩 */
+#overlay{
+  position:fixed; inset:0; background:rgba(0,0,0,.45);
+  opacity:0; pointer-events:none; transition:opacity .25s ease; z-index:1000;
+}
+#overlay.show{ opacity:1; pointer-events:auto; }
+
+/* 開單鎖捲動 */
+body.menu-open{ overflow:hidden; }
+
+/* 錨點避免被固定 header 擋到（可依實際高度微調） */
+#about, #experience, #services { scroll-margin-top: 72px; }
+
+/* 動畫偏好 */
+@media (prefers-reduced-motion:reduce){
+  .menu-toggle span, nav ul#menu, #overlay{ transition:none; }
+}
+</style>
+
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const menuToggle = document.getElementById('menu-toggle');
-    const menu = document.getElementById('menu');
-    const overlay = document.getElementById('overlay');
-    const BREAKPOINT = 768; // 與 CSS @media 一致
+/* ===== 漢堡選單控制（手機可收回） ===== */
+document.addEventListener('DOMContentLoaded', () => {
+  const menuToggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('menu');
+  const overlay = document.getElementById('overlay');
+  const BREAKPOINT = 768; // 與 CSS 一致
 
-    function openMenu() {
-      menu.classList.add('open');
-      overlay.classList.add('show');
-      document.body.classList.add('menu-open');
-      menuToggle.setAttribute('aria-expanded', 'true');
-      menuToggle.setAttribute('aria-label', '關閉選單');
-    }
+  function openMenu(){
+    menu.classList.add('open');
+    overlay.classList.add('show');
+    document.body.classList.add('menu-open');
+    menuToggle.setAttribute('aria-expanded','true');
+    menuToggle.setAttribute('aria-label','關閉選單');
+    trapFocus(menu);
+  }
+  function closeMenu(){
+    menu.classList.remove('open');
+    overlay.classList.remove('show');
+    document.body.classList.remove('menu-open');
+    menuToggle.setAttribute('aria-expanded','false');
+    menuToggle.setAttribute('aria-label','開啟選單');
+    releaseFocus();
+    menuToggle.focus();
+  }
+  function toggleMenu(){
+    menu.classList.contains('open') ? closeMenu() : openMenu();
+  }
 
-    function closeMenu() {
-      menu.classList.remove('open');
-      overlay.classList.remove('show');
-      document.body.classList.remove('menu-open');
-      menuToggle.setAttribute('aria-expanded', 'false');
-      menuToggle.setAttribute('aria-label', '開啟選單');
-    }
-
-    function toggleMenu() {
-      menu.classList.contains('open') ? closeMenu() : openMenu();
-    }
-
-    // 點擊漢堡鍵
-    menuToggle.addEventListener('click', toggleMenu);
-
-    // 點遮罩關閉
-    overlay.addEventListener('click', closeMenu);
-
-    // 點選單連結自動關閉（手機）
-    menu.addEventListener('click', (e) => {
-      if (e.target.closest('a') && window.innerWidth <= BREAKPOINT) {
-        closeMenu();
-      }
-    });
-
-    // ESC 關閉
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
-    });
-
-    // 桌機寬時保險關閉
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > BREAKPOINT && menu.classList.contains('open')) closeMenu();
-    });
-
-    // 防止 iOS 在遮罩滑動時背景滾動
-    overlay.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false });
+  // 事件
+  menuToggle.addEventListener('click', toggleMenu);
+  overlay.addEventListener('click', closeMenu);
+  menu.addEventListener('click', (e)=>{
+    if(e.target.closest('a') && window.innerWidth <= BREAKPOINT){ closeMenu(); }
   });
+  document.addEventListener('keydown', (e)=>{
+    if(e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+  });
+  window.addEventListener('resize', ()=>{
+    if(window.innerWidth > BREAKPOINT && menu.classList.contains('open')) closeMenu();
+  });
+  // 防 iOS 遮罩滑動穿透
+  overlay.addEventListener('touchmove', (e)=> e.preventDefault(), { passive:false });
+
+  /* === 焦點圈定（可及性）=== */
+  let focusableEls=[], firstFocusable=null, lastFocusable=null;
+  function trapFocus(container){
+    focusableEls = Array.from(container.querySelectorAll('a, button, [tabindex]:not([tabindex="-1"])'))
+      .filter(el => !el.hasAttribute('disabled') && !el.getAttribute('aria-hidden'));
+    if(focusableEls.length === 0) return;
+    firstFocusable = focusableEls[0];
+    lastFocusable  = focusableEls[focusableEls.length - 1];
+    firstFocusable.focus();
+    container.addEventListener('keydown', handleTabLoop);
+  }
+  function releaseFocus(){
+    menu.removeEventListener('keydown', handleTabLoop);
+    focusableEls=[]; firstFocusable=null; lastFocusable=null;
+  }
+  function handleTabLoop(e){
+    if(e.key !== 'Tab' || focusableEls.length === 0) return;
+    if(e.shiftKey && document.activeElement === firstFocusable){
+      e.preventDefault(); lastFocusable.focus();
+    }else if(!e.shiftKey && document.activeElement === lastFocusable){
+      e.preventDefault(); firstFocusable.focus();
+    }
+  }
+});
 </script>
+<!-- ======= /Navbar 完 ======= -->
