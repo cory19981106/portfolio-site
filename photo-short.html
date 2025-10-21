@@ -1,44 +1,179 @@
-<style>
-  .videos-grid {
-    display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    justify-items: center;
-  }
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>短影音 Reels｜ZJ影像</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 
-  .video-item {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 6px 20px rgba(0,0,0,.08);
-    overflow: hidden;
-    border: 1px solid rgba(0,0,0,.06);
-    width: 100%;
-    max-width: 340px;
-  }
+  <style>
+    /* ===== 版心：置中並保留左右留白 ===== */
+    .page {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 24px clamp(24px, 6vw, 96px);
+    }
 
-  /* 關鍵：這裡鎖死9:16比例 */
-  .video-frame {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 16;
-    background: #000;
-    overflow: hidden;
-  }
+    h2 {
+      margin: 8px 0 24px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      text-align: center;
+      color: #a88d65;
+    }
 
-  .video-frame iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border: 0;
-    display: block;
-  }
-</style>
+    /* ===== Reels 網格 ===== */
+    .videos-grid {
+      display: grid;
+      gap: 20px;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      justify-items: center;
+      align-items: start;
+    }
+    @media (min-width: 960px) {
+      .videos-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+    @media (max-width: 640px) {
+      .videos-grid { gap: 14px; }
+    }
 
-<div class="video-item">
-  <div class="video-frame">
-    <iframe src="https://drive.google.com/file/d/1Zdl3DVTt-L-Iv6EJ84kw2EJy4KjBaQRc/preview"
-            allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
-  </div>
-</div>
+    /* ===== 9:16 響應式 Reels 卡片 ===== */
+    .video-item {
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 6px 20px rgba(0,0,0,.08);
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.06);
+      width: 100%;
+      max-width: 340px;
+    }
+
+    /* 關鍵：9:16 比例鎖，含新舊瀏覽器雙保險 */
+    .video-frame {
+      position: relative;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+      aspect-ratio: 9 / 16;          /* 新式瀏覽器直接吃 */
+    }
+    /* 舊瀏覽器後備：用 padding-top 撐高比例 */
+    .video-frame::before {
+      content: "";
+      display: block;
+      padding-top: 177.78%;          /* 9:16 */
+    }
+    /* 若支援 aspect-ratio，就關掉後備高度，避免雙算 */
+    @supports (aspect-ratio: 1 / 1) {
+      .video-frame::before { display: none; }
+    }
+
+    .video-frame iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* ===== footer ===== */
+    footer {
+      text-align: center;
+      padding: 24px 0 48px;
+      color: #777;
+      font-size: .92rem;
+    }
+
+    @media (max-width: 600px) {
+      header { flex-wrap: wrap; gap: .5rem; }
+      nav a { margin-left: .5rem; font-size: .95rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar 注入點 -->
+  <div id="navbar"></div>
+
+  <main class="page">
+    <h2>短影音作品</h2>
+
+    <div class="videos-grid">
+      <!-- 1 -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1Zdl3DVTt-L-Iv6EJ84kw2EJy4KjBaQRc/preview" title="Reel 1" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+      <!-- 2 -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1r6qIBd0OjEUawvnKyr5I86DZa0IgdpCT/preview" title="Reel 2" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+      <!-- 3 -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1O9PD_-W0DAlYfTQu3wdft71-xOpmgHZD/preview" title="Reel 3" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+      <!-- 4 -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1wgU0zydhPkuHyEedUZedGfywwBSMQRcV/preview" title="Reel 4" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+      <!-- 5 -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/107oeSXvVGEnjK36hw_OY4s2PtHJBb_Wj/preview" title="Reel 5" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+      <!-- 6 -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1FHybgt9qbJjR-XtTScDkXhpdDc0Zp9Xl/preview" title="Reel 6" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+      <!-- 7 -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/13x1Fe6m9hel1lRF3uRXmmBn6KVaK5tBT/preview" title="Reel 7" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+      <!-- 8 -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1v47L83H9AeOhO7Aec9Z8eVCrLBXK_U-Z/preview" title="Reel 8" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+      <!-- 9 -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/13KJg0OSR4-h5qRMENB4vWLcJDsUTMNf0/preview" title="Reel 9" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+    </div>
+  </main>
+
+  <footer>&copy; 2025 ZJ影像 All Rights Reserved</footer>
+
+  <script>
+    // 載入 Navbar 並處理開合效果
+    fetch("components/navbar.html")
+      .then(r => r.text())
+      .then(html => {
+        document.getElementById("navbar").innerHTML = html;
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+
+        const overlay = document.createElement("div");
+        overlay.id = "overlay";
+        overlay.style.cssText = "position:fixed;inset:0;background:rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:.2s;z-index:40;";
+        document.body.appendChild(overlay);
+
+        function closeMenu(){
+          menu.classList.remove("open");
+          overlay.style.opacity = "0";
+          overlay.style.pointerEvents = "none";
+        }
+
+        function openMenu(){
+          menu.classList.add("open");
+          overlay.style.opacity = "1";
+          overlay.style.pointerEvents = "auto";
+        }
+
+        if (menuToggle && menu) {
+          menuToggle.addEventListener("click", () => {
+            menu.classList.contains("open") ? closeMenu() : openMenu();
+          });
+          overlay.addEventListener("click", closeMenu);
+          menu.querySelectorAll("a").forEach(a => a.addEventListener("click", closeMenu));
+        }
+      });
+  </script>
+</body>
+</html>
