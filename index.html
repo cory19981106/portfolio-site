@@ -363,33 +363,30 @@
   <div id="navbar"></div>
   <script>
     fetch("components/navbar.html")
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById("navbar").innerHTML = html;
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
         const menuToggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
         overlay.id = "overlay";
-        if (menuToggle && menu) {
-          document.body.appendChild(overlay);
-          menuToggle.addEventListener("click", () => {
-            menu.classList.toggle("open");
-            overlay.classList.toggle("show");
-            document.body.classList.toggle("menu-open", menu.classList.contains("open"));
-          });
-          overlay.addEventListener("click", () => {
+
+        menuToggle.addEventListener("click", () => {
+          menu.classList.toggle("open");
+          overlay.classList.toggle("show");
+        });
+
+        overlay.addEventListener("click", () => {
+          menu.classList.remove("open");
+          overlay.classList.remove("show");
+        });
+
+        menu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
             menu.classList.remove("open");
             overlay.classList.remove("show");
-            document.body.classList.remove("menu-open");
           });
-          menu.querySelectorAll("a").forEach(link => {
-            link.addEventListener("click", () => {
-              menu.classList.remove("open");
-              overlay.classList.remove("show");
-              document.body.classList.remove("menu-open");
-            });
-          });
-        }
+        });
       });
   </script>
 
