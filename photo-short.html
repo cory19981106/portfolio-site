@@ -8,13 +8,11 @@
   <link rel="stylesheet" href="style.css">
 
   <style>
-    /* ===== 版心：置中並保留左右留白 ===== */
     .page {
       max-width: 1200px;
       margin: 0 auto;
       padding: 24px clamp(24px, 6vw, 96px);
     }
-
     h2 {
       margin: 8px 0 24px;
       font-weight: 700;
@@ -23,22 +21,16 @@
       color: #a88d65;
     }
 
-    /* ===== Reels 網格 ===== */
     .videos-grid {
       display: grid;
       gap: 20px;
       grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       justify-items: center;
+      align-items: start;
     }
+    @media (min-width: 960px) { .videos-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (max-width: 640px) { .videos-grid { gap: 14px; } }
 
-    @media (min-width: 960px) {
-      .videos-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-    @media (max-width: 640px) {
-      .videos-grid { gap: 14px; }
-    }
-
-    /* ===== 9:16 響應式 Reels 卡片 ===== */
     .video-item {
       background: #fff;
       border-radius: 12px;
@@ -52,27 +44,26 @@
     .video-frame {
       position: relative;
       width: 100%;
-      padding-top: 177.78%; /* 9:16 比例 */
+      padding-top: 177.78%; /* 9:16 fallback */
+      aspect-ratio: 9 / 16;  /* 現代瀏覽器優先 */
       background: #000;
+      overflow: hidden;
     }
-
     .video-frame iframe {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
       border: 0;
-      border-radius: 0;
+      display: block;
     }
 
-    /* ===== footer ===== */
     footer {
       text-align: center;
       padding: 24px 0 48px;
       color: #777;
       font-size: .92rem;
     }
-
     @media (max-width: 600px) {
       header { flex-wrap: wrap; gap: .5rem; }
       nav a { margin-left: .5rem; font-size: .95rem; }
@@ -80,7 +71,6 @@
   </style>
 </head>
 <body>
-  <!-- Navbar 注入點 -->
   <div id="navbar"></div>
 
   <main class="page">
@@ -88,30 +78,47 @@
 
     <div class="videos-grid">
       <!-- 1 -->
-      <div class="video-item"><div class="video-frame"><iframe src="https://drive.google.com/file/d/1Zdl3DVTt-L-Iv6EJ84kw2EJy4KjBaQRc/preview" title="Reel 1" allowfullscreen></iframe></div></div>
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1Zdl3DVTt-L-Iv6EJ84kw2EJy4KjBaQRc/preview" title="Reel 1" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
       <!-- 2 -->
-      <div class="video-item"><div class="video-frame"><iframe src="https://drive.google.com/file/d/1r6qIBd0OjEUawvnKyr5I86DZa0IgdpCT/preview" title="Reel 2" allowfullscreen></iframe></div></div>
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1r6qIBd0OjEUawvnKyr5I86DZa0IgdpCT/preview" title="Reel 2" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
       <!-- 3 -->
-      <div class="video-item"><div class="video-frame"><iframe src="https://drive.google.com/file/d/1O9PD_-W0DAlYfTQu3wdft71-xOpmgHZD/preview" title="Reel 3" allowfullscreen></iframe></div></div>
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1O9PD_-W0DAlYfTQu3wdft71-xOpmgHZD/preview" title="Reel 3" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
       <!-- 4 -->
-      <div class="video-item"><div class="video-frame"><iframe src="https://drive.google.com/file/d/1wgU0zydhPkuHyEedUZedGfywwBSMQRcV/preview" title="Reel 4" allowfullscreen></iframe></div></div>
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1wgU0zydhPkuHyEedUZedGfywwBSMQRcV/preview" title="Reel 4" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
       <!-- 5 -->
-      <div class="video-item"><div class="video-frame"><iframe src="https://drive.google.com/file/d/107oeSXvVGEnjK36hw_OY4s2PtHJBb_Wj/preview" title="Reel 5" allowfullscreen></iframe></div></div>
-      <!-- 6 -->
-      <div.class="video-item"><div class="video-frame"><iframe src="https://drive.google.com/file/d/1FHybgt9qbJjR-XtTScDkXhpdDc0Zp9Xl/preview" title="Reel 6" allowfullscreen></iframe></div></div>
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/107oeSXvVGEnjK36hw_OY4s2PtHJBb_Wj/preview" title="Reel 5" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
+      <!-- 6（這裡修正了 class 的小筆誤） -->
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1FHybgt9qbJjR-XtTScDkXhpdDc0Zp9Xl/preview" title="Reel 6" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
       <!-- 7 -->
-      <div class="video-item"><div class="video-frame"><iframe src="https://drive.google.com/file/d/13x1Fe6m9hel1lRF3uRXmmBn6KVaK5tBT/preview" title="Reel 7" allowfullscreen></iframe></div></div>
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/13x1Fe6m9hel1lRF3uRXmmBn6KVaK5tBT/preview" title="Reel 7" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
       <!-- 8 -->
-      <div class="video-item"><div class="video-frame"><iframe src="https://drive.google.com/file/d/1v47L83H9AeOhO7Aec9Z8eVCrLBXK_U-Z/preview" title="Reel 8" allowfullscreen></iframe></div></div>
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/1v47L83H9AeOhO7Aec9Z8eVCrLBXK_U-Z/preview" title="Reel 8" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
       <!-- 9 -->
-      <div class="video-item"><div class="video-frame"><iframe src="https://drive.google.com/file/d/13KJg0OSR4-h5qRMENB4vWLcJDsUTMNf0/preview" title="Reel 9" allowfullscreen></iframe></div></div>
+      <div class="video-item"><div class="video-frame">
+        <iframe src="https://drive.google.com/file/d/13KJg0OSR4-h5qRMENB4vWLcJDsUTMNf0/preview" title="Reel 9" allow="autoplay; fullscreen" allowfullscreen loading="lazy"></iframe>
+      </div></div>
     </div>
   </main>
 
   <footer>&copy; 2025 ZJ影像 All Rights Reserved</footer>
 
   <script>
-    // 載入 Navbar 並處理開合效果
     fetch("components/navbar.html")
       .then(r => r.text())
       .then(html => {
@@ -129,13 +136,11 @@
           overlay.style.opacity = "0";
           overlay.style.pointerEvents = "none";
         }
-
         function openMenu(){
           menu.classList.add("open");
           overlay.style.opacity = "1";
           overlay.style.pointerEvents = "auto";
         }
-
         if (menuToggle && menu) {
           menuToggle.addEventListener("click", () => {
             menu.classList.contains("open") ? closeMenu() : openMenu();
