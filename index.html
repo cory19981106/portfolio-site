@@ -15,7 +15,7 @@
       overflow-x: hidden;
     }
 
-    /* --- Hero 區塊 --- */
+    /* --- Hero --- */
     .hero {
       position: relative;
       height: 100vh;
@@ -27,27 +27,22 @@
       text-align: center;
       color: #fff;
     }
-
     .hero::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.65) 100%);
+      background: linear-gradient(180deg, rgba(0,0,0,0.35), rgba(0,0,0,0.65));
       z-index: 1;
     }
-
     .hero-content {
       position: relative;
       z-index: 2;
       animation: fadeUp 1.6s ease both;
-      padding: 0 1rem;
     }
-
     @keyframes fadeUp {
-      0% { opacity: 0; transform: translateY(40px); }
-      100% { opacity: 1; transform: translateY(0); }
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
     }
-
     .hero h1 {
       font-size: clamp(2.8rem, 5vw, 4rem);
       font-weight: 700;
@@ -58,15 +53,11 @@
       -webkit-text-fill-color: transparent;
       text-shadow: 0 4px 10px rgba(0,0,0,0.6);
     }
-
     .hero p {
       font-size: 1.2rem;
       color: #f3f3f3;
-      font-weight: 500;
-      margin: 0.3rem 0;
       text-shadow: 0 1px 6px rgba(0,0,0,0.6);
     }
-
     .hero .sub {
       font-size: 1rem;
       color: #ddd;
@@ -74,10 +65,9 @@
       letter-spacing: 0.5px;
     }
 
-    /* --- 品牌介紹區 --- */
+    /* --- 品牌形象 --- */
     .about {
       background: linear-gradient(145deg, #fdfbf8, #f7f3ee);
-      color: #333;
       padding: 5rem 1.5rem;
       text-align: center;
       box-shadow: 0 8px 26px rgba(0,0,0,0.08);
@@ -87,15 +77,13 @@
       position: relative;
       z-index: 2;
     }
-
     .about h2 {
-      font-size: 1.9rem;
       color: #a88d65;
+      font-size: 1.9rem;
       margin-bottom: 1.2rem;
       position: relative;
       display: inline-block;
     }
-
     .about h2::after {
       content: "";
       width: 50px;
@@ -106,7 +94,6 @@
       left: 50%;
       transform: translateX(-50%);
     }
-
     .about p {
       font-size: 1.05rem;
       line-height: 1.9;
@@ -115,13 +102,74 @@
       margin: 0 auto;
     }
 
-    /* --- 服務項目區 --- */
+    /* --- 經歷區塊 --- */
+    .experience {
+      background: linear-gradient(180deg, #f7f5f2 0%, #e8e2d9 100%);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+    .experience h2 {
+      color: #a88d65;
+      font-size: 1.9rem;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .experience h2::after {
+      content: "";
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #bfa574, #a88d65);
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .timeline {
+      max-width: 900px;
+      margin: 3rem auto 0;
+      border-left: 2px solid #cbb78b;
+      padding-left: 2rem;
+      text-align: left;
+    }
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -10px;
+      top: 8px;
+      width: 14px;
+      height: 14px;
+      background: #a88d65;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px #f7f5f2;
+    }
+    .timeline-item h3 {
+      font-size: 1.2rem;
+      color: #333;
+      margin-bottom: 0.3rem;
+    }
+    .timeline-item span {
+      font-size: 0.95rem;
+      color: #a88d65;
+      font-weight: 600;
+    }
+    .timeline-item p {
+      font-size: 1rem;
+      color: #555;
+      line-height: 1.6;
+      margin-top: 0.5rem;
+    }
+
+    /* --- 服務項目 --- */
     .services {
       background: linear-gradient(180deg, #1b1b1b 0%, #0f0f0f 100%);
       padding: 6rem 1rem;
       text-align: center;
     }
-
     .services h2 {
       font-size: 1.8rem;
       color: #d8c49b;
@@ -129,7 +177,6 @@
       position: relative;
       display: inline-block;
     }
-
     .services h2::after {
       content: "";
       width: 60px;
@@ -140,7 +187,6 @@
       left: 50%;
       transform: translateX(-50%);
     }
-
     .services-list {
       display: flex;
       flex-wrap: wrap;
@@ -148,10 +194,7 @@
       gap: 1.4rem;
       margin-top: 3rem;
     }
-
     .service-link {
-      position: relative;
-      display: inline-block;
       padding: 1.1rem 2.6rem;
       border-radius: 50px;
       background: #141414;
@@ -164,7 +207,6 @@
       transition: all 0.4s ease;
       box-shadow: inset 0 0 12px rgba(183,156,112,0.15);
     }
-
     .service-link:hover {
       background: linear-gradient(135deg, #b79c70, #d1c09b, #a88d65);
       color: #111;
@@ -182,10 +224,8 @@
       letter-spacing: 0.4px;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
-
     footer p {
       margin: 0;
-      font-size: 0.95rem;
       color: #bda87c;
     }
 
@@ -198,33 +238,31 @@
         font-size: 1rem;
         padding: 0.9rem 1.5rem;
       }
+      .timeline { padding-left: 1.2rem; }
     }
   </style>
 </head>
 
 <body>
-  <!-- ✅ Navbar：維持原本樣式 -->
+  <!-- ✅ Navbar -->
   <div id="navbar"></div>
   <script>
     fetch("components/navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar").innerHTML = data;
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar").innerHTML = html;
         const menuToggle = document.getElementById("menu-toggle");
         const menu = document.getElementById("menu");
         const overlay = document.createElement("div");
         overlay.id = "overlay";
-
         menuToggle.addEventListener("click", () => {
           menu.classList.toggle("open");
           overlay.classList.toggle("show");
         });
-
         overlay.addEventListener("click", () => {
           menu.classList.remove("open");
           overlay.classList.remove("show");
         });
-
         menu.querySelectorAll("a").forEach(link => {
           link.addEventListener("click", () => {
             menu.classList.remove("open");
@@ -233,7 +271,8 @@
         });
       });
   </script>
-  <!-- 🌄 Hero 區塊 -->
+
+  <!-- 🌄 Hero -->
   <section class="hero">
     <div class="hero-content">
       <h1>ZJ影像</h1>
@@ -248,12 +287,39 @@
     <p>
       ZJ影像專注於品牌故事的影像化。<br>
       我們相信，影像不只是畫面，而是一種信任、一段共創的過程。<br>
-      從企業形象影片、建案視覺、到短影音策略，<br>
-      以美感與節奏構築品牌的專屬語言。
+      從企業形象影片、建案視覺、到活動導播與現場整合，<br>
+      以美感與專業節奏構築每一場有意義的呈現。
     </p>
   </section>
 
-  <!-- 💼 服務項目 -->
+  <!-- 💼 經歷 -->
+  <section class="experience">
+    <h2>經歷 Experience</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <h3>ZJ影像成立</h3>
+        <span>2020 - 至今</span>
+        <p>自2020年成立以來，持續投入影像創作、品牌視覺與活動紀錄。以專業影像製作、舞台導播與現場整合為核心，服務各類公私部門專案。</p>
+      </div>
+      <div class="timeline-item">
+        <h3>南投縣政府標案與活動導播</h3>
+        <span>2021 - 至今</span>
+        <p>承接南投縣多項政府標案與文化活動，包括燈光音響統籌、舞台導播與影像紀錄，整合跨部門合作流程。</p>
+      </div>
+      <div class="timeline-item">
+        <h3>企業與品牌影像製作</h3>
+        <span>2022 - 至今</span>
+        <p>協助中小企業、建設與地方品牌打造形象影片與網路宣傳素材，整合拍攝、剪輯與數位行銷設計。</p>
+      </div>
+      <div class="timeline-item">
+        <h3>文化與地方紀錄影像</h3>
+        <span>2023 - 至今</span>
+        <p>拍攝彰化與南投地區的文化專題與民俗活動，以影像紀錄地方人文與傳統工藝精神。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 📸 服務項目 -->
   <section class="services">
     <h2>服務項目</h2>
     <div class="services-list">
