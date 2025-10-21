@@ -165,13 +165,36 @@
 </head>
 
 <body>
-  <div id="navbar" role="navigation" aria-label="主導覽"></div>
-
+  <div id="navbar"></div>
   <script>
-    fetch("/components/navbar.html")
-      .then(r => r.text())
-      .then(html => { document.getElementById("navbar").innerHTML = html; })
-      .catch(err => console.warn("Navbar 載入失敗：", err));
+    fetch("components/navbar.html")
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById("navbar").innerHTML = data;
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+        const overlay = document.createElement("div");
+        overlay.id = "overlay";
+
+
+        menuToggle.addEventListener("click", () => {
+          menu.classList.toggle("open");
+          overlay.classList.toggle("show");
+        });
+
+        overlay.addEventListener("click", () => {
+          menu.classList.remove("open");
+          overlay.classList.remove("show");
+        });
+
+        menu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            menu.classList.remove("open");
+            overlay.classList.remove("show");
+          });
+        });
+      });
   </script>
 
   <!-- Hero -->
