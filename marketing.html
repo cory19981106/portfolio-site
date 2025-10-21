@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>廣告行銷｜ZJ影像</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Noto Sans TC', sans-serif;
+      background: #fff;
+      color: #333;
+      overflow-x: hidden;
+    }
+
+    .hero {
+      position: relative;
+      height: 60vh;
+      background: url("images/marketing-bg.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      text-align: center;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0.55);
+      z-index: 1;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeUp 1.2s ease both;
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      background: linear-gradient(90deg, #fff, #d6c18b, #a88d65);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 0.5rem;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: #f3f3f3;
+    }
+
+    .section {
+      max-width: 1000px;
+      margin: 4rem auto;
+      padding: 0 clamp(24px, 6vw, 80px);
+      text-align: center;
+    }
+    .section h2 {
+      color: #a88d65;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section h2::after {
+      content: "";
+      width: 50px;
+      height: 3px;
+      background: linear-gradient(90deg, #bfa574, #a88d65);
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .section p {
+      color: #555;
+      line-height: 1.8;
+      font-size: 1.05rem;
+    }
+
+    /* --- 行銷流程 --- */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .step {
+      background: #faf8f4;
+      border-radius: 10px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      transition: 0.3s;
+    }
+    .step:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.1);
+    }
+    .step h3 {
+      color: #a88d65;
+      margin-bottom: 0.6rem;
+    }
+    .step p {
+      font-size: 0.95rem;
+      color: #444;
+      line-height: 1.7;
+    }
+
+    /* --- 收費表 --- */
+    .pricing {
+      background: #f7f5f2;
+      border-radius: 12px;
+      padding: 3rem 2rem;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+      margin-top: 3rem;
+    }
+    .pricing-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+    }
+    .pricing-table th, .pricing-table td {
+      border-bottom: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+    }
+    .pricing-table th {
+      background: #a88d65;
+      color: #fff;
+      font-weight: 600;
+    }
+    .pricing-table td {
+      color: #333;
+      background: #fff;
+    }
+
+    footer {
+      background: #0e0e0e;
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 0.9rem;
+      color: #aaa;
+      letter-spacing: 0.4px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    footer p { color: #bda87c; margin: 0; }
+
+    @media (max-width: 768px) {
+      .hero { height: 50vh; padding: 2rem; }
+      .step { padding: 1.5rem; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="navbar"></div>
+  <script>
+    fetch("components/navbar.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("navbar").innerHTML = html;
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+        const overlay = document.createElement("div");
+        overlay.id = "overlay";
+        menuToggle.addEventListener("click", () => {
+          menu.classList.toggle("open");
+          overlay.classList.toggle("show");
+        });
+        overlay.addEventListener("click", () => {
+          menu.classList.remove("open");
+          overlay.classList.remove("show");
+        });
+        menu.querySelectorAll("a").forEach(link => {
+          link.addEventListener("click", () => {
+            menu.classList.remove("open");
+            overlay.classList.remove("show");
+          });
+        });
+      });
+  </script>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>廣告行銷策略</h1>
+      <p>讓影像發揮最大效益，將故事傳達給真正的觀眾。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>行銷運作流程</h2>
+    <p>
+      我們結合創意與數據，協助品牌從「影片製作」到「精準曝光」，<br>
+      打造能被看見、被記住的品牌印象。
+    </p>
+    <div class="steps">
+      <div class="step">
+        <h3>① 品牌定位分析</h3>
+        <p>了解品牌故事、受眾輪廓與市場目標，找出最能打動人的核心訊息。</p>
+      </div>
+      <div class="step">
+        <h3>② 內容製作與策略</h3>
+        <p>整合影像創作、廣告文案與設計素材，量身打造行銷內容主軸。</p>
+      </div>
+      <div class="step">
+        <h3>③ 廣告投放執行</h3>
+        <p>投放至 Facebook、Instagram、YouTube、Google 等平台，依數據即時調整。</p>
+      </div>
+      <div class="step">
+        <h3>④ 成效分析與優化</h3>
+        <p>提供投放報表與建議，持續追蹤觸及率、互動率與轉換率，讓每一筆預算都有效。</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>收費方案</h2>
+    <div class="pricing">
+      <p>依據不同規模與需求，我們提供靈活透明的合作模式。</p>
+      <table class="pricing-table">
+        <tr>
+          <th>方案</th>
+          <th>內容項目</th>
+          <th>費用範圍</th>
+        </tr>
+        <tr>
+          <td>入門方案</td>
+          <td>單平台廣告設定＋素材設計（FB / IG）</td>
+          <td>NT$8,000 起</td>
+        </tr>
+        <tr>
+          <td>品牌推廣方案</td>
+          <td>多平台整合投放＋短影音剪輯＋成效報告</td>
+          <td>NT$15,000～25,000</td>
+        </tr>
+        <tr>
+          <td>年度行銷顧問</td>
+          <td>策略規劃＋月度優化＋活動整合影像製作</td>
+          <td>依專案報價</td>
+        </tr>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 ZJ影像. All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
