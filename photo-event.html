@@ -6,11 +6,11 @@
   <title>動態案例｜ZJ影像</title>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="theme-color" content="#0b0b0b">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <meta name="theme-color" content="#0b0b0b">
   <style>
     .video-grid {
       display: grid;
@@ -31,11 +31,15 @@
       }
     }
 
+    /* 影片外層容器 (16:9) */
     .video-container {
       position: relative;
       padding-bottom: 56.25%;
       height: 0;
       overflow: hidden;
+      background-color: #111;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     .video-container iframe {
@@ -44,11 +48,62 @@
       left: 0;
       width: 100%;
       height: 100%;
+      border: none;
+    }
+
+    /* 影片縮圖封面 */
+    .video-thumbnail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+    .video-container:hover .video-thumbnail {
+      transform: scale(1.03);
+      filter: brightness(0.85);
+    }
+
+    /* 播放按鈕圖示 */
+    .play-button {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px;
+      height: 56px;
+      background: rgba(0, 0, 0, 0.7);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: background 0.3s ease, transform 0.2s ease;
+      z-index: 2;
+    }
+
+    .play-button::before {
+      content: "";
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 9px 0 9px 16px;
+      border-color: transparent transparent transparent #ffffff;
+      margin-left: 3px;
+    }
+
+    .video-container:hover .play-button {
+      background: #ff0000;
+      transform: translate(-50%, -50%) scale(1.1);
     }
 
     section h2 {
       padding: 0 2rem;
       color: #000;
+      margin-top: 2rem;
     }
 
     footer {
@@ -78,148 +133,53 @@
 </head>
 
 <body>
-  <!-- Navbar -->
- <div id="navbar"></div>
-  <script>
-    fetch("components/navbar.html")
-      .then(response => response.text())
-      .then(data => {
-        document.getElementById("navbar").innerHTML = data;
-
-        // 動態載入 navbar 後綁定 JS
-        const menuToggle = document.getElementById("menu-toggle");
-        const menu = document.getElementById("menu");
-        const overlay = document.createElement("div");
-        overlay.id = "overlay";
-
-        menuToggle.addEventListener("click", () => {
-          menu.classList.toggle("open");
-          overlay.classList.toggle("show");
-        });
-
-        // 點選連結或點背景收合
-        overlay.addEventListener("click", () => {
-          menu.classList.remove("open");
-          overlay.classList.remove("show");
-        });
-        menu.querySelectorAll("a").forEach(link => {
-          link.addEventListener("click", () => {
-            menu.classList.remove("open");
-            overlay.classList.remove("show");
-          });
-        });
-      });
-  </script>
-
+  <!-- Navbar 容器 -->
+  <div id="navbar"></div>
 
   <!-- 動態案例區塊 -->
   <section class="section">
     <h2>廣告、動畫案例</h2>
     <div class="video-grid">
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/-_tBT-g7kZw" title="臺中市政府警察局" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/08SrdEiaEzs" title="聲波電動床" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/M1V_6vxlcoE?si=13quBSlXsMdr_NBe" title="汽車廣告" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/38y9Sofnq2o" title="博田醫院" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/cTTZYrTMNY8?si=_WQ2LEd97MoFNASW" title="百威啤酒" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://drive.google.com/file/d/1ZP0FG_0GDYaKv-rE7BlBwshlzTv28vew/preview"  title="勁鋒護具廣告" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/F59WSVVVFjc"  title="勁鋒護具廣告" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/UUl1UgV7Xgk"  title="勁鋒護具廣告" frameborder="0" allowfullscreen></iframe>
-      </div>
-      
+      <div class="video-container" data-type="youtube" data-id="-_tBT-g7kZw" title="臺中市政府警察局"></div>
+      <div class="video-container" data-type="youtube" data-id="08SrdEiaEzs" title="聲波電動床"></div>
+      <div class="video-container" data-type="youtube" data-id="M1V_6vxlcoE" title="汽車廣告"></div>
+      <div class="video-container" data-type="youtube" data-id="38y9Sofnq2o" title="博田醫院"></div>
+      <div class="video-container" data-type="youtube" data-id="cTTZYrTMNY8" title="百威啤酒"></div>
+      <div class="video-container" data-type="gdrive" data-url="https://drive.google.com/file/d/1ZP0FG_0GDYaKv-rE7BlBwshlzTv28vew/preview" title="勁鋒護具廣告"></div>
+      <div class="video-container" data-type="youtube" data-id="F59WSVVVFjc" title="勁鋒護具廣告"></div>
+      <div class="video-container" data-type="youtube" data-id="UUl1UgV7Xgk" title="勁鋒護具廣告"></div>
     </div>
 
     <h2>婚禮、SDE案例</h2>
     <div class="video-grid">
-     <div class="video-container">
-  <iframe src="https://www.youtube.com/embed/0GQF8kcKpgk" title="臺南遊艇酒店" frameborder="0" allowfullscreen></iframe>
-</div>
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/4fRiJ3roJZc" title="彰化自宅戶外SDE" frameborder="0" allowfullscreen></iframe>
-</div>
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/HDPqhQJnNiU" title="彰化唯愛庭園婚禮" frameborder="0" allowfullscreen></iframe>
-</div>
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/jusiGDq_sSY" title="彰化唯愛庭園婚禮" frameborder="0" allowfullscreen></iframe>
-</div>
-          <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/lrTTsrd-0jo?si=HKF-WWyqjqa_rlfV" title="新竹婚禮" frameborder="0" allowfullscreen></iframe>
-      </div>
-       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/cEJr8rlUXDY?si=8l1S9H6f-95WeYfE" title="台中婚禮SDE" frameborder="0" allowfullscreen></iframe>
-      </div>
-       <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/06IM_8PsgVA" title="台中婚禮SDE" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/YnHc2uH5jAo?si=5DDYkjctjuiUD6rU" title="台南新營婚禮" frameborder="0" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/QvaUQY5dZGg" frameborder="0" allowfullscreen></iframe>
-      </div>
+      <div class="video-container" data-type="youtube" data-id="0GQF8kcKpgk" title="臺南遊艇酒店"></div>
+      <div class="video-container" data-type="youtube" data-id="4fRiJ3roJZc" title="彰化自宅戶外SDE"></div>
+      <div class="video-container" data-type="youtube" data-id="HDPqhQJnNiU" title="彰化唯愛庭園婚禮"></div>
+      <div class="video-container" data-type="youtube" data-id="jusiGDq_sSY" title="彰化唯愛庭園婚禮"></div>
+      <div class="video-container" data-type="youtube" data-id="lrTTsrd-0jo" title="新竹婚禮"></div>
+      <div class="video-container" data-type="youtube" data-id="cEJr8rlUXDY" title="台中婚禮SDE"></div>
+      <div class="video-container" data-type="youtube" data-id="06IM_8PsgVA" title="台中婚禮SDE"></div>
+      <div class="video-container" data-type="youtube" data-id="YnHc2uH5jAo" title="台南新營婚禮"></div>
+      <div class="video-container" data-type="youtube" data-id="QvaUQY5dZGg" title="婚禮紀錄"></div>
     </div>
 
     <h2>政府、廟會、企業活動</h2>
     <div class="video-grid">
-     <div class="video-container">
-  <iframe src="https://drive.google.com/file/d/15ZP7jdsy-xT_MQnsMQQXzEiA8z642kj5/preview" title="南投世界茶博活動" frameborder="0" allowfullscreen></iframe>
-</div>
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/U2cwrM28TfQ?si=rh50lG1ADqanbu0X" title="2026集集鐵道花旗木音樂會" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/C70CeYwttkM?si=AHQM114jaICW-Un3" title="虎尾永興宮廟會" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/QkW_PUh500U?si=Qtg7cUJIldm_o_-6" title="2026南投國姓咖啡節" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div class="video-container">
-  <iframe src="https://drive.google.com/file/d/1IcLqJOqHuwb1bywAZhe3G6c_v4DGtreb/preview" title="2026引興尾牙活動" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/VnDQYRdA4d8?si=DGtU-rCcHWoA7m0y" title="Dance成發" frameborder="0" allowfullscreen></iframe>
-</div>
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/x91KkefvxRg?si=TzaMUsePPAnQ5qkC" title="Dance成發" frameborder="0" allowfullscreen></iframe>
-</div>
-      <div class="video-container">
-  <iframe src="https://www.youtube.com/embed/oGFoFSScOOY?si=S-pStZV7Axp82Pip" title="Dance成發" frameborder="0" allowfullscreen></iframe>
-</div>
+      <div class="video-container" data-type="gdrive" data-url="https://drive.google.com/file/d/15ZP7jdsy-xT_MQnsMQQXzEiA8z642kj5/preview" title="南投世界茶博活動"></div>
+      <div class="video-container" data-type="youtube" data-id="U2cwrM28TfQ" title="2026集集鐵道花旗木音樂會"></div>
+      <div class="video-container" data-type="youtube" data-id="C70CeYwttkM" title="虎尾永興宮廟會"></div>
+      <div class="video-container" data-type="youtube" data-id="QkW_PUh500U" title="2026南投國姓咖啡節"></div>
+      <div class="video-container" data-type="gdrive" data-url="https://drive.google.com/file/d/1IcLqJOqHuwb1bywAZhe3G6c_v4DGtreb/preview" title="2026引興尾牙活動"></div>
+      <div class="video-container" data-type="youtube" data-id="VnDQYRdA4d8" title="Dance成發"></div>
+      <div class="video-container" data-type="youtube" data-id="x91KkefvxRg" title="Dance成發"></div>
+      <div class="video-container" data-type="youtube" data-id="oGFoFSScOOY" title="Dance成發"></div>
     </div>
-     <h2>MV合作拍攝</h2>
+
+    <h2>MV合作拍攝</h2>
     <div class="video-grid">
-     <div class="video-container">
-  <iframe src="https://www.youtube.com/embed/WkMM6_ihVzc" title="" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/c-7eWSdThJY" title="投資我們的星球X無塑野餐日" frameborder="0" allowfullscreen></iframe>
-</div>
-
-<div class="video-container">
-  <iframe src="https://www.youtube.com/embed/KIjMJuKnoaM" title="虎尾永興宮廟會" frameborder="0" allowfullscreen></iframe>
-</div>
-
-
+      <div class="video-container" data-type="youtube" data-id="WkMM6_ihVzc" title="MV拍攝"></div>
+      <div class="video-container" data-type="youtube" data-id="c-7eWSdThJY" title="投資我們的星球X無塑野餐日"></div>
+      <div class="video-container" data-type="youtube" data-id="KIjMJuKnoaM" title="虎尾永興宮廟會"></div>
     </div>
   </section>
 
@@ -228,39 +188,98 @@
     &copy; 2025 ZJ影像 All Rights Reserved
   </footer>
 
-  <!-- Navbar + 漢堡選單 + Overlay JS -->
+  <!-- 點擊載入播放 + Navbar JS -->
   <script>
-    fetch('/components/navbar.html')
-      .then(res => res.text())
-      .then(html => {
-        document.getElementById('site-header').innerHTML = html;
+    // 1. 初始化影片容器（設定縮圖與播放鍵，點擊才載入 iframe）
+    document.querySelectorAll('.video-container').forEach(container => {
+      const type = container.dataset.type;
+      const title = container.getAttribute('title') || 'Video';
 
-        const menuToggle = document.getElementById('menu-toggle');
-        const menu = document.getElementById('menu');
-        const overlay = document.createElement('div');
-        overlay.id = 'overlay';
-        document.body.appendChild(overlay);
+      if (type === 'youtube') {
+        const id = container.dataset.id;
+        // 使用 YouTube 高畫質縮圖
+        const img = document.createElement('img');
+        img.className = 'video-thumbnail';
+        img.src = `https://img.youtube.com/vi/${id}/hqdefault.jpg`;
+        img.alt = title;
+        img.loading = 'lazy';
 
-        // 漢堡選單點擊
-        menuToggle.addEventListener('click', () => {
-          menu.classList.toggle('open');
-          overlay.classList.toggle('show');
+        const playBtn = document.createElement('div');
+        playBtn.className = 'play-button';
+
+        container.appendChild(img);
+        container.appendChild(playBtn);
+
+        // 點擊後替換為 iframe 並自動播放
+        container.addEventListener('click', () => {
+          container.innerHTML = `
+            <iframe 
+              src="https://www.youtube.com/embed/${id}?autoplay=1&rel=0" 
+              title="${title}" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>`;
         });
+      } else if (type === 'gdrive') {
+        const url = container.dataset.url;
+        const playBtn = document.createElement('div');
+        playBtn.className = 'play-button';
+        container.appendChild(playBtn);
 
-        // 點選 overlay 收合
-        overlay.addEventListener('click', () => {
-          menu.classList.remove('open');
-          overlay.classList.remove('show');
+        // Google Drive 點擊後載入
+        container.addEventListener('click', () => {
+          container.innerHTML = `
+            <iframe 
+              src="${url}" 
+              title="${title}" 
+              allow="autoplay" 
+              allowfullscreen>
+            </iframe>`;
         });
+      }
+    });
 
-        // 點選 menu 連結收合
-        menu.querySelectorAll('a').forEach(link => {
-          link.addEventListener('click', () => {
-            menu.classList.remove('open');
-            overlay.classList.remove('show');
+    // 2. Navbar 載入與選單控制
+    fetch("components/navbar.html")
+      .then(response => {
+        if (!response.ok) throw new Error('Navbar load failed');
+        return response.text();
+      })
+      .then(data => {
+        const navbarEl = document.getElementById("navbar");
+        if (!navbarEl) return;
+        navbarEl.innerHTML = data;
+
+        const menuToggle = document.getElementById("menu-toggle");
+        const menu = document.getElementById("menu");
+        
+        let overlay = document.getElementById("overlay");
+        if (!overlay) {
+          overlay = document.createElement("div");
+          overlay.id = "overlay";
+          document.body.appendChild(overlay);
+        }
+
+        if (menuToggle && menu) {
+          menuToggle.addEventListener("click", () => {
+            menu.classList.toggle("open");
+            overlay.classList.toggle("show");
           });
-        });
-      });
+
+          overlay.addEventListener("click", () => {
+            menu.classList.remove("open");
+            overlay.classList.remove("show");
+          });
+
+          menu.querySelectorAll("a").forEach(link => {
+            link.addEventListener("click", () => {
+              menu.classList.remove("open");
+              overlay.classList.remove("show");
+            });
+          });
+        }
+      })
+      .catch(err => console.error("導覽列載入失敗：", err));
   </script>
 </body>
 </html>
